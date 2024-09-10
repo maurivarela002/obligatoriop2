@@ -1,0 +1,55 @@
+D:\Dentone\semana 02\Empleados\AppTest\bin\Debug\net8.0\AppTest.exe
+D:\Dentone\semana 02\Empleados\AppTest\bin\Debug\net8.0\AppTest.deps.json
+D:\Dentone\semana 02\Empleados\AppTest\bin\Debug\net8.0\AppTest.runtimeconfig.json
+D:\Dentone\semana 02\Empleados\AppTest\bin\Debug\net8.0\AppTest.dll
+D:\Dentone\semana 02\Empleados\AppTest\bin\Debug\net8.0\AppTest.pdb
+D:\Dentone\semana 02\Empleados\AppTest\bin\Debug\net8.0\Dominio.dll
+D:\Dentone\semana 02\Empleados\AppTest\bin\Debug\net8.0\Dominio.pdb
+D:\Dentone\semana 02\Empleados\AppTest\obj\Debug\net8.0\AppTest.csproj.AssemblyReference.cache
+D:\Dentone\semana 02\Empleados\AppTest\obj\Debug\net8.0\AppTest.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dentone\semana 02\Empleados\AppTest\obj\Debug\net8.0\AppTest.AssemblyInfoInputs.cache
+D:\Dentone\semana 02\Empleados\AppTest\obj\Debug\net8.0\AppTest.AssemblyInfo.cs
+D:\Dentone\semana 02\Empleados\AppTest\obj\Debug\net8.0\AppTest.csproj.CoreCompileInputs.cache
+D:\Dentone\semana 02\Empleados\AppTest\obj\Debug\net8.0\AppTest.csproj.Up2Date
+D:\Dentone\semana 02\Empleados\AppTest\obj\Debug\net8.0\AppTest.dll
+D:\Dentone\semana 02\Empleados\AppTest\obj\Debug\net8.0\refint\AppTest.dll
+D:\Dentone\semana 02\Empleados\AppTest\obj\Debug\net8.0\AppTest.pdb
+D:\Dentone\semana 02\Empleados\AppTest\obj\Debug\net8.0\AppTest.genruntimeconfig.cache
+D:\Dentone\semana 02\Empleados\AppTest\obj\Debug\net8.0\ref\AppTest.dll
+C:\Users\Ricio\Downloads\Empleados\AppTest\bin\Debug\net8.0\AppTest.exe
+C:\Users\Ricio\Downloads\Empleados\AppTest\bin\Debug\net8.0\AppTest.deps.json
+C:\Users\Ricio\Downloads\Empleados\AppTest\bin\Debug\net8.0\AppTest.runtimeconfig.json
+C:\Users\Ricio\Downloads\Empleados\AppTest\bin\Debug\net8.0\AppTest.dll
+C:\Users\Ricio\Downloads\Empleados\AppTest\bin\Debug\net8.0\AppTest.pdb
+C:\Users\Ricio\Downloads\Empleados\AppTest\bin\Debug\net8.0\Dominio.dll
+C:\Users\Ricio\Downloads\Empleados\AppTest\bin\Debug\net8.0\Dominio.pdb
+C:\Users\Ricio\Downloads\Empleados\AppTest\obj\Debug\net8.0\AppTest.csproj.AssemblyReference.cache
+C:\Users\Ricio\Downloads\Empleados\AppTest\obj\Debug\net8.0\AppTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ricio\Downloads\Empleados\AppTest\obj\Debug\net8.0\AppTest.AssemblyInfoInputs.cache
+C:\Users\Ricio\Downloads\Empleados\AppTest\obj\Debug\net8.0\AppTest.AssemblyInfo.cs
+C:\Users\Ricio\Downloads\Empleados\AppTest\obj\Debug\net8.0\AppTest.csproj.CoreCompileInputs.cache
+C:\Users\Ricio\Downloads\Empleados\AppTest\obj\Debug\net8.0\AppTest.csproj.Up2Date
+C:\Users\Ricio\Downloads\Empleados\AppTest\obj\Debug\net8.0\AppTest.dll
+C:\Users\Ricio\Downloads\Empleados\AppTest\obj\Debug\net8.0\refint\AppTest.dll
+C:\Users\Ricio\Downloads\Empleados\AppTest\obj\Debug\net8.0\AppTest.pdb
+C:\Users\Ricio\Downloads\Empleados\AppTest\obj\Debug\net8.0\AppTest.genruntimeconfig.cache
+C:\Users\Ricio\Downloads\Empleados\AppTest\obj\Debug\net8.0\ref\AppTest.dll
+C:\Users\Ricio\Desktop\ort\p2\obligatoriop2\Obligatorio1\AppTest\bin\Debug\net8.0\AppTest.exe
+C:\Users\Ricio\Desktop\ort\p2\obligatoriop2\Obligatorio1\AppTest\bin\Debug\net8.0\AppTest.deps.json
+C:\Users\Ricio\Desktop\ort\p2\obligatoriop2\Obligatorio1\AppTest\bin\Debug\net8.0\AppTest.runtimeconfig.json
+C:\Users\Ricio\Desktop\ort\p2\obligatoriop2\Obligatorio1\AppTest\bin\Debug\net8.0\AppTest.dll
+C:\Users\Ricio\Desktop\ort\p2\obligatoriop2\Obligatorio1\AppTest\bin\Debug\net8.0\AppTest.pdb
+C:\Users\Ricio\Desktop\ort\p2\obligatoriop2\Obligatorio1\AppTest\bin\Debug\net8.0\Dominio.dll
+C:\Users\Ricio\Desktop\ort\p2\obligatoriop2\Obligatorio1\AppTest\bin\Debug\net8.0\Dominio.pdb
+C:\Users\Ricio\Desktop\ort\p2\obligatoriop2\Obligatorio1\AppTest\obj\Debug\net8.0\AppTest.csproj.AssemblyReference.cache
+C:\Users\Ricio\Desktop\ort\p2\obligatoriop2\Obligatorio1\AppTest\obj\Debug\net8.0\AppTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ricio\Desktop\ort\p2\obligatoriop2\Obligatorio1\AppTest\obj\Debug\net8.0\AppTest.AssemblyInfoInputs.cache
+C:\Users\Ricio\Desktop\ort\p2\obligatoriop2\Obligatorio1\AppTest\obj\Debug\net8.0\AppTest.AssemblyInfo.cs
+C:\Users\Ricio\Desktop\ort\p2\obligatoriop2\Obligatorio1\AppTest\obj\Debug\net8.0\AppTest.csproj.CoreCompileInputs.cache
+C:\Users\Ricio\Desktop\ort\p2\obligatoriop2\Obligatorio1\AppTest\obj\Debug\net8.0\AppTest.sourcelink.json
+C:\Users\Ricio\Desktop\ort\p2\obligatoriop2\Obligatorio1\AppTest\obj\Debug\net8.0\AppTest.csproj.Up2Date
+C:\Users\Ricio\Desktop\ort\p2\obligatoriop2\Obligatorio1\AppTest\obj\Debug\net8.0\AppTest.dll
+C:\Users\Ricio\Desktop\ort\p2\obligatoriop2\Obligatorio1\AppTest\obj\Debug\net8.0\refint\AppTest.dll
+C:\Users\Ricio\Desktop\ort\p2\obligatoriop2\Obligatorio1\AppTest\obj\Debug\net8.0\AppTest.pdb
+C:\Users\Ricio\Desktop\ort\p2\obligatoriop2\Obligatorio1\AppTest\obj\Debug\net8.0\AppTest.genruntimeconfig.cache
+C:\Users\Ricio\Desktop\ort\p2\obligatoriop2\Obligatorio1\AppTest\obj\Debug\net8.0\ref\AppTest.dll
