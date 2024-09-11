@@ -10,12 +10,15 @@ namespace AppTest
         {
             try
             {
-                Console.WriteLine("Biemvenido al obligatorio!");
-
-                Cliente primerCliente = new Cliente("Mauricio");
+                Cliente primerCliente = new Cliente(10000, "Cliente", "Cliente", "cliente@gmail.com", "******");
                 _sistema.AgregarCliente(primerCliente);
 
-                Console.WriteLine(_sistema.BuscarClientes("Mauricio"));
+                Administrador primerAdministrador = new Administrador("Admin", "Admin", "admin@gmail.com", "******");
+                _sistema.AgregarAdministrador(primerAdministrador);
+
+                Console.WriteLine(_sistema.BuscarClientes("Cliente"));
+                Console.WriteLine(_sistema.BuscarAdministradores("Admin"));
+
 
             }
             catch (Exception err) { 

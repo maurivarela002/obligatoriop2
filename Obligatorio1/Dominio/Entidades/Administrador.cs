@@ -18,7 +18,7 @@
             respuesta += $"Nombre: {Nombre} \n";
             respuesta += $"Apellido: {Apellido} \n";
             respuesta += $"Email: {Email} \n";
-            if(Admin)respuesta += $"Soy administrador";
+            if(Admin)respuesta += $"Soy administrador \n";
             return respuesta;
         }
     }

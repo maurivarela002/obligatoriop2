@@ -1,15 +1,15 @@
-﻿namespace Dominio.Entidades
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace Dominio.Entidades
 {
-    public class Cliente
+    public class Cliente : Usuario
     {
+        public decimal Saldo { get; }
 
-        private static int _ultimoId;
-
-        public string Nombre { get; }
-
-        public Cliente(string nombre)
+        public Cliente(decimal saldo, string nombre, string apellido, string email, string contrasenia) :
+            base(nombre, apellido, email, contrasenia)
         {
-            Nombre = nombre;
+            Saldo = saldo;
         }
 
         public void Validar()
@@ -21,7 +21,11 @@
         {
             string respuesta = string.Empty;
 
-            respuesta += $"Nombre: {Nombre}";
+            respuesta += $"Nombre: {Nombre} \n";
+            respuesta += $"Apellido: {Apellido} \n";
+            respuesta += $"Email: {Email} \n";
+            respuesta += $"Saldo: {Saldo} \n";
+            return respuesta;
 
             return respuesta;
         }

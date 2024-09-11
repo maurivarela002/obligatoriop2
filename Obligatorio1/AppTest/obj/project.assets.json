@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ricio\\Desktop\\ort\\p2\\obligatoriop2\\Obligatorio1\\AppTest\\AppTest.csproj",
+      "projectUniqueName": "C:\\Users\\Ricio\\Source\\Repos\\maurivarela002\\obligatoriop2\\Obligatorio1\\AppTest\\AppTest.csproj",
       "projectName": "AppTest",
-      "projectPath": "C:\\Users\\Ricio\\Desktop\\ort\\p2\\obligatoriop2\\Obligatorio1\\AppTest\\AppTest.csproj",
+      "projectPath": "C:\\Users\\Ricio\\Source\\Repos\\maurivarela002\\obligatoriop2\\Obligatorio1\\AppTest\\AppTest.csproj",
       "packagesPath": "C:\\Users\\Ricio\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ricio\\Desktop\\ort\\p2\\obligatoriop2\\Obligatorio1\\AppTest\\obj\\",
+      "outputPath": "C:\\Users\\Ricio\\Source\\Repos\\maurivarela002\\obligatoriop2\\Obligatorio1\\AppTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Ricio\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -54,8 +54,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Ricio\\Desktop\\ort\\p2\\obligatoriop2\\Obligatorio1\\Dominio\\Dominio.csproj": {
-              "projectPath": "C:\\Users\\Ricio\\Desktop\\ort\\p2\\obligatoriop2\\Obligatorio1\\Dominio\\Dominio.csproj"
+            "C:\\Users\\Ricio\\Source\\Repos\\maurivarela002\\obligatoriop2\\Obligatorio1\\Dominio\\Dominio.csproj": {
+              "projectPath": "C:\\Users\\Ricio\\Source\\Repos\\maurivarela002\\obligatoriop2\\Obligatorio1\\Dominio\\Dominio.csproj"
             }
           }
         }
