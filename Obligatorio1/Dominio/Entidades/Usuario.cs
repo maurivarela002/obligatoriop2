@@ -1,8 +1,8 @@
-﻿namespace Dominio.Entidades
+﻿
+namespace Dominio.Entidades
 {
-    public class Usuario
+    public abstract class Usuario
     {
-
         private static int _ultimoId;
 
         public int Id { get; }
@@ -16,12 +16,12 @@
             Nombre = nombre;
             Apellido = apellido;
             Email = email;
-            Contrasenia  = contrasenia;
+            Contrasenia = contrasenia;
         }
 
         public void Validar()
-        { 
-        
+        {
+            //todo:Agregar validaciones de Articulo
         }
 
         public override string ToString()
@@ -33,5 +33,6 @@
             respuesta += $"Email: {Email} \n";
             return respuesta;
         }
+
     }
 }

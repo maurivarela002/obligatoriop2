@@ -9,17 +9,17 @@
         {
             Admin = true;
         }
-
+        public void Validar()
+        {
+            //todo:Agregar validaciones de Articulo
+        }
 
         public override string ToString()
         {
-            string respuesta = string.Empty;
-
-            respuesta += $"Nombre: {Nombre} \n";
-            respuesta += $"Apellido: {Apellido} \n";
-            respuesta += $"Email: {Email} \n";
-            if(Admin)respuesta += $"Soy administrador";
+            string respuesta = base.ToString();
+            if (Admin) respuesta += $"Soy administrador \n";
             return respuesta;
         }
+
     }
 }

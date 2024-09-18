@@ -1,29 +1,28 @@
-﻿namespace Dominio.Entidades
+﻿
+namespace Dominio.Entidades
 {
-    public class Cliente
+    public class Cliente : Usuario
     {
+        public decimal Saldo { get; set; }
+        public Cliente(string nombre, string apellido, string email, string contrasenia, decimal saldo) :
+            base(nombre, apellido, email, contrasenia)
 
-        private static int _ultimoId;
-
-        public string Nombre { get; }
-
-        public Cliente(string nombre)
         {
-            Nombre = nombre;
+            Saldo = saldo;
         }
-
         public void Validar()
-        { 
-        
+        {
+            //todo:Agregar validaciones de Articulo
         }
 
         public override string ToString()
         {
-            string respuesta = string.Empty;
-
-            respuesta += $"Nombre: {Nombre}";
-
+            string respuesta = base.ToString();
+            respuesta += $"saldo: {Saldo} \n";
             return respuesta;
         }
+
+
+
     }
 }
