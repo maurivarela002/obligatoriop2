@@ -42,8 +42,7 @@
               "RelativeToolTip": "Dominio\\Entidades\\Cliente.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAQwBMAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T22:11:23.899Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-18T22:11:23.899Z"
             },
             {
               "$type": "Document",
@@ -55,8 +54,7 @@
               "RelativeToolTip": "Dominio\\Entidades\\Usuario.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAAQwCAAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T22:11:16.54Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-18T22:11:16.54Z"
             },
             {
               "$type": "Document",
@@ -66,7 +64,7 @@
               "RelativeDocumentMoniker": "Dominio\\Entidades\\Administrador.cs",
               "ToolTip": "C:\\Users\\Ricio\\Desktop\\ort\\p2\\Obligatoriop2\\Obligatorio1\\Dominio\\Entidades\\Administrador.cs",
               "RelativeToolTip": "Dominio\\Entidades\\Administrador.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAzwBMAAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwBYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-18T22:11:06.306Z",
               "EditorCaption": ""
@@ -81,8 +79,7 @@
               "RelativeToolTip": "Dominio\\Sistema.cs",
               "ViewState": "AgIAADEAAAAAAAAAAAAAwEQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T21:43:41.068Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-18T21:43:41.068Z"
             },
             {
               "$type": "Document",
@@ -94,8 +91,7 @@
               "RelativeToolTip": "AppTest\\Program.cs",
               "ViewState": "AgIAADEAAAAAAAAAAAAqwFUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-18T21:35:35.936Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-18T21:35:35.936Z"
             }
           ]
         }
