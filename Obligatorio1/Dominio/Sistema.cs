@@ -30,7 +30,6 @@ namespace Dominio
             if (cliente == null) throw new Exception("Debe tener un valor!");
             cliente.Validar();
             _cliente.Add(cliente);
-
         }
 
         public Cliente BuscarClientes(string nombre)
