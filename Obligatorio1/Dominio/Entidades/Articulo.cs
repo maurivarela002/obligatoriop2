@@ -31,7 +31,7 @@ namespace Dominio.Entidades
         {
             string respuesta = string.Empty;
 
-            respuesta += $"Id: {_ultimoId} \n";
+            respuesta += $"Id: {_ultimoId++} \n";
             respuesta += $"Nombre articulo: {NombreArt} \n";
             respuesta += $"Categoria: {Categoria} \n";
             respuesta += $"Precio de Venta: {PrecioVenta} \n";
