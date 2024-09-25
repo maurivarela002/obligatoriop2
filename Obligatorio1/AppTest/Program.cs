@@ -1,14 +1,16 @@
-﻿using Dominio;
+﻿
+
+using Dominio;
 using Dominio.Entidades;
 
-namespace obligatorio1
+namespace AppTest
 {
     internal class Program
     {
         static Sistema _sistema = new Sistema();
         static void Main(string[] args)
         {
-            PrecargarDatos();
+            _sistema.PrecargarDatos();
 
             int opcion = 0;
             do
@@ -16,24 +18,25 @@ namespace obligatorio1
                 MostrarTitulo("Menu");
                 opcion = PedirNumero(
                     "Ingrese la opción\n" +
-                    "1-Alta Cliente\n" +
-                    "2-Alta Administrador\n" +
-                    "3-Listar Cliente\n" +
-                    "4-Listar Administrador\n" +
+                    "1-Listar Clientes\n" +
+                    "2-Listar Categoria\n" +
+                    "3-Alta de Articulo\n" +
+                    "4-Listar Publicaciones\n" +
                     "0-salir");
                 switch (opcion)
                 {
                     case 1:
-                        //ListarClientes();
-                        break;
-                    case 2:
-                        //ListarCategoria();
-                        break;
-                    case 3:
                         ListarClientes();
                         break;
+                    case 2:
+                        //ListarArticulo();
+                        ListarCategoria();
+                        break;
+                    case 3:
+                        AltaArticulo();
+                        break;
                     case 4:
-                        ListarAdministradores();
+                        PublicacionesEntre();
                         break;
                     default:
                         break;
@@ -74,6 +77,29 @@ namespace obligatorio1
             return numero;
         }
 
+        private static string PedirString(string mensaje)
+        {
+            string respuesta;
+            bool seguir = false;
+            do
+            {
+
+                Console.WriteLine(mensaje);
+                respuesta = Console.ReadLine();
+                if (String.IsNullOrEmpty(respuesta))
+                {
+                    Console.WriteLine("Advertencia: Este campo no puede estar vacio");
+                    seguir = true;
+                }
+                else
+                { seguir = false; }
+
+            } while (seguir);
+            return respuesta;
+        }
+
+
+
         private static void ListarClientes()
         {
             MostrarTitulo("Listado de Clientes");
@@ -95,23 +121,48 @@ namespace obligatorio1
                 Console.WriteLine(administrador.ToString());
             }
         }
-        private static void ListarCategoria() { }
-        private static void AgregarArticulo() { }
+
+        private static List<Articulo> ListarArticulo()
+        {
+            List<Articulo> aux = new List<Articulo>();
+            foreach (var art in _sistema.Articulos)
+            {
+                aux.Add(art);
+            }
+
+            return aux;
+        }
+
+
+
+
+        private static void ListarCategoria()
+        {
+            string categoria = PedirString("Ingrese unca categoria");
+            foreach (var art in _sistema.Articulos)
+            {
+                if (art.Categoria.ToUpper() == categoria.ToUpper())
+                {
+                    Console.WriteLine(art.ToString());
+                }
+
+            }
+
+
+        }
+        private static void AltaArticulo()
+        {
+            string nombre = PedirString("Ingrese el nombre del articulo");
+            string categoria = PedirString("Ingrese la categoria");
+            int precio = PedirNumero("Ingrese el precio de venta");
+
+            _sistema.AgregarArticulo(new Articulo(nombre, categoria, precio));
+
+
+        }
         private static void PublicacionesEntre() { }
 
 
-
-        //Precarga
-        private static void PrecargarDatos()
-        {
-            _sistema.AgregarCliente(new Cliente("Juan", "Pérez", "juan.perez@mail.com", "password1", 1000));
-            _sistema.AgregarCliente(new Cliente("Ana", "Gómez", "ana.gomez@mail.com", "password2", 1500));
-            _sistema.AgregarCliente(new Cliente("Carlos", "Lopez", "carlos.lopez@mail.com", "password3", 2000));
-
-            _sistema.AgregarAdministrador(new Administrador("Marta", "Suarez", "marta.suarez@mail.com", "admin1"));
-            _sistema.AgregarAdministrador(new Administrador("Luis", "Ramirez", "luis.ramirez@mail.com", "admin2"));
-            _sistema.AgregarAdministrador(new Administrador("Sofia", "Martinez", "sofia.martinez@mail.com", "admin3"));
-        }
     }
 
 }
