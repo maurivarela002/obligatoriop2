@@ -1,7 +1,9 @@
 ﻿
+using Dominio.Interfaces;
+
 namespace Dominio.Entidades
 {
-    public abstract class Usuario
+    public abstract class Usuario: IValidable
     {
         private static int _ultimoId;
 
@@ -19,7 +21,7 @@ namespace Dominio.Entidades
             Contrasenia = contrasenia;
         }
 
-        public void Validar()
+        public virtual void Validar()
         {
             //todo:Agregar validaciones de Articulo
         }

@@ -1,6 +1,8 @@
-﻿namespace Dominio.Entidades
+﻿using Dominio.Interfaces;
+
+namespace Dominio.Entidades
 {
-    public class Oferta
+    public class Oferta : IValidable
     {
         public int Id { get; set; }  
         public int IdUser { get; set; }

@@ -1,7 +1,9 @@
 ﻿
+using Dominio.Interfaces;
+
 namespace Dominio.Entidades
 {
-    public abstract class Publicacion
+    public abstract class Publicacion : IValidable
     {
         #region Atributos
         public int Id { get; set; }
