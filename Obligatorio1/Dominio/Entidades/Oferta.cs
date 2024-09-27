@@ -19,5 +19,10 @@ namespace Dominio.Entidades
             FchOfer = fchOfer;
             Pnombre = pnombre;
         }
+
+        public void Validar()
+        {
+            //todo:Agregar validaciones de Articulo
+        }
     }
 }
