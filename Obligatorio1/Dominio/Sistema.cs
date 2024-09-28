@@ -13,13 +13,12 @@ namespace Dominio
 
 
         public enum EnumEstados
-        { 
-        ABIERTA,
-        CERRADA,
-        CANCELADA
-
-
+        {
+            ABIERTA,
+            CERRADA,
+            CANCELADA
         }
+        //public EnumEstados Estados { get; set; }
 
         public List<Usuario> Usuarios
         {

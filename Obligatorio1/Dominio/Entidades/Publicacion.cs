@@ -1,5 +1,6 @@
 ﻿
 using Dominio.Interfaces;
+using static Dominio.Sistema;
 
 namespace Dominio.Entidades
 {
@@ -14,7 +15,7 @@ namespace Dominio.Entidades
         public int IdUser { get; set; }
         public int IdPurchUser { get; set; }
         public DateTime PurchDate { get; set; }
-        //public EnumEstados { get; set; }
+        public EnumEstados Estados { get; set; }
         private static int _ultimoId;
         #endregion
         #region Constructor
@@ -25,19 +26,18 @@ namespace Dominio.Entidades
                            List<Articulo> articulos,
                            int idUser,
                            int idPurchUser,
-                           DateTime purchDate
-                           //,EnumEstados enumEstados
-                           )
+                           DateTime purchDate,
+                           EnumEstados estados)
         {
             Id = _ultimoId++;
-            
             Nombre = nombre;
-            Estado = estado;
+            Estados = estados;
             FchPublic = fchPublic;
             _articulos = articulos;
             IdUser = idUser;
             IdPurchUser = idPurchUser;
             PurchDate = purchDate;
+            
         }
         #endregion
 
@@ -54,11 +54,12 @@ namespace Dominio.Entidades
             respuesta += $"Nombre: {Nombre} \n";
             respuesta += $"Estado: {Estado} \n";
             respuesta += $"Fecha de Publicacion: {FchPublic} \n";
-            //respuesta += $"Lista de Articulos:  \n";
+            respuesta += $"Lista de Articulos: {_articulos} \n";
             respuesta += $"Id Usuario: {IdUser} \n";
             respuesta += $"Usuario de Compra: {IdPurchUser} \n";
             respuesta += $"Fecha de Compra: {PurchDate} \n";
-            //respuesta += $"Id User: {IdUser} \n";
+            respuesta += $"Estados Publicacion: {Estados} \n";
+            respuesta += $"Id User: {IdUser} \n";
             return respuesta;
         }
 
