@@ -1,8 +1,9 @@
-﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using Dominio.Interfaces;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Dominio.Entidades
 {
-    public class Articulo
+    public class Articulo : IValidable
     {
 
         #region Atributos

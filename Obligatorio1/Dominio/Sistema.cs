@@ -11,6 +11,15 @@ namespace Dominio
         private List<Subasta> _subastas = new List<Subasta>();
         private List<Venta> _ventas = new List<Venta>();
 
+
+        public enum EnumEstados
+        {
+            ABIERTA,
+            CERRADA,
+            CANCELADA
+        }
+        //public EnumEstados Estados { get; set; }
+
         public List<Usuario> Usuarios
         {
             get { return _usuarios; }

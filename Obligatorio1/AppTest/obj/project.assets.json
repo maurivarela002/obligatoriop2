@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\matia\\Source\\Repos\\obligatoriop2\\Obligatorio1\\AppTest\\AppTest.csproj",
+      "projectUniqueName": "C:\\Users\\matia\\OneDrive\\Desktop\\obligatorioP2\\Obligatorio1\\AppTest\\AppTest.csproj",
       "projectName": "AppTest",
-      "projectPath": "C:\\Users\\matia\\Source\\Repos\\obligatoriop2\\Obligatorio1\\AppTest\\AppTest.csproj",
+      "projectPath": "C:\\Users\\matia\\OneDrive\\Desktop\\obligatorioP2\\Obligatorio1\\AppTest\\AppTest.csproj",
       "packagesPath": "C:\\Users\\matia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\matia\\Source\\Repos\\obligatoriop2\\Obligatorio1\\AppTest\\obj\\",
+      "outputPath": "C:\\Users\\matia\\OneDrive\\Desktop\\obligatorioP2\\Obligatorio1\\AppTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\matia\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -53,8 +53,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\matia\\Source\\Repos\\obligatoriop2\\Obligatorio1\\Dominio\\Dominio.csproj": {
-              "projectPath": "C:\\Users\\matia\\Source\\Repos\\obligatoriop2\\Obligatorio1\\Dominio\\Dominio.csproj"
+            "C:\\Users\\matia\\OneDrive\\Desktop\\obligatorioP2\\Obligatorio1\\Dominio\\Dominio.csproj": {
+              "projectPath": "C:\\Users\\matia\\OneDrive\\Desktop\\obligatorioP2\\Obligatorio1\\Dominio\\Dominio.csproj"
             }
           }
         }

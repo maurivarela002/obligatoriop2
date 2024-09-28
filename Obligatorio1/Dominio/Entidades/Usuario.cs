@@ -1,7 +1,9 @@
 ﻿
+using Dominio.Interfaces;
+
 namespace Dominio.Entidades
 {
-    public abstract class Usuario
+    public abstract class Usuario : IValidable, IEquatable<Usuario>, IComparable<Usuario>
     {
         private static int _ultimoId;
 
@@ -19,7 +21,7 @@ namespace Dominio.Entidades
             Contrasenia = contrasenia;
         }
 
-        public void Validar()
+        public virtual void Validar()
         {
             //todo:Agregar validaciones de Articulo
         }
@@ -34,5 +36,18 @@ namespace Dominio.Entidades
             return respuesta;
         }
 
+        public bool Equals(Usuario? other)
+        {
+            return other != null;
+        }
+
+        public int CompareTo(Usuario? other)
+        {
+            if (other==null)
+            {
+                return -1; 
+            }
+            return Nombre.CompareTo(other.Nombre);
+        }
     }
 }
