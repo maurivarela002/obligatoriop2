@@ -14,6 +14,7 @@ namespace Dominio.Entidades
         public int IdUser { get; set; }
         public int IdPurchUser { get; set; }
         public DateTime PurchDate { get; set; }
+        //public EnumEstados { get; set; }
         private static int _ultimoId;
         #endregion
         #region Constructor
@@ -24,7 +25,9 @@ namespace Dominio.Entidades
                            List<Articulo> articulos,
                            int idUser,
                            int idPurchUser,
-                           DateTime purchDate)
+                           DateTime purchDate
+                           //,EnumEstados enumEstados
+                           )
         {
             Id = _ultimoId++;
             
