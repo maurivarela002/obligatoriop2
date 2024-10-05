@@ -9,8 +9,8 @@ namespace Dominio.Entidades
         #region Atributos
         public int Id { get; set; }
         public string Nombre { get; set; }
-        public string Estado { get; set; }
         public DateTime FchPublic { get; set; }
+        public List<Articulo> ObtenerArtxPub { get; set; }
         private List<Articulo> _articulos = new List<Articulo>();
         public int IdUser { get; set; }
         public int IdPurchUser { get; set; }
@@ -31,6 +31,7 @@ namespace Dominio.Entidades
         {
             Id = _ultimoId++;
             Nombre = nombre;
+            Estados = estados;
             FchPublic = fchPublic;
             _articulos = articulos;
             IdUser = idUser;
@@ -38,6 +39,7 @@ namespace Dominio.Entidades
             PurchDate = purchDate;
             
         }
+
         #endregion
 
         public void Validar()
@@ -50,10 +52,8 @@ namespace Dominio.Entidades
             string respuesta = string.Empty;
 
             respuesta += $"Id: {Id} \n";
-            respuesta += $"Nombre: {Nombre} \n";
-            respuesta += $"Estado: {Estado} \n";
+            respuesta += $"Nombre de la publicacion: {Nombre} \n";
             respuesta += $"Fecha de Publicacion: {FchPublic} \n";
-            respuesta += $"Lista de Articulos: {_articulos} \n";
             respuesta += $"Id Usuario: {IdUser} \n";
             respuesta += $"Usuario de Compra: {IdPurchUser} \n";
             respuesta += $"Fecha de Compra: {PurchDate} \n";

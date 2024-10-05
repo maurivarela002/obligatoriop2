@@ -9,6 +9,7 @@ namespace Dominio.Entidades
     {
         public bool OfertaR { get; set; }
         public object Articulos { get; private set; }
+        public List<Articulo> ObtenerArtxPub { get;set; }
 
         public Venta(
                      string nombre,
@@ -33,16 +34,7 @@ namespace Dominio.Entidades
 
         public override string ToString()
         {
-            string respuesta = string.Empty;
-
-            respuesta += $"Id: {++Id} \n";
-            respuesta += $"Nombre: {Nombre} \n";
-            respuesta += $"Estado: {Estado} \n";
-            respuesta += $"Fecha de Publicacion: {FchPublic} \n";
-            //respuesta += $"Lista de Articulos: {Articulos} \n";
-            respuesta += $"Id Usuario: {IdUser} \n";
-            respuesta += $"Usuario de Compra: {IdPurchUser} \n";
-            respuesta += $"Fecha de Compra: {PurchDate} \n";
+            string respuesta = base.ToString();
             respuesta += $"Es Oferta Relampago: {OfertaR} \n";
             return respuesta;
         }

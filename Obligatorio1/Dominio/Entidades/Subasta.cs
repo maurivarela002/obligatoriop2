@@ -7,6 +7,7 @@ namespace Dominio.Entidades
     public class Subasta : Publicacion
     {
         private List<Oferta> _ofertas;
+        public object Articulos { get; private set; }
 
         public Subasta(
                        string nombre,
@@ -29,16 +30,7 @@ namespace Dominio.Entidades
 
         public override string ToString()
         {
-            string respuesta = string.Empty;
-
-            respuesta += $"Id: {Id} \n";
-            respuesta += $"Nombre: {Nombre} \n";
-            respuesta += $"Estado: {Estado} \n";
-            respuesta += $"Fecha de Publicacion: {FchPublic} \n";
-            //respuesta += $"Lista de Articulos:  \n";
-            respuesta += $"Id Usuario: {IdUser} \n";
-            respuesta += $"Usuario de Compra: {IdPurchUser} \n";
-            respuesta += $"Fecha de Compra: {PurchDate} \n";
+            string respuesta = base.ToString();
             //respuesta += $"Id User: {IdUser} \n";
             return respuesta;
         }

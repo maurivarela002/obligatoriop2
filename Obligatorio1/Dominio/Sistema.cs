@@ -135,6 +135,49 @@ namespace Dominio
 
         }
 
+        public List<Articulo> ArticulosxNombrePublicacion(string pNombre) 
+        {
+            List<Articulo> aux = new List<Articulo>();
+
+            if (pNombre.ToLower() == "electro party")
+                return ObtenerArtxPub("Electrónica");
+
+            if (pNombre.ToLower() == "sport sale")
+                return ObtenerArtxPub("Deportes");
+
+            if (pNombre.ToLower() == "mega sale")
+                return ObtenerArtxPub("Ropa");
+
+            if (pNombre.ToLower() == "tech expo")
+                return ObtenerArtxPub("Periféricos");
+
+            if (pNombre.ToLower() == "gadget fest")
+                return ObtenerArtxPub("Audio");
+
+            if (pNombre.ToLower() == "book sales")
+                return ObtenerArtxPub("Libros");
+
+            if (pNombre.ToLower() == "work world")
+                return ObtenerArtxPub("Oficina");
+
+            if (pNombre.ToLower() == "mayor tranquilidad")
+                return ObtenerArtxPub("Seguridad");
+
+            if (pNombre.ToLower() == "luxury")
+                return ObtenerArtxPub("Joyería");
+
+            if (pNombre.ToLower() == "holiday deals")
+                ObtenerArtxPub("Viaje");
+
+            if (pNombre.ToLower() == "black friday")
+                return ObtenerArtxPub("Accesorios");
+
+
+            return aux;
+        }
+
+
+
 
         public void PrecargarDatos()
         {
@@ -218,16 +261,16 @@ namespace Dominio
             //************Precarga Publicaciones ****************
             //Precarga 10 ventas 
             AgregarVenta(new Venta("Electro Party", EnumEstados.ABIERTA, new DateTime(2024, 10, 05, 00, 00, 00), ObtenerArtxPub("Electrónica"),0,0,new DateTime(2024,10,05,00,00,00),false));
-            AgregarVenta(new Venta("Sport Sale", EnumEstados.ABIERTA, new DateTime(2024, 10, 05, 00, 00, 00), ObtenerArtxPub("Deportes"), 0, 0, new DateTime(2024, 10, 05, 00, 00, 00), false));
+            AgregarVenta(new Venta("Sport Sale", EnumEstados.ABIERTA, new DateTime(2024, 10, 05, 00, 00, 00), ObtenerArtxPub("Deportes"), 0, 0, new DateTime(2024, 10, 05, 00, 00, 00), true));
             AgregarVenta(new Venta("Mega Sale", EnumEstados.ABIERTA, new DateTime(2024, 10, 06, 00, 00, 00), ObtenerArtxPub("Ropa"), 0, 0, new DateTime(2024, 10, 06, 00, 00, 00), false));
-            AgregarVenta(new Venta("Tech Expo", EnumEstados.ABIERTA, new DateTime(2024, 10, 07, 00, 00, 00), ObtenerArtxPub("Periféricos"), 0, 0, new DateTime(2024, 10, 07, 00, 00, 00), false));
+            AgregarVenta(new Venta("Tech Expo", EnumEstados.ABIERTA, new DateTime(2024, 10, 07, 00, 00, 00), ObtenerArtxPub("Periféricos"), 0, 0, new DateTime(2024, 10, 07, 00, 00, 00), true));
             AgregarVenta(new Venta("Gadget Fest", EnumEstados.ABIERTA, new DateTime(2024, 10, 08, 00, 00, 00), ObtenerArtxPub("Audio"), 0, 0, new DateTime(2024, 10, 08, 00, 00, 00), false));
-            AgregarVenta(new Venta("Book Sales", EnumEstados.ABIERTA, new DateTime(2024, 10, 09, 00, 00, 00), ObtenerArtxPub("Libros"), 0, 0, new DateTime(2024, 10, 09, 00, 00, 00), false));
+            AgregarVenta(new Venta("Book Sales", EnumEstados.ABIERTA, new DateTime(2024, 10, 09, 00, 00, 00), ObtenerArtxPub("Libros"), 0, 0, new DateTime(2024, 10, 09, 00, 00, 00), true));
             AgregarVenta(new Venta("Work World", EnumEstados.ABIERTA, new DateTime(2024, 10, 10, 00, 00, 00), ObtenerArtxPub("Oficina"), 0, 0, new DateTime(2024, 10, 10, 00, 00, 00), false));
-            AgregarVenta(new Venta("Mayor Tranquilidad", EnumEstados.ABIERTA, new DateTime(2024, 10, 11, 00, 00, 00), ObtenerArtxPub("Seguridad"), 0, 0, new DateTime(2024, 10, 11, 00, 00, 00), false));
+            AgregarVenta(new Venta("Mayor Tranquilidad", EnumEstados.ABIERTA, new DateTime(2024, 10, 11, 00, 00, 00), ObtenerArtxPub("Seguridad"), 0, 0, new DateTime(2024, 10, 11, 00, 00, 00), true));
             AgregarVenta(new Venta("Luxury", EnumEstados.ABIERTA, new DateTime(2024, 10, 12, 00, 00, 00), ObtenerArtxPub("Joyería"), 0, 0, new DateTime(2024, 10, 12, 00, 00, 00), false));
-            AgregarVenta(new Venta("Holiday Deals", EnumEstados.ABIERTA, new DateTime(2024, 10, 13, 00, 00, 00), ObtenerArtxPub("Viaje"), 0, 0, new DateTime(2024, 10, 13, 00, 00, 00), false));
-            AgregarVenta(new Venta("Black Friday", EnumEstados.ABIERTA, new DateTime(2024, 10, 14, 00, 00, 00), ObtenerArtxPub("Accesorios"), 0, 0, new DateTime(2024, 10, 14, 00, 00, 00), false));
+            AgregarVenta(new Venta("Holiday Deals", EnumEstados.ABIERTA, new DateTime(2024, 10, 13, 00, 00, 00), ObtenerArtxPub("Viaje"), 0, 0, new DateTime(2024, 10, 13, 00, 00, 00), true));
+            AgregarVenta(new Venta("Black Friday", EnumEstados.ABIERTA, new DateTime(2024, 10, 14, 00, 00, 00), ObtenerArtxPub("Accesorios"), 0, 0, new DateTime(2024, 10, 14, 00, 00, 00), true));
 
             //Precarga 10 subastas
 

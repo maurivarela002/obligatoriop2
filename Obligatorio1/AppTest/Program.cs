@@ -111,27 +111,27 @@ namespace AppTest
             }
         }
 
-        private static void ListarAdministradores()
-        {
-            MostrarTitulo("Listado de Administradores");
+        //private static void ListarAdministradores()
+        //{
+        //    MostrarTitulo("Listado de Administradores");
 
-            //recorro _administrador y muestro el campo que quiera de toda su clase
-            foreach (var administrador in _sistema.Administradores)
-            {
-                Console.WriteLine(administrador.ToString());
-            }
-        }
+        //    //recorro _administrador y muestro el campo que quiera de toda su clase
+        //    foreach (var administrador in _sistema.Administradores)
+        //    {
+        //        Console.WriteLine(administrador.ToString());
+        //    }
+        //}
 
-        private static List<Articulo> ListarArticulo()
-        {
-            List<Articulo> aux = new List<Articulo>();
-            foreach (var art in _sistema.Articulos)
-            {
-                aux.Add(art);
-            }
+        //private static List<Articulo> ListarArticulo()
+        //{
+        //    List<Articulo> aux = new List<Articulo>();
+        //    foreach (var art in _sistema.Articulos)
+        //    {
+        //        aux.Add(art);
+        //    }
 
-            return aux;
-        }
+        //    return aux;
+        //}
 
 
 
@@ -160,10 +160,14 @@ namespace AppTest
 
 
         }
-        private static void ListarVentas() {
+        private static void ListarVentas()
+        {
             foreach (Venta unaVenta in _sistema.Ventas)
             {
-               Console.WriteLine(unaVenta.ToString());
+                Console.WriteLine(unaVenta);
+                Console.WriteLine("Los articulos de la venta son: ");
+                foreach (Articulo unart in _sistema.ArticulosxNombrePublicacion(unaVenta.Nombre))
+                { Console.WriteLine($"->{unart.NombreArt}"); }
             }
 
         }
