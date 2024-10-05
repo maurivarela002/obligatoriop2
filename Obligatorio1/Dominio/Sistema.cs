@@ -18,7 +18,7 @@ namespace Dominio
             CERRADA,
             CANCELADA
         }
-        //public EnumEstados Estados { get; set; }
+        public EnumEstados Estados { get; set; }
 
         public List<Usuario> Usuarios
         {

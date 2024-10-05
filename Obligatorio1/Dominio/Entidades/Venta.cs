@@ -1,14 +1,17 @@
 ﻿
 
 
+using static Dominio.Sistema;
+
 namespace Dominio.Entidades
 {
     public class Venta : Publicacion
     {
         public bool OfertaR { get; set; }
+        public EnumEstados Estados { get; set; }
         public Venta(int id,
                      string nombre,
-                     string estado,
+                     EnumEstados estado,
                      DateTime fchPublic,
                      List<Articulo> articulos,
                      int idUser,
@@ -31,7 +34,7 @@ namespace Dominio.Entidades
 
             respuesta += $"Id: {Id} \n";
             respuesta += $"Nombre: {Nombre} \n";
-            respuesta += $"Estado: {Estado} \n";
+            respuesta += $"Estado: {EnumEstados.ABIERTA} \n";
             respuesta += $"Fecha de Publicacion: {FchPublic} \n";
             //respuesta += $"Lista de Articulos:  \n";
             respuesta += $"Id Usuario: {IdUser} \n";
