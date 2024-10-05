@@ -1,21 +1,23 @@
 ﻿
 
+using static Dominio.Sistema;
+
 namespace Dominio.Entidades
 {
     public class Subasta : Publicacion
     {
         private List<Oferta> _ofertas;
 
-        public Subasta(int id,
+        public Subasta(
                        string nombre,
-                       string estado,
+                       EnumEstados estados,
                        DateTime fchPublic,
                        List<Articulo> articulos,
                        int idUser,
                        int idPurchUser,
                        DateTime purchDate,
                        List<Oferta> ofertas
-                     ) : base(id, nombre, estado, fchPublic, articulos, idUser, idPurchUser, purchDate)
+                     ) : base(nombre, estados, fchPublic, articulos, idUser, idPurchUser, purchDate)
         {
             _ofertas = ofertas;
         }

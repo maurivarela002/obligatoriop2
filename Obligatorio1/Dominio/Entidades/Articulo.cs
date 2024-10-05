@@ -14,7 +14,7 @@ namespace Dominio.Entidades
         private static int _ultimoId;
         #endregion
         #region Constructor
-        public Articulo(string nombre, string categoria, decimal precioVenta)
+        public Articulo(string nombre, string categoria, int precioVenta)
         {
             Id = _ultimoId++;
             NombreArt = nombre;
@@ -22,6 +22,8 @@ namespace Dominio.Entidades
             PrecioVenta = precioVenta;
         }
         #endregion
+
+
 
         public void Validar()
         {

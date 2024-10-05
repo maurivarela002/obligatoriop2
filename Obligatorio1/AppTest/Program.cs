@@ -36,7 +36,7 @@ namespace AppTest
                         AltaArticulo();
                         break;
                     case 4:
-                        PublicacionesEntre();
+                        ListarVentas();
                         break;
                     default:
                         break;
@@ -160,7 +160,13 @@ namespace AppTest
 
 
         }
-        private static void PublicacionesEntre() { }
+        private static void ListarVentas() {
+            foreach (Venta unaVenta in _sistema.Ventas)
+            {
+               Console.WriteLine(unaVenta.ToString());
+            }
+
+        }
 
 
     }

@@ -19,19 +19,18 @@ namespace Dominio.Entidades
         private static int _ultimoId;
         #endregion
         #region Constructor
-        public Publicacion(int id,
+        public Publicacion(
                            string nombre,
-                           string estado,
+                           EnumEstados estados,
                            DateTime fchPublic,
                            List<Articulo> articulos,
                            int idUser,
                            int idPurchUser,
-                           DateTime purchDate,
-                           EnumEstados estados)
+                           DateTime purchDate
+                           )
         {
             Id = _ultimoId++;
             Nombre = nombre;
-            Estados = estados;
             FchPublic = fchPublic;
             _articulos = articulos;
             IdUser = idUser;
