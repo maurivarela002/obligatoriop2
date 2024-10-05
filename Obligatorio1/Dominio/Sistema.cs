@@ -1,4 +1,5 @@
 ﻿using Dominio.Entidades;
+using System.IO;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace Dominio
 {
@@ -11,6 +12,7 @@ namespace Dominio
         private List<Administrador> _administradores = new List<Administrador>();
         private List<Subasta> _subastas = new List<Subasta>();
         private List<Venta> _ventas = new List<Venta>();
+        private List<Oferta> _ofertas = new List<Oferta>();
 
 
         public enum EnumEstados
@@ -55,7 +57,10 @@ namespace Dominio
         {
             get { return _ventas; }
         }
-
+        public List<Oferta> Ofertas
+        {
+            get { return _ofertas; }
+        }
         public void AgregarCliente(Cliente cliente)
         {
             if (cliente == null) throw new Exception("Debe tener un valor!");
@@ -100,6 +105,13 @@ namespace Dominio
             articulo.Validar();
             _articulos.Add(articulo);
 
+
+        }
+
+        public void AgregarOferta(Oferta oferta)
+        {
+            oferta.Validar();
+            _ofertas.Add(oferta);
 
         }
 
@@ -175,7 +187,48 @@ namespace Dominio
 
             return aux;
         }
+        public List<Oferta> ofertasxPublicacion(string pNombre) 
+        { 
+            List<Oferta> aux = new List<Oferta>();
+            foreach (Oferta unaoferta in _ofertas)
+            {
+                if (unaoferta.Pnombre.ToLower() == "electro party")
+                    aux.Add(unaoferta);
 
+                if (unaoferta.Pnombre.ToLower() == "sport sale")
+                    aux.Add(unaoferta);
+
+                if (unaoferta.Pnombre.ToLower() == "mega sale")
+                    aux.Add(unaoferta);
+
+                if (unaoferta.Pnombre.ToLower() == "tech expo")
+                    aux.Add(unaoferta);
+
+                if (unaoferta.Pnombre.ToLower() == "gadget fest")
+                    aux.Add(unaoferta);
+
+                if (unaoferta.Pnombre.ToLower() == "book sales")
+                    aux.Add(unaoferta);
+
+                if (unaoferta.Pnombre.ToLower() == "work world")
+                    aux.Add(unaoferta);
+
+                if (unaoferta.Pnombre.ToLower() == "mayor tranquilidad")
+                    aux.Add(unaoferta);
+
+                if (unaoferta.Pnombre.ToLower() == "luxury")
+                    aux.Add(unaoferta);
+
+                if (unaoferta.Pnombre.ToLower() == "holiday deals")
+                    aux.Add(unaoferta);
+
+                if (unaoferta.Pnombre.ToLower() == "black friday")
+                    aux.Add(unaoferta);
+
+            }
+
+            return aux;
+        }
 
 
 
@@ -272,7 +325,16 @@ namespace Dominio
             AgregarVenta(new Venta("Holiday Deals", EnumEstados.ABIERTA, new DateTime(2024, 10, 13, 00, 00, 00), ObtenerArtxPub("Viaje"), 0, 0, new DateTime(2024, 10, 13, 00, 00, 00), true));
             AgregarVenta(new Venta("Black Friday", EnumEstados.ABIERTA, new DateTime(2024, 10, 14, 00, 00, 00), ObtenerArtxPub("Accesorios"), 0, 0, new DateTime(2024, 10, 14, 00, 00, 00), true));
 
+
+            //Precargas de Ofertas
+            AgregarOferta(new Oferta(0, 0, 150.20, new DateTime(2024, 10, 05, 00, 00, 00), "Luxury"));
+            AgregarOferta(new Oferta(3, 3, 130.45, new DateTime(2024, 10, 05, 00, 00, 00), "Luxury"));
+            AgregarOferta(new Oferta(1, 1, 100.99, new DateTime(2024, 10, 02, 00, 00, 00), "Holiday Deals"));
+            AgregarOferta(new Oferta(2, 2, 120.10, new DateTime(2024, 10, 04, 00, 00, 00), "Black Friday"));
+
+
             //Precarga 10 subastas
+            AgregarSubasta(new Subasta("Luxury", EnumEstados.ABIERTA, new DateTime(2024, 10, 01, 00, 00, 00), ObtenerArtxPub("Joyería"), 0, 0, new DateTime(2024, 10, 05, 00, 00, 00), ofertasxPublicacion("Luxury")));
 
 
 
