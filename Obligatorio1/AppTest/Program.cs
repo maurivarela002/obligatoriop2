@@ -8,6 +8,8 @@ namespace AppTest
     internal class Program
     {
         static Sistema _sistema = new Sistema();
+        private static DateTime fecha;
+
         static void Main(string[] args)
         {
             _sistema.PrecargarDatos();
@@ -29,14 +31,15 @@ namespace AppTest
                         ListarClientes();
                         break;
                     case 2:
-                        //ListarArticulo();
                         ListarCategoria();
                         break;
                     case 3:
                         AltaArticulo();
                         break;
                     case 4:
-                        ListarVentas();
+                        DateTime f1 = PedirFecha();
+                        DateTime f2 = PedirFecha();
+                        ListarPublicaciones(f1, f2);
                         break;
                     default:
                         break;
@@ -96,6 +99,32 @@ namespace AppTest
 
             } while (seguir);
             return respuesta;
+        }
+
+        public static DateTime PedirFecha()
+        {
+            DateTime fecha;
+            bool esFechaValida = false;
+
+            // Repetir hasta que el usuario ingrese una fecha válida
+            while (!esFechaValida)
+            {
+                Console.WriteLine("Por favor, ingrese una fecha (formato: dd/MM/yyyy):");
+                string entrada = Console.ReadLine();
+                
+                // Intentar convertir la entrada en un DateTime
+                if (DateTime.TryParseExact(entrada, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out fecha))
+                {
+                    esFechaValida = true;
+                    return DateTime.Parse(entrada);
+                }
+                else
+                {
+                    Console.WriteLine("Formato de fecha incorrecto. Inténtelo nuevamente.");
+                }
+            }
+
+            return DateTime.Now;
         }
 
 
@@ -160,16 +189,39 @@ namespace AppTest
 
 
         }
-        private static void ListarVentas()
+        private static void ListarVentas(DateTime fechainicio, DateTime fechafin)
         {
             foreach (Venta unaVenta in _sistema.Ventas)
             {
+                if (unaVenta.FchPublic >= fechainicio && unaVenta.FchPublic<= fechafin)
+                {
+                    
                 Console.WriteLine(unaVenta);
-                Console.WriteLine("Los articulos de la venta son: ");
+                Console.WriteLine("Los articulos en venta son: ");
                 foreach (Articulo unart in _sistema.ArticulosxNombrePublicacion(unaVenta.Nombre))
+                { Console.WriteLine($"->{unart.NombreArt} precio: {unart.PrecioVenta}"); }
+                }
+            }
+
+        }
+
+        private static void ListarSubastas(DateTime fechainicio, DateTime fechafin)
+        {
+            foreach (Subasta unaSubasta in _sistema.Subastas)
+            {
+                if (unaSubasta.FchPublic >= fechainicio && unaSubasta.FchPublic <= fechafin)
+                    Console.WriteLine(unaSubasta);
+                Console.WriteLine("Los articulos subastados son: ");
+                foreach (Articulo unart in _sistema.ArticulosxNombrePublicacion(unaSubasta.Nombre))
                 { Console.WriteLine($"->{unart.NombreArt}"); }
             }
 
+        }
+
+        private static void ListarPublicaciones(DateTime fechainicio, DateTime fechafin)
+        {
+            ListarVentas(fechainicio,fechafin);
+            ListarSubastas(fechainicio,fechafin);
         }
 
 
