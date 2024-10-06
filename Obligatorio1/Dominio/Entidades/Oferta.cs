@@ -19,10 +19,16 @@ namespace Dominio.Entidades
             FchOfer = fchOfer;
             Pnombre = pnombre;
         }
-
-        public void Validar()
+        public void Validar(object? paramOpcional)
         {
-            //todo:Agregar validaciones de Articulo
+            validarnull((Oferta)paramOpcional);
+        }
+
+        private bool validarnull(Oferta oferta)
+        {
+            bool validado = true;
+            if (oferta == null) validado = false;
+            return validado;
         }
     }
 }

@@ -1,10 +1,9 @@
 ﻿
-
+using Dominio.Interfaces;
 using static Dominio.Sistema;
-
 namespace Dominio.Entidades
 {
-    public class Subasta : Publicacion
+    public class Subasta : Publicacion, IValidable
     {
         private List<Oferta> _ofertas;
         public object Articulos { get; private set; }
@@ -23,15 +22,21 @@ namespace Dominio.Entidades
             _ofertas = ofertas;
         }
 
-        public void Validar()
+        public void Validar(object? paramOpcional)
         {
-            //todo:Agregar validaciones de Articulo
+            validarnull((Subasta)paramOpcional);
+        }
+
+        private bool validarnull(Subasta subasta)
+        {
+            bool validado = true;
+            if (subasta == null) validado = false;
+            return validado;
         }
 
         public override string ToString()
         {
             string respuesta = base.ToString();
-            //respuesta += $"Id User: {IdUser} \n";
             return respuesta;
         }
 

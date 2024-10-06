@@ -1,4 +1,5 @@
-﻿namespace Dominio.Entidades
+﻿
+namespace Dominio.Entidades
 {
     public class Administrador : Usuario
     {
@@ -9,9 +10,16 @@
         {
             Admin = true;
         }
-        public void Validar()
+        public void Validar(Administrador administrador)
         {
-            //todo:Agregar validaciones de Articulo
+            validarnull(administrador);
+        }
+
+        private bool validarnull(Administrador administrador)
+        {
+            bool validado = true;
+            if (administrador == null) validado = false;
+            return validado;
         }
 
         public override string ToString()

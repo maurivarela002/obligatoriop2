@@ -1,15 +1,16 @@
 ﻿
 
 
+using Dominio.Interfaces;
 using static Dominio.Sistema;
 
 namespace Dominio.Entidades
 {
-    public class Venta : Publicacion
+    public class Venta : Publicacion, IValidable
     {
         public bool OfertaR { get; set; }
         public object Articulos { get; private set; }
-        public List<Articulo> ObtenerArtxPub { get;set; }
+        public List<Articulo> ObtenerArtxPub { get; set; }
 
         public Venta(
                      string nombre,
@@ -23,22 +24,30 @@ namespace Dominio.Entidades
             ) : base(nombre, estados, fchPublic, articulos, idUser, idPurchUser, purchDate)
         {
             OfertaR = ofertar;
-            
+
         }
 
 
-        public void Validar()
+        public void Validar(object? paramOpcional)
         {
-            //todo:Agregar validaciones de Articulo
+            validarnull((Venta)paramOpcional);
+        }
+
+        private bool validarnull(Venta venta)
+        {
+            bool validado = true;
+            if (venta == null) validado = false;
+            return validado;
         }
 
         public override string ToString()
         {
             string respuesta = base.ToString();
-            respuesta += $"Es Oferta Relampago: {OfertaR} \n";
+            if (OfertaR)
+            {
+                respuesta += $"Oferta Relampago \n";
+            }
             return respuesta;
         }
-
-
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Dominio.Interfaces;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Dominio.Entidades
 {
@@ -22,12 +21,16 @@ namespace Dominio.Entidades
             PrecioVenta = precioVenta;
         }
         #endregion
-
-
-
-        public void Validar()
+        public void Validar(object? paramOpcional)
         {
-            //todo:Agregar validaciones de Articulo
+            validarnull((Articulo)paramOpcional);
+        }
+
+        private bool validarnull(Articulo articulo)
+        {
+            bool validado = true;
+            if (articulo == null) validado = false;
+            return validado;
         }
 
         public override string ToString()
@@ -40,8 +43,6 @@ namespace Dominio.Entidades
             respuesta += $"Precio de Venta: {PrecioVenta} \n";
             return respuesta;
         }
-
-
 
 
     }

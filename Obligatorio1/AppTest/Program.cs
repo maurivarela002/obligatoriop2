@@ -19,7 +19,7 @@ namespace AppTest
             {
                 MostrarTitulo("Menu");
                 opcion = PedirNumero(
-                    "Ingrese la opción\n" +
+                    "Ingrese una opción\n" +
                     "1-Listar Clientes\n" +
                     "2-Listar Categoria\n" +
                     "3-Alta de Articulo\n" +
@@ -98,22 +98,18 @@ namespace AppTest
                 }
                 else
                 { seguir = false; }
-
             } while (seguir);
             return respuesta;
         }
-
         public static DateTime PedirFecha()
         {
             DateTime fecha;
             bool esFechaValida = false;
-
             // Repetir hasta que el usuario ingrese una fecha válida
             while (!esFechaValida)
             {
                 Console.WriteLine("Por favor, ingrese una fecha (formato: dd/MM/yyyy):");
                 string entrada = Console.ReadLine();
-                
                 // Intentar convertir la entrada en un DateTime
                 if (DateTime.TryParseExact(entrada, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out fecha))
                 {
@@ -125,48 +121,16 @@ namespace AppTest
                     Console.WriteLine("Formato de fecha incorrecto. Inténtelo nuevamente.");
                 }
             }
-
             return DateTime.Now;
         }
-
-
-
         private static void ListarClientes()
         {
             MostrarTitulo("Listado de Clientes");
-
-            //recorro _clientes y muestro el campo que quiera de toda su clase
             foreach (var cliente in _sistema.Clientes)
             {
                 Console.WriteLine(cliente.ToString());
             }
         }
-
-        //private static void ListarAdministradores()
-        //{
-        //    MostrarTitulo("Listado de Administradores");
-
-        //    //recorro _administrador y muestro el campo que quiera de toda su clase
-        //    foreach (var administrador in _sistema.Administradores)
-        //    {
-        //        Console.WriteLine(administrador.ToString());
-        //    }
-        //}
-
-        //private static List<Articulo> ListarArticulo()
-        //{
-        //    List<Articulo> aux = new List<Articulo>();
-        //    foreach (var art in _sistema.Articulos)
-        //    {
-        //        aux.Add(art);
-        //    }
-
-        //    return aux;
-        //}
-
-
-
-
         private static void ListarCategoria()
         {
             string categoria = PedirString("Ingrese unca categoria");
@@ -176,57 +140,47 @@ namespace AppTest
                 {
                     Console.WriteLine(art.ToString());
                 }
-
             }
-
-
         }
         private static void AltaArticulo()
         {
             string nombre = PedirString("Ingrese el nombre del articulo");
             string categoria = PedirString("Ingrese la categoria");
             int precio = PedirNumero("Ingrese el precio de venta");
-
             _sistema.AgregarArticulo(new Articulo(nombre, categoria, precio));
-
-
         }
         private static void ListarVentas(DateTime fechainicio, DateTime fechafin)
         {
             foreach (Venta unaVenta in _sistema.Ventas)
             {
-                if (unaVenta.FchPublic >= fechainicio && unaVenta.FchPublic<= fechafin)
+                if (unaVenta.FchPublic >= fechainicio && unaVenta.FchPublic <= fechafin)
                 {
-                    
-                Console.WriteLine(unaVenta);
-                Console.WriteLine("Los articulos en venta son: ");
-                foreach (Articulo unart in _sistema.ArticulosxNombrePublicacion(unaVenta.Nombre))
-                { Console.WriteLine($"->{unart.NombreArt} -- precio: {unart.PrecioVenta}"); }
+                    Console.WriteLine(unaVenta);
+                    Console.WriteLine("Los articulos en venta son: ");
+                    foreach (Articulo unart in _sistema.ArticulosxNombrePublicacion(unaVenta.Nombre))
+                    { Console.WriteLine($"->{unart.NombreArt} -- precio: {unart.PrecioVenta}"); }
                 }
             }
-
         }
-
         private static void ListarSubastas(DateTime fechainicio, DateTime fechafin)
         {
             foreach (Subasta unaSubasta in _sistema.Subastas)
             {
                 if (unaSubasta.FchPublic >= fechainicio && unaSubasta.FchPublic <= fechafin)
+                {
                     Console.WriteLine(unaSubasta);
-                Console.WriteLine("Los articulos subastados son: ");
+                    Console.WriteLine("Los articulos subastados son: ");
+                }
                 foreach (Articulo unart in _sistema.ArticulosxNombrePublicacion(unaSubasta.Nombre))
-                { Console.WriteLine($"->{unart.NombreArt}"); }
+                { 
+                    Console.WriteLine($"->{unart.NombreArt}"); 
+                }
             }
-
         }
-
         private static void ListarPublicaciones(DateTime fechainicio, DateTime fechafin)
         {
-            ListarVentas(fechainicio,fechafin);
-            ListarSubastas(fechainicio,fechafin);
+            ListarVentas(fechainicio, fechafin);
+            ListarSubastas(fechainicio, fechafin);
         }
-
-
     }
-
 }

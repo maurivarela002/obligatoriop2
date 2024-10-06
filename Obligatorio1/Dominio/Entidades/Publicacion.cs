@@ -4,7 +4,7 @@ using static Dominio.Sistema;
 
 namespace Dominio.Entidades
 {
-    public abstract class Publicacion : IValidable
+    public abstract class Publicacion
     {
         #region Atributos
         public int Id { get; set; }
@@ -37,15 +37,10 @@ namespace Dominio.Entidades
             IdUser = idUser;
             IdPurchUser = idPurchUser;
             PurchDate = purchDate;
-            
-        }
 
+        }
         #endregion
 
-        public void Validar()
-        {
-            //todo:Agregar validaciones de Articulo
-        }
 
         public override string ToString()
         {
@@ -53,10 +48,10 @@ namespace Dominio.Entidades
 
             respuesta += $"Id: {Id} \n";
             respuesta += $"Nombre de la publicacion: {Nombre} \n";
-            respuesta += $"Fecha de Publicacion: {FchPublic} \n";
+            respuesta += $"Fecha de Publicacion: {FchPublic:dd/MM/yyyy} \n";
             respuesta += $"Id Usuario: {IdUser} \n";
             respuesta += $"Usuario de Compra: {IdPurchUser} \n";
-            respuesta += $"Fecha de Compra: {PurchDate} \n";
+            respuesta += $"Fecha de Compra: {PurchDate:dd/MM/yyyy} \n";
             respuesta += $"Estados Publicacion: {Estados} \n";
             respuesta += $"Id User: {IdUser} \n";
             return respuesta;
