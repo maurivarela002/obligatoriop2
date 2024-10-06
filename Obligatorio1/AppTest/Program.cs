@@ -37,7 +37,9 @@ namespace AppTest
                         AltaArticulo();
                         break;
                     case 4:
+                        Console.WriteLine("Ingrese una fecha de inicio");
                         DateTime f1 = PedirFecha();
+                        Console.WriteLine("Ingrese una fecha de fin");
                         DateTime f2 = PedirFecha();
                         ListarPublicaciones(f1, f2);
                         break;
@@ -199,7 +201,7 @@ namespace AppTest
                 Console.WriteLine(unaVenta);
                 Console.WriteLine("Los articulos en venta son: ");
                 foreach (Articulo unart in _sistema.ArticulosxNombrePublicacion(unaVenta.Nombre))
-                { Console.WriteLine($"->{unart.NombreArt} precio: {unart.PrecioVenta}"); }
+                { Console.WriteLine($"->{unart.NombreArt} -- precio: {unart.PrecioVenta}"); }
                 }
             }
 
