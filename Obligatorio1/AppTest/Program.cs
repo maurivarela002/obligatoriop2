@@ -2,7 +2,6 @@
 
 using Dominio;
 using Dominio.Entidades;
-
 namespace AppTest
 {
     internal class Program
