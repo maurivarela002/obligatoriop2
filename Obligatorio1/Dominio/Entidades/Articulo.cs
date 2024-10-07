@@ -1,5 +1,4 @@
 ﻿using Dominio.Interfaces;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Dominio.Entidades
 {
@@ -14,7 +13,7 @@ namespace Dominio.Entidades
         private static int _ultimoId;
         #endregion
         #region Constructor
-        public Articulo(string nombre, string categoria, decimal precioVenta)
+        public Articulo(string nombre, string categoria, int precioVenta)
         {
             Id = _ultimoId++;
             NombreArt = nombre;
@@ -22,10 +21,16 @@ namespace Dominio.Entidades
             PrecioVenta = precioVenta;
         }
         #endregion
-
-        public void Validar()
+        public void Validar(object? paramOpcional)
         {
-            //todo:Agregar validaciones de Articulo
+            validarnull((Articulo)paramOpcional);
+        }
+
+        private bool validarnull(Articulo articulo)
+        {
+            bool validado = true;
+            if (articulo == null) validado = false;
+            return validado;
         }
 
         public override string ToString()
@@ -38,8 +43,6 @@ namespace Dominio.Entidades
             respuesta += $"Precio de Venta: {PrecioVenta} \n";
             return respuesta;
         }
-
-
 
 
     }

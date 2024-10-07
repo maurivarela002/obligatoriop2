@@ -1,12 +1,9 @@
 ﻿
-using Dominio.Interfaces;
-
 namespace Dominio.Entidades
 {
-    public abstract class Usuario : IValidable, IEquatable<Usuario>, IComparable<Usuario>
+    public abstract class Usuario 
     {
         private static int _ultimoId;
-
         public int Id { get; }
         public string Nombre { get; }
         public string Apellido { get; }
@@ -20,34 +17,13 @@ namespace Dominio.Entidades
             Email = email;
             Contrasenia = contrasenia;
         }
-
-        public virtual void Validar()
-        {
-            //todo:Agregar validaciones de Articulo
-        }
-
         public override string ToString()
         {
             string respuesta = string.Empty;
-
             respuesta += $"Nombre: {Nombre} \n";
             respuesta += $"Apellido: {Apellido} \n";
             respuesta += $"Email: {Email} \n";
             return respuesta;
-        }
-
-        public bool Equals(Usuario? other)
-        {
-            return other != null;
-        }
-
-        public int CompareTo(Usuario? other)
-        {
-            if (other==null)
-            {
-                return -1; 
-            }
-            return Nombre.CompareTo(other.Nombre);
         }
     }
 }

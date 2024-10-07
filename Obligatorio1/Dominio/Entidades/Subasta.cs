@@ -1,46 +1,42 @@
 ﻿
-
+using Dominio.Interfaces;
 using static Dominio.Sistema;
-
 namespace Dominio.Entidades
 {
-    public class Subasta : Publicacion
+    public class Subasta : Publicacion, IValidable
     {
         private List<Oferta> _ofertas;
-        public EnumEstados Estados { get; set; }
+        public object Articulos { get; private set; }
 
-        public Subasta(int id,
+        public Subasta(
                        string nombre,
-                       EnumEstados estado,
+                       EnumEstados estados,
                        DateTime fchPublic,
                        List<Articulo> articulos,
                        int idUser,
                        int idPurchUser,
                        DateTime purchDate,
                        List<Oferta> ofertas
-                     ) : base(id, nombre, estado, fchPublic, articulos, idUser, idPurchUser, purchDate)
+                     ) : base(nombre, estados, fchPublic, articulos, idUser, idPurchUser, purchDate)
         {
             _ofertas = ofertas;
         }
 
-        public void Validar()
+        public void Validar(object? paramOpcional)
         {
-            //todo:Agregar validaciones de Articulo
+            validarnull((Subasta)paramOpcional);
+        }
+
+        private bool validarnull(Subasta subasta)
+        {
+            bool validado = true;
+            if (subasta == null) validado = false;
+            return validado;
         }
 
         public override string ToString()
         {
-            string respuesta = string.Empty;
-
-            respuesta += $"Id: {Id} \n";
-            respuesta += $"Nombre: {Nombre} \n";
-            respuesta += $"Estado: {EnumEstados.CERRADA} \n";
-            respuesta += $"Fecha de Publicacion: {FchPublic} \n";
-            //respuesta += $"Lista de Articulos:  \n";
-            respuesta += $"Id Usuario: {IdUser} \n";
-            respuesta += $"Usuario de Compra: {IdPurchUser} \n";
-            respuesta += $"Fecha de Compra: {PurchDate} \n";
-            //respuesta += $"Id User: {IdUser} \n";
+            string respuesta = base.ToString();
             return respuesta;
         }
 
