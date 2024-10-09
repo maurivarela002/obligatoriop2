@@ -8,10 +8,9 @@ namespace AppTest
     {
         static Sistema _sistema = new Sistema();
         private static DateTime fecha;
-
         static void Main(string[] args)
         {
-            _sistema.PrecargarDatos();
+            //Validar antes de recorrer listas, que pasa si estan vacias
 
             int opcion = 0;
             do
@@ -19,28 +18,28 @@ namespace AppTest
                 MostrarTitulo("Menu");
                 opcion = PedirNumero(
                     "Ingrese una opción\n" +
-                    "1-Listar Clientes\n" +
-                    "2-Listar Categoria\n" +
-                    "3-Alta de Articulo\n" +
-                    "4-Listar Publicaciones\n" +
+                    "1-Realizar precarga\n" +
+                    "2-Listar Clientes\n" +
+                    "3-Listar Categoria\n" +
+                    "4-Alta de Articulo\n" +
+                    "5-Listar Publicaciones\n" +
                     "0-salir");
                 switch (opcion)
                 {
                     case 1:
-                        ListarClientes();
+                        HacerPrecaraga();
                         break;
                     case 2:
-                        ListarCategoria();
+                        ListarClientes();
                         break;
                     case 3:
-                        AltaArticulo();
+                        ListarCategoria();
                         break;
                     case 4:
-                        Console.WriteLine("Ingrese una fecha de inicio");
-                        DateTime f1 = PedirFecha();
-                        Console.WriteLine("Ingrese una fecha de fin");
-                        DateTime f2 = PedirFecha();
-                        ListarPublicaciones(f1, f2);
+                        AltaArticulo();
+                        break;
+                    case 5:
+                        ListarPublicaciones();
                         break;
                     default:
                         break;
@@ -48,7 +47,17 @@ namespace AppTest
             }
             while (opcion != 0);
         }
-
+        private static void HacerPrecaraga()
+        {
+            try
+            {
+                _sistema.PrecargarDatos();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+        }
         private static void MostrarTitulo(string mensaje)
         {
             Console.BackgroundColor = ConsoleColor.Blue;
@@ -92,7 +101,7 @@ namespace AppTest
                 respuesta = Console.ReadLine();
                 if (String.IsNullOrEmpty(respuesta))
                 {
-                    Console.WriteLine("Advertencia: Este campo no puede estar vacio");
+                    throw new Exception("Advertencia: Este campo no puede estar vacio");
                     seguir = true;
                 }
                 else
@@ -104,12 +113,10 @@ namespace AppTest
         {
             DateTime fecha;
             bool esFechaValida = false;
-            // Repetir hasta que el usuario ingrese una fecha válida
             while (!esFechaValida)
             {
                 Console.WriteLine("Por favor, ingrese una fecha (formato: dd/MM/yyyy):");
                 string entrada = Console.ReadLine();
-                // Intentar convertir la entrada en un DateTime
                 if (DateTime.TryParseExact(entrada, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out fecha))
                 {
                     esFechaValida = true;
@@ -124,62 +131,112 @@ namespace AppTest
         }
         private static void ListarClientes()
         {
-            MostrarTitulo("Listado de Clientes");
-            foreach (var cliente in _sistema.Clientes)
+            try
             {
-                Console.WriteLine(cliente.ToString());
+                if (_sistema.Clientes.Count() > 0)
+                {
+                    MostrarTitulo("Listado de Clientes");
+                    foreach (var cliente in _sistema.Clientes)
+                    {
+                        Console.WriteLine(cliente.ToString());
+                    }
+                }
+                else { Console.WriteLine("No se encuentran clientes para listar"); }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
         private static void ListarCategoria()
         {
-            string categoria = PedirString("Ingrese unca categoria");
-            foreach (var art in _sistema.Articulos)
+            try
             {
-                if (art.Categoria.ToUpper() == categoria.ToUpper())
+                if (_sistema.Articulos.Count() > 0)
                 {
-                    Console.WriteLine(art.ToString());
+                    string categoria = PedirString("Ingrese una categoria");
+                    string salida = "No se encontraro esa categoria";
+                    foreach (var art in _sistema.Articulos)
+                    {
+                        if (art.Categoria.ToUpper() == categoria.ToUpper())
+                        {
+                            salida = art.ToString();
+                        }
+                    }
+
+                    Console.WriteLine(salida);
                 }
+                else { Console.WriteLine("No hay categorias cargadas en el sistema"); }
+
             }
+            catch (Exception e) { Console.WriteLine(e.ToString()); }
         }
         private static void AltaArticulo()
         {
-            string nombre = PedirString("Ingrese el nombre del articulo");
-            string categoria = PedirString("Ingrese la categoria");
-            int precio = PedirNumero("Ingrese el precio de venta");
-            _sistema.AgregarArticulo(new Articulo(nombre, categoria, precio));
+            try
+            {
+                string nombre = PedirString("Ingrese el nombre del articulo");
+                string categoria = PedirString("Ingrese la categoria");
+                int precio = PedirNumero("Ingrese el precio de venta");
+                _sistema.AgregarArticulo(new Articulo(nombre, categoria, precio));
+            }
+            catch (Exception e) { Console.WriteLine(e.Message); };
         }
         private static void ListarVentas(DateTime fechainicio, DateTime fechafin)
         {
-            foreach (Venta unaVenta in _sistema.Ventas)
+            try
             {
-                if (unaVenta.FchPublic >= fechainicio && unaVenta.FchPublic <= fechafin)
+
+                if (_sistema.Ventas.Count() > 0)
                 {
-                    Console.WriteLine(unaVenta);
-                    Console.WriteLine("Los articulos en venta son: ");
-                    foreach (Articulo unart in _sistema.ArticulosxNombrePublicacion(unaVenta.Nombre))
-                    { Console.WriteLine($"->{unart.NombreArt} -- precio: {unart.PrecioVenta}"); }
+                    foreach (Venta unaVenta in _sistema.Ventas)
+                    {
+                        if (unaVenta.FchPublic >= fechainicio && unaVenta.FchPublic <= fechafin)
+                        {
+                            Console.WriteLine(unaVenta);
+                            Console.WriteLine("Los articulos en venta son: ");
+                            foreach (Articulo unart in _sistema.ArticulosxNombrePublicacion(unaVenta.Nombre))
+                            { Console.WriteLine($"->{unart.NombreArt} -- precio: {unart.PrecioVenta}"); }
+                        }
+                    }
                 }
+                else { Console.WriteLine("No hay Ventas cargadas en el sistema"); }
             }
+            catch (Exception e) { Console.WriteLine(e.Message); };
         }
         private static void ListarSubastas(DateTime fechainicio, DateTime fechafin)
         {
-            foreach (Subasta unaSubasta in _sistema.Subastas)
+
+            if (_sistema.Subastas.Count() > 0)
             {
-                if (unaSubasta.FchPublic >= fechainicio && unaSubasta.FchPublic <= fechafin)
+                foreach (Subasta unaSubasta in _sistema.Subastas)
                 {
-                    Console.WriteLine(unaSubasta);
-                    Console.WriteLine("Los articulos subastados son: ");
-                }
-                foreach (Articulo unart in _sistema.ArticulosxNombrePublicacion(unaSubasta.Nombre))
-                { 
-                    Console.WriteLine($"->{unart.NombreArt}"); 
+                    if (unaSubasta.FchPublic >= fechainicio && unaSubasta.FchPublic <= fechafin)
+                    {
+                        Console.WriteLine(unaSubasta);
+                        Console.WriteLine("Los articulos subastados son: ");
+                    }
+                    foreach (Articulo unart in _sistema.ArticulosxNombrePublicacion(unaSubasta.Nombre))
+                    {
+                        Console.WriteLine($"->{unart.NombreArt}");
+                    }
                 }
             }
+            else { Console.WriteLine("No hay Subastas cargadas en el sistema"); }
         }
-        private static void ListarPublicaciones(DateTime fechainicio, DateTime fechafin)
+        private static void ListarPublicaciones()
         {
-            ListarVentas(fechainicio, fechafin);
-            ListarSubastas(fechainicio, fechafin);
+            if (_sistema.Ventas.Count() > 0 || _sistema.Subastas.Count() > 0)
+            {
+                Console.WriteLine("Ingrese una fecha de inicio");
+                DateTime f1 = PedirFecha();
+                Console.WriteLine("Ingrese una fecha de fin");
+                DateTime f2 = PedirFecha();
+                ListarVentas(f1, f2);
+                ListarSubastas(f1, f2);
+            }
+            else { Console.WriteLine("No hay Publicaciones cargadas en el sistema"); }
+
         }
     }
 }

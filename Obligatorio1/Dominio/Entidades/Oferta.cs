@@ -1,16 +1,14 @@
 ﻿using Dominio.Interfaces;
-
 namespace Dominio.Entidades
 {
     public class Oferta : IValidable
     {
-        public int Id { get; set; }  
+        public int Id { get; set; }
         public int IdUser { get; set; }
         public double Monto { get; set; }
         public DateTime FchOfer { get; set; }
         public string Pnombre { get; set; }
         private static int _ultimoId;
-
         public Oferta(int id, int idUser, double monto, DateTime fchOfer, string pnombre)
         {
             Id = _ultimoId++;
@@ -19,16 +17,16 @@ namespace Dominio.Entidades
             FchOfer = fchOfer;
             Pnombre = pnombre;
         }
-        public void Validar(object? paramOpcional)
+        public void Validar()
         {
-            validarnull((Oferta)paramOpcional);
+            validateNull();
         }
-
-        private bool validarnull(Oferta oferta)
+        private void validateNull()
         {
-            bool validado = true;
-            if (oferta == null) validado = false;
-            return validado;
+            if (string.IsNullOrEmpty(Pnombre))
+            {
+                throw new Exception("El nombre no puede ser vacio");
+            }
         }
     }
 }

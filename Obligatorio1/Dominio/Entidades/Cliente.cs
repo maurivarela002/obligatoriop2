@@ -7,30 +7,25 @@ namespace Dominio.Entidades
         public double Saldo { get; set; }
         public Cliente(string nombre, string apellido, string email, string contrasenia, double saldo) :
             base(nombre, apellido, email, contrasenia)
-
         {
             Saldo = saldo;
         }
-        public void Validar(Cliente cliente)
+        public void Validar()
         {
-            validarnull(cliente);
+            validateNull();
         }
-
-        private bool validarnull(Cliente cliente)
+        private void validateNull()
         {
-            bool validado = true;
-            if (cliente == null) validado = false;
-            return validado;
+            if (string.IsNullOrEmpty(base.Nombre))
+            {
+                throw new Exception("El nombre no puede ser vacio");
+            }
         }
-
         public override string ToString()
         {
             string respuesta = base.ToString();
             respuesta += $"saldo: {Saldo} \n";
             return respuesta;
         }
-
-
-
     }
 }

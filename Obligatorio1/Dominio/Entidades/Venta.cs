@@ -11,7 +11,6 @@ namespace Dominio.Entidades
         public bool OfertaR { get; set; }
         public object Articulos { get; private set; }
         public List<Articulo> ObtenerArtxPub { get; set; }
-
         public Venta(
                      string nombre,
                      EnumEstados estados,
@@ -26,20 +25,17 @@ namespace Dominio.Entidades
             OfertaR = ofertar;
 
         }
-
-
-        public void Validar(object? paramOpcional)
+        public void Validar()
         {
-            validarnull((Venta)paramOpcional);
+            validateNull();
         }
-
-        private bool validarnull(Venta venta)
+        private void validateNull()
         {
-            bool validado = true;
-            if (venta == null) validado = false;
-            return validado;
+            if (string.IsNullOrEmpty(base.Nombre))
+            {
+                throw new Exception("El nombre no puede ser vacio");
+            }
         }
-
         public override string ToString()
         {
             string respuesta = base.ToString();

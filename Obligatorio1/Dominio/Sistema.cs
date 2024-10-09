@@ -1,4 +1,5 @@
 ﻿using Dominio.Entidades;
+using System.Drawing;
 namespace Dominio
 {
     public class Sistema
@@ -42,38 +43,44 @@ namespace Dominio
         {
             get { return _ofertas; }
         }
+
         public void AgregarCliente(Cliente cliente)
         {
-            cliente.Validar(cliente);
+            if (cliente == null) throw new Exception("Error en la carga  de cliente");
+            cliente.Validar();
             _clientes.Add(cliente);
         }
         public void AgregarAdministrador(Administrador administrador)
         {
-            if (administrador == null) throw new Exception("Debe tener un valor!");
-            administrador.Validar(administrador);
+            if (administrador == null) throw new Exception("Error en la carga de Administrador!");
+            administrador.Validar();
             _administradores.Add(administrador);
         }
 
         public void AgregarArticulo(Articulo articulo)
         {
-            articulo.Validar(articulo);
+            if (articulo == null) throw new Exception("Error en la carga de Articulo!");
+            articulo.Validar();
             _articulos.Add(articulo);
         }
         public void AgregarOferta(Oferta oferta)
         {
-            oferta.Validar(oferta);
+            if (oferta == null) throw new Exception("Error en la carga de oferta!");
+            oferta.Validar();
             _ofertas.Add(oferta);
         }
 
         public void AgregarSubasta(Subasta subasta)
         {
-            subasta.Validar(subasta);
+            if (subasta == null) throw new Exception("Error en la carga de subasta!");
+            subasta.Validar();
             _subastas.Add(subasta);
         }
 
         public void AgregarVenta(Venta venta)
         {
-            venta.Validar(venta);
+            if (venta == null) throw new Exception("Error en la carga de venta!");
+            venta.Validar();
             _ventas.Add(venta);
         }
 
@@ -156,8 +163,8 @@ namespace Dominio
         {
             #region clientes
             //Precarga de  10 clientes
-            AgregarCliente(new Cliente("Juan", "Pérez", "juan.perez@mail.com", "password1", 1000));
-            AgregarCliente(new Cliente("Ana", "Gómez", "ana.gomez@mail.com", "password2", 1500));
+            AgregarCliente(new Cliente("Mauricio", "Varela", "mauri.sape@mail.com", "password1", 1000));
+            AgregarCliente(new Cliente("Matias", "Alvarez", "mati.programer@mail.com", "password2", 1500));
             AgregarCliente(new Cliente("Carlos", "Lopez", "carlos.lopez@mail.com", "password3", 2000));
             AgregarCliente(new Cliente("María", "García", "maria.garcia@mail.com", "password1", 1500));
             AgregarCliente(new Cliente("Juan", "Pérez", "juan.perez@mail.com", "password2", 1000));
@@ -166,10 +173,12 @@ namespace Dominio
             AgregarCliente(new Cliente("Luis", "Gómez", "luis.gomez@mail.com", "password6", 1200));
             AgregarCliente(new Cliente("Laura", "Fernández", "laura.fernandez@mail.com", "password7", 1800));
             AgregarCliente(new Cliente("Jorge", "Díaz", "jorge.diaz@mail.com", "password8", 2200));
+            //AgregarCliente(null); prueba de precarga nula
             #endregion
 
             #region admin
             //Precarga de 2 Administradores
+            //AgregarAdministrador(null); //prueba de precarga nula 
             AgregarAdministrador(new Administrador("Marta", "Suarez", "marta.suarez@mail.com", "admin1"));
             AgregarAdministrador(new Administrador("Luis", "Ramirez", "luis.ramirez@mail.com", "admin2"));
             #endregion
@@ -234,6 +243,7 @@ namespace Dominio
             AgregarArticulo(new Articulo("Batería portátil", "Electrónica", 40));
             AgregarArticulo(new Articulo("Altavoz Bluetooth", "Audio", 50));
             AgregarArticulo(new Articulo("Consola de videojuegos", "Electrónica", 300));
+            //AgregarArticulo(null); //prueba de precarga nula
             #endregion
 
             #region Ventas
@@ -271,6 +281,7 @@ namespace Dominio
             AgregarSubasta(new Subasta("Primavera 2025", EnumEstados.ABIERTA, new DateTime(2025, 03, 20, 00, 00, 00), ObtenerArtxCat("Ropa"), 0, 0, new DateTime(2025, 04, 10, 00, 00, 00), ofertasxPublicacion("sin ofertas")));
             AgregarSubasta(new Subasta("San Valentín 2025", EnumEstados.ABIERTA, new DateTime(2025, 02, 10, 00, 00, 00), ObtenerArtxCat("Joyería"), 0, 0, new DateTime(2025, 02, 14, 00, 00, 00), ofertasxPublicacion("sin ofertas")));
             #endregion
+
         }
     }
 }

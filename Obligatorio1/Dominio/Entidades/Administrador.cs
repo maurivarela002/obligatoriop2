@@ -10,22 +10,23 @@ namespace Dominio.Entidades
         {
             Admin = true;
         }
-        public void Validar(Administrador administrador)
+        public void Validar()
         {
-            validarnull(administrador);
+            validateNull();
         }
 
-        private bool validarnull(Administrador administrador)
+        private void validateNull()
         {
-            bool validado = true;
-            if (administrador == null) validado = false;
-            return validado;
+            if (string.IsNullOrEmpty(base.Nombre))
+            {
+                throw new Exception("El nombre no puede ser vacio");
+            }
         }
 
         public override string ToString()
         {
             string respuesta = base.ToString();
-            if (Admin) respuesta += $"Soy administrador \n";
+            if (Admin) respuesta += $"Administrador \n";
             return respuesta;
         }
 

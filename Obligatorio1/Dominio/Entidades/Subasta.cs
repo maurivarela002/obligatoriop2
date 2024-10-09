@@ -7,7 +7,6 @@ namespace Dominio.Entidades
     {
         private List<Oferta> _ofertas;
         public object Articulos { get; private set; }
-
         public Subasta(
                        string nombre,
                        EnumEstados estados,
@@ -21,24 +20,21 @@ namespace Dominio.Entidades
         {
             _ofertas = ofertas;
         }
-
-        public void Validar(object? paramOpcional)
+        public void Validar()
         {
-            validarnull((Subasta)paramOpcional);
+            validateNull();
         }
-
-        private bool validarnull(Subasta subasta)
+        private void validateNull()
         {
-            bool validado = true;
-            if (subasta == null) validado = false;
-            return validado;
+            if (string.IsNullOrEmpty(base.Nombre))
+            {
+                throw new Exception("El nombre no puede ser vacio");
+            }
         }
-
         public override string ToString()
         {
             string respuesta = base.ToString();
             return respuesta;
         }
-
     }
 }
