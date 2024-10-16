@@ -10,6 +10,12 @@ namespace Dominio
         private List<Subasta> _subastas = new List<Subasta>();
         private List<Venta> _ventas = new List<Venta>();
         private List<Oferta> _ofertas = new List<Oferta>();
+
+        public Sistema()
+        {
+            PrecargarDatos();
+
+        }
         public enum EnumEstados
         {
             ABIERTA,

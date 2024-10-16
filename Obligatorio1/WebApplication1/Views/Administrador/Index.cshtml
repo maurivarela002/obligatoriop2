@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using Dominio.Entidades
+<h1>Lista de Administradores</h1>
+@* @foreach (Cliente item in ViewBag.Clientes)
+{
+<div>@item.Nombre</div>
+} *@
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Email</th>
+            <th scope="col">Saldo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @foreach (Administrador item in ViewBag.Administradores)
+            {
+            <tr>
+                <th scope="row">@item.Nombre</th>
+                <td>@item.Apellido</td>
+                <td>@item.Email</td>
+            </tr>
+            }
+    </tbody>
+</table>
