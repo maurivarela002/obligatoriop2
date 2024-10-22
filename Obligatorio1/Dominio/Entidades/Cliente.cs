@@ -10,7 +10,7 @@ namespace Dominio.Entidades
         {
             Saldo = saldo;
         }
-        public void Validar()
+        public virtual void Validar()
         {
             validateNull();
         }

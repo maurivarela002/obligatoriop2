@@ -4,11 +4,9 @@ namespace Dominio
 {
     public class Sistema
     {
-        private List<Cliente> _clientes = new List<Cliente>();
-        private List<Administrador> _administradores = new List<Administrador>();
         private List<Articulo> _articulos = new List<Articulo>();
-        private List<Subasta> _subastas = new List<Subasta>();
-        private List<Venta> _ventas = new List<Venta>();
+        private List<Usuario> _usuarios = new List<Usuario>();
+        private List<Publicacion> _publicaciones = new List<Publicacion>();
         private List<Oferta> _ofertas = new List<Oferta>();
 
         public Sistema()
@@ -27,40 +25,87 @@ namespace Dominio
             get { return _articulos; }
         }
 
-        public List<Cliente> Clientes
+        public List<Usuario> Usuarios
         {
-            get { return _clientes; }
+            get { return _usuarios; }
         }
-
-        public List<Administrador> Administradores
+        public List<Publicacion> Publicaciones
         {
-            get { return _administradores; }
-        }
-
-        public List<Subasta> Subastas
-        {
-            get { return _subastas; }
-        }
-        public List<Venta> Ventas
-        {
-            get { return _ventas; }
+            get { return _publicaciones; }
         }
         public List<Oferta> Ofertas
         {
             get { return _ofertas; }
         }
-
-        public void AgregarCliente(Cliente cliente)
+        public void AgregarUsuario(Usuario usuario)
         {
-            if (cliente == null) throw new Exception("Error en la carga  de cliente");
-            cliente.Validar();
-            _clientes.Add(cliente);
+            if (usuario == null) throw new Exception("Error en la carga de Usuario!");
+            usuario.Validar();
+            _usuarios.Add(usuario);
         }
-        public void AgregarAdministrador(Administrador administrador)
+        public List<Cliente> obtenerClientes()
         {
-            if (administrador == null) throw new Exception("Error en la carga de Administrador!");
-            administrador.Validar();
-            _administradores.Add(administrador);
+            List<Cliente> aux = new List<Cliente>();
+
+            foreach (Usuario user in _usuarios)
+            {
+                if (user is Cliente)
+                {
+                    Cliente cliente = (Cliente)user;
+                    aux.Add(cliente);
+                }
+            }
+            return aux;
+        }
+
+        public List<Administrador> obtenerAdministradores()
+        {
+            List<Administrador> aux = new List<Administrador>();
+
+            foreach (Usuario user in _usuarios)
+            {
+                if (user is Administrador)
+                {
+                    Administrador admin = (Administrador)user;
+                    aux.Add(admin);
+                }
+            }
+            return aux;
+        }
+
+        public void AgregarPublicacion(Publicacion publicacion)
+        {
+            if (publicacion == null) throw new Exception("Error en la carga de publicacion!");
+            publicacion.Validar();
+            _publicaciones.Add(publicacion);
+        }
+        public List<Venta> obtenerVentas()
+        {
+            List<Venta> aux = new List<Venta>();
+
+            foreach (Publicacion publis in _publicaciones)
+            {
+                if (publis is Venta)
+                {
+                    Venta venta = (Venta)publis;
+                    aux.Add(venta);
+                }
+            }
+            return aux;
+        }
+        public List<Subasta> obtenerSubastas()
+        {
+            List<Subasta> aux = new List<Subasta>();
+
+            foreach (Publicacion publis in _publicaciones)
+            {
+                if (publis is Subasta)
+                {
+                    Subasta subasta = (Subasta)publis;
+                    aux.Add(subasta);
+                }
+            }
+            return aux;
         }
 
         public void AgregarArticulo(Articulo articulo)
@@ -75,21 +120,6 @@ namespace Dominio
             oferta.Validar();
             _ofertas.Add(oferta);
         }
-
-        public void AgregarSubasta(Subasta subasta)
-        {
-            if (subasta == null) throw new Exception("Error en la carga de subasta!");
-            subasta.Validar();
-            _subastas.Add(subasta);
-        }
-
-        public void AgregarVenta(Venta venta)
-        {
-            if (venta == null) throw new Exception("Error en la carga de venta!");
-            venta.Validar();
-            _ventas.Add(venta);
-        }
-
         public List<Articulo> ObtenerArtxCat(string pCategoria)
         {
             List<Articulo> aux = new List<Articulo>();
@@ -169,24 +199,24 @@ namespace Dominio
         {
             #region clientes
             //Precarga de  10 clientes
-            AgregarCliente(new Cliente("Mauricio", "Varela", "mauri.sape@mail.com", "password1", 1000));
-            AgregarCliente(new Cliente("Matias", "Alvarez", "mati.programer@mail.com", "password2", 1500));
-            AgregarCliente(new Cliente("Carlos", "Lopez", "carlos.lopez@mail.com", "password3", 2000));
-            AgregarCliente(new Cliente("María", "García", "maria.garcia@mail.com", "password1", 1500));
-            AgregarCliente(new Cliente("Juan", "Pérez", "juan.perez@mail.com", "password2", 1000));
-            AgregarCliente(new Cliente("Ana", "Sánchez", "ana.sanchez@mail.com", "password4", 2500));
-            AgregarCliente(new Cliente("Pedro", "Martínez", "pedro.martinez@mail.com", "password5", 3000));
-            AgregarCliente(new Cliente("Luis", "Gómez", "luis.gomez@mail.com", "password6", 1200));
-            AgregarCliente(new Cliente("Laura", "Fernández", "laura.fernandez@mail.com", "password7", 1800));
-            AgregarCliente(new Cliente("Jorge", "Díaz", "jorge.diaz@mail.com", "password8", 2200));
-            //AgregarCliente(null); prueba de precarga nula
+            AgregarUsuario(new Cliente("Mauricio", "Varela", "mauri.sape@mail.com", "password1", 1000));
+            AgregarUsuario(new Cliente("Matias", "Alvarez", "mati.programer@mail.com", "password2", 1500));
+            AgregarUsuario(new Cliente("Carlos", "Lopez", "carlos.lopez@mail.com", "password3", 2000));
+            AgregarUsuario(new Cliente("María", "García", "maria.garcia@mail.com", "password1", 1500));
+            AgregarUsuario(new Cliente("Juan", "Pérez", "juan.perez@mail.com", "password2", 1000));
+            AgregarUsuario(new Cliente("Ana", "Sánchez", "ana.sanchez@mail.com", "password4", 2500));
+            AgregarUsuario(new Cliente("Pedro", "Martínez", "pedro.martinez@mail.com", "password5", 3000));
+            AgregarUsuario(new Cliente("Luis", "Gómez", "luis.gomez@mail.com", "password6", 1200));
+            AgregarUsuario(new Cliente("Laura", "Fernández", "laura.fernandez@mail.com", "password7", 1800));
+            AgregarUsuario(new Cliente("Jorge", "Díaz", "jorge.diaz@mail.com", "password8", 2200));
+            //AgregarUsuario(null); prueba de precarga nula
             #endregion
 
             #region admin
             //Precarga de 2 Administradores
             //AgregarAdministrador(null); //prueba de precarga nula 
-            AgregarAdministrador(new Administrador("Marta", "Suarez", "marta.suarez@mail.com", "admin1"));
-            AgregarAdministrador(new Administrador("Luis", "Ramirez", "luis.ramirez@mail.com", "admin2"));
+            AgregarUsuario(new Administrador("Marta", "Suarez", "marta.suarez@mail.com", "admin1"));
+            AgregarUsuario(new Administrador("Luis", "Ramirez", "luis.ramirez@mail.com", "admin2"));
             #endregion
 
             #region Articulos
@@ -255,17 +285,17 @@ namespace Dominio
             #region Ventas
             //************Precarga Publicaciones ****************
             //Precarga 10 ventas 
-            AgregarVenta(new Venta("Electro Party", EnumEstados.ABIERTA, new DateTime(2024, 10, 05, 00, 00, 00), ObtenerArtxCat("Electrónica"), 0, 0, new DateTime(2024, 10, 05, 00, 00, 00), false));
-            AgregarVenta(new Venta("Sport Sale", EnumEstados.ABIERTA, new DateTime(2024, 10, 05, 00, 00, 00), ObtenerArtxCat("Deportes"), 0, 0, new DateTime(2024, 10, 05, 00, 00, 00), true));
-            AgregarVenta(new Venta("Mega Sale", EnumEstados.ABIERTA, new DateTime(2024, 10, 06, 00, 00, 00), ObtenerArtxCat("Ropa"), 0, 0, new DateTime(2024, 10, 06, 00, 00, 00), false));
-            AgregarVenta(new Venta("Tech Expo", EnumEstados.ABIERTA, new DateTime(2024, 10, 07, 00, 00, 00), ObtenerArtxCat("Periféricos"), 0, 0, new DateTime(2024, 10, 07, 00, 00, 00), true));
-            AgregarVenta(new Venta("Gadget Fest", EnumEstados.ABIERTA, new DateTime(2024, 10, 08, 00, 00, 00), ObtenerArtxCat("Audio"), 0, 0, new DateTime(2024, 10, 08, 00, 00, 00), false));
-            AgregarVenta(new Venta("Book Sales", EnumEstados.ABIERTA, new DateTime(2024, 10, 09, 00, 00, 00), ObtenerArtxCat("Libros"), 0, 0, new DateTime(2024, 10, 09, 00, 00, 00), true));
-            AgregarVenta(new Venta("Work World", EnumEstados.ABIERTA, new DateTime(2024, 10, 10, 00, 00, 00), ObtenerArtxCat("Oficina"), 0, 0, new DateTime(2024, 10, 10, 00, 00, 00), false));
-            AgregarVenta(new Venta("Mayor Tranquilidad", EnumEstados.ABIERTA, new DateTime(2024, 10, 11, 00, 00, 00), ObtenerArtxCat("Seguridad"), 0, 0, new DateTime(2024, 10, 11, 00, 00, 00), true));
-            AgregarVenta(new Venta("Luxury", EnumEstados.ABIERTA, new DateTime(2024, 10, 12, 00, 00, 00), ObtenerArtxCat("Joyería"), 0, 0, new DateTime(2024, 10, 12, 00, 00, 00), false));
-            AgregarVenta(new Venta("Holiday Deals", EnumEstados.ABIERTA, new DateTime(2024, 10, 13, 00, 00, 00), ObtenerArtxCat("Viaje"), 0, 0, new DateTime(2024, 10, 13, 00, 00, 00), true));
-            AgregarVenta(new Venta("Black Friday", EnumEstados.ABIERTA, new DateTime(2024, 10, 14, 00, 00, 00), ObtenerArtxCat("Accesorios"), 0, 0, new DateTime(2024, 10, 14, 00, 00, 00), true));
+            AgregarPublicacion(new Venta("Electro Party", EnumEstados.ABIERTA, new DateTime(2024, 10, 05, 00, 00, 00), ObtenerArtxCat("Electrónica"), 0, 0, new DateTime(2024, 10, 05, 00, 00, 00), false));
+            AgregarPublicacion(new Venta("Sport Sale", EnumEstados.ABIERTA, new DateTime(2024, 10, 05, 00, 00, 00), ObtenerArtxCat("Deportes"), 0, 0, new DateTime(2024, 10, 05, 00, 00, 00), true));
+            AgregarPublicacion(new Venta("Mega Sale", EnumEstados.ABIERTA, new DateTime(2024, 10, 06, 00, 00, 00), ObtenerArtxCat("Ropa"), 0, 0, new DateTime(2024, 10, 06, 00, 00, 00), false));
+            AgregarPublicacion(new Venta("Tech Expo", EnumEstados.ABIERTA, new DateTime(2024, 10, 07, 00, 00, 00), ObtenerArtxCat("Periféricos"), 0, 0, new DateTime(2024, 10, 07, 00, 00, 00), true));
+            AgregarPublicacion(new Venta("Gadget Fest", EnumEstados.ABIERTA, new DateTime(2024, 10, 08, 00, 00, 00), ObtenerArtxCat("Audio"), 0, 0, new DateTime(2024, 10, 08, 00, 00, 00), false));
+            AgregarPublicacion(new Venta("Book Sales", EnumEstados.ABIERTA, new DateTime(2024, 10, 09, 00, 00, 00), ObtenerArtxCat("Libros"), 0, 0, new DateTime(2024, 10, 09, 00, 00, 00), true));
+            AgregarPublicacion(new Venta("Work World", EnumEstados.ABIERTA, new DateTime(2024, 10, 10, 00, 00, 00), ObtenerArtxCat("Oficina"), 0, 0, new DateTime(2024, 10, 10, 00, 00, 00), false));
+            AgregarPublicacion(new Venta("Mayor Tranquilidad", EnumEstados.ABIERTA, new DateTime(2024, 10, 11, 00, 00, 00), ObtenerArtxCat("Seguridad"), 0, 0, new DateTime(2024, 10, 11, 00, 00, 00), true));
+            AgregarPublicacion(new Venta("Luxury", EnumEstados.ABIERTA, new DateTime(2024, 10, 12, 00, 00, 00), ObtenerArtxCat("Joyería"), 0, 0, new DateTime(2024, 10, 12, 00, 00, 00), false));
+            AgregarPublicacion(new Venta("Holiday Deals", EnumEstados.ABIERTA, new DateTime(2024, 10, 13, 00, 00, 00), ObtenerArtxCat("Viaje"), 0, 0, new DateTime(2024, 10, 13, 00, 00, 00), true));
+            AgregarPublicacion(new Venta("Black Friday", EnumEstados.ABIERTA, new DateTime(2024, 10, 14, 00, 00, 00), ObtenerArtxCat("Accesorios"), 0, 0, new DateTime(2024, 10, 14, 00, 00, 00), true));
             #endregion
 
             #region Ofertas
@@ -276,16 +306,16 @@ namespace Dominio
 
             #region Subastas
             //Precarga 10 subastas
-            AgregarSubasta(new Subasta("Luxury", EnumEstados.ABIERTA, new DateTime(2024, 10, 01, 00, 00, 00), ObtenerArtxCat("Joyería"), 0, 0, new DateTime(2024, 10, 05, 00, 00, 00), ofertasxPublicacion("Luxury")));
-            AgregarSubasta(new Subasta("Holiday Deals", EnumEstados.ABIERTA, new DateTime(2024, 10, 02, 00, 00, 00), ObtenerArtxCat("Viaje"), 0, 0, new DateTime(2024, 10, 05, 00, 00, 00), ofertasxPublicacion("sin ofertas")));
-            AgregarSubasta(new Subasta("Black Friday", EnumEstados.ABIERTA, new DateTime(2024, 10, 03, 00, 00, 00), ObtenerArtxCat("Accesorios"), 0, 0, new DateTime(2024, 10, 05, 00, 00, 00), ofertasxPublicacion("Black Friday")));
-            AgregarSubasta(new Subasta("Black Friday", EnumEstados.ABIERTA, new DateTime(2024, 10, 03, 00, 00, 00), ObtenerArtxCat("Accesorios"), 0, 0, new DateTime(2024, 10, 05, 00, 00, 00), ofertasxPublicacion("sin ofertas")));
-            AgregarSubasta(new Subasta("Cyber Monday", EnumEstados.ABIERTA, new DateTime(2024, 11, 27, 00, 00, 00), ObtenerArtxCat("Periféricos"), 0, 0, new DateTime(2024, 11, 30, 00, 00, 00), ofertasxPublicacion("sin ofertas")));
-            AgregarSubasta(new Subasta("Navidad 2024", EnumEstados.ABIERTA, new DateTime(2024, 12, 20, 00, 00, 00), ObtenerArtxCat("Papelería"), 0, 0, new DateTime(2024, 12, 25, 00, 00, 00), ofertasxPublicacion("sin ofertas")));
-            AgregarSubasta(new Subasta("Año Nuevo 2025", EnumEstados.ABIERTA, new DateTime(2024, 12, 31, 00, 00, 00), ObtenerArtxCat("Muebles"), 0, 0, new DateTime(2025, 01, 01, 00, 00, 00), ofertasxPublicacion("sin ofertas")));
-            AgregarSubasta(new Subasta("Verano 2025", EnumEstados.ABIERTA, new DateTime(2025, 01, 15, 00, 00, 00), ObtenerArtxCat("Ropa"), 0, 0, new DateTime(2025, 02, 15, 00, 00, 00), ofertasxPublicacion("sin ofertas")));
-            AgregarSubasta(new Subasta("Primavera 2025", EnumEstados.ABIERTA, new DateTime(2025, 03, 20, 00, 00, 00), ObtenerArtxCat("Ropa"), 0, 0, new DateTime(2025, 04, 10, 00, 00, 00), ofertasxPublicacion("sin ofertas")));
-            AgregarSubasta(new Subasta("San Valentín 2025", EnumEstados.ABIERTA, new DateTime(2025, 02, 10, 00, 00, 00), ObtenerArtxCat("Joyería"), 0, 0, new DateTime(2025, 02, 14, 00, 00, 00), ofertasxPublicacion("sin ofertas")));
+            AgregarPublicacion(new Subasta("Luxury", EnumEstados.ABIERTA, new DateTime(2024, 10, 01, 00, 00, 00), ObtenerArtxCat("Joyería"), 0, 0, new DateTime(2024, 10, 05, 00, 00, 00), ofertasxPublicacion("Luxury")));
+            AgregarPublicacion(new Subasta("Holiday Deals", EnumEstados.ABIERTA, new DateTime(2024, 10, 02, 00, 00, 00), ObtenerArtxCat("Viaje"), 0, 0, new DateTime(2024, 10, 05, 00, 00, 00), ofertasxPublicacion("sin ofertas")));
+            AgregarPublicacion(new Subasta("Black Friday", EnumEstados.ABIERTA, new DateTime(2024, 10, 03, 00, 00, 00), ObtenerArtxCat("Accesorios"), 0, 0, new DateTime(2024, 10, 05, 00, 00, 00), ofertasxPublicacion("Black Friday")));
+            AgregarPublicacion(new Subasta("Black Friday", EnumEstados.ABIERTA, new DateTime(2024, 10, 03, 00, 00, 00), ObtenerArtxCat("Accesorios"), 0, 0, new DateTime(2024, 10, 05, 00, 00, 00), ofertasxPublicacion("sin ofertas")));
+            AgregarPublicacion(new Subasta("Cyber Monday", EnumEstados.ABIERTA, new DateTime(2024, 11, 27, 00, 00, 00), ObtenerArtxCat("Periféricos"), 0, 0, new DateTime(2024, 11, 30, 00, 00, 00), ofertasxPublicacion("sin ofertas")));
+            AgregarPublicacion(new Subasta("Navidad 2024", EnumEstados.ABIERTA, new DateTime(2024, 12, 20, 00, 00, 00), ObtenerArtxCat("Papelería"), 0, 0, new DateTime(2024, 12, 25, 00, 00, 00), ofertasxPublicacion("sin ofertas")));
+            AgregarPublicacion(new Subasta("Año Nuevo 2025", EnumEstados.ABIERTA, new DateTime(2024, 12, 31, 00, 00, 00), ObtenerArtxCat("Muebles"), 0, 0, new DateTime(2025, 01, 01, 00, 00, 00), ofertasxPublicacion("sin ofertas")));
+            AgregarPublicacion(new Subasta("Verano 2025", EnumEstados.ABIERTA, new DateTime(2025, 01, 15, 00, 00, 00), ObtenerArtxCat("Ropa"), 0, 0, new DateTime(2025, 02, 15, 00, 00, 00), ofertasxPublicacion("sin ofertas")));
+            AgregarPublicacion(new Subasta("Primavera 2025", EnumEstados.ABIERTA, new DateTime(2025, 03, 20, 00, 00, 00), ObtenerArtxCat("Ropa"), 0, 0, new DateTime(2025, 04, 10, 00, 00, 00), ofertasxPublicacion("sin ofertas")));
+            AgregarPublicacion(new Subasta("San Valentín 2025", EnumEstados.ABIERTA, new DateTime(2025, 02, 10, 00, 00, 00), ObtenerArtxCat("Joyería"), 0, 0, new DateTime(2025, 02, 14, 00, 00, 00), ofertasxPublicacion("sin ofertas")));
             #endregion
 
         }

@@ -8,7 +8,7 @@ namespace WebApplication1.Controllers
         private Sistema _sistema = new Sistema();
         public IActionResult Index()
         {
-            ViewBag.Administradores = _sistema.Administradores;
+            ViewBag.Administradores = _sistema.obtenerAdministradores();
             return View();
         }
     }

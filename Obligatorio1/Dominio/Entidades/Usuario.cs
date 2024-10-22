@@ -1,7 +1,9 @@
 ﻿
+using Dominio.Interfaces;
+
 namespace Dominio.Entidades
 {
-    public abstract class Usuario 
+    public abstract class Usuario: IValidable
     {
         private static int _ultimoId;
         public int Id { get; }
@@ -16,6 +18,17 @@ namespace Dominio.Entidades
             Apellido = apellido;
             Email = email;
             Contrasenia = contrasenia;
+        }
+        public void Validar()
+        {
+            validateNull();
+        }
+        private void validateNull()
+        {
+            if (string.IsNullOrEmpty(Nombre))
+            {
+                throw new Exception("El nombre no puede ser vacio");
+            }
         }
         public override string ToString()
         {

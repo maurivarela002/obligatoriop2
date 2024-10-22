@@ -6,7 +6,7 @@ using static Dominio.Sistema;
 
 namespace Dominio.Entidades
 {
-    public class Venta : Publicacion, IValidable
+    public class Venta : Publicacion
     {
         public bool OfertaR { get; set; }
         public object Articulos { get; private set; }
@@ -25,7 +25,7 @@ namespace Dominio.Entidades
             OfertaR = ofertar;
 
         }
-        public void Validar()
+        public virtual void Validar()
         {
             validateNull();
         }

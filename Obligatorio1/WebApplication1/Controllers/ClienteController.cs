@@ -8,7 +8,7 @@ namespace WebApplication1.Controllers
         private Sistema _sistema = new Sistema();
         public IActionResult Index()
         {
-            ViewBag.Clientes = _sistema.Clientes;
+            ViewBag.Clientes = _sistema.obtenerClientes();
             return View();
         }
     }

@@ -1,0 +1,50 @@
+﻿@using Dominio.Entidades
+@model Articulo;
+
+<h1>Alta de Artículos</h1>
+
+<form action="/articulo/GestionArticulo">
+    <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input type="text" class="form-control" name="NombreArt" placeholder="Balde de playa">
+    </div>
+    <div class="mb-3">
+        <label for="PrecioVenta" class="form-label">Precio</label>
+        <input type="number" class="form-control" id="PrecioVenta" name="PrecioVenta" placeholder="100">
+    </div>
+    <div class="mb-3">
+        <label for="Categoria" class="form-label">Categoría</label>
+        <select class="form-select" id="Categoria" name="Categoria">
+            <option selected>Selecciona una categoría</option>
+            @foreach (var art in ViewBag.Articulo)
+            {
+                <option value="@art.Categoria">@art.Categoria</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Crear Artículo</button>
+</form>
+
+
+<h1>Lista de Articulos</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Categoria</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @foreach (Articulo art in ViewBag.Articulo)
+            {
+            <tr>
+                <th>@art.NombreArt</th>
+                <td>@art.PrecioVenta</td>
+                <td>@art.Categoria</td>
+            </tr>
+            }
+    </tbody>
+</table>

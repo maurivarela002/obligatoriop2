@@ -1,9 +1,10 @@
 ﻿
+using Dominio.Interfaces;
 using static Dominio.Sistema;
 
 namespace Dominio.Entidades
 {
-    public abstract class Publicacion
+    public abstract class Publicacion: IValidable
     {
         #region Atributos
         public int Id { get; set; }
@@ -36,6 +37,19 @@ namespace Dominio.Entidades
             PurchDate = purchDate;
         }
         #endregion
+
+        public void Validar()
+        {
+            validateNull();
+        }
+        private void validateNull()
+        {
+            if (string.IsNullOrEmpty(Nombre))
+            {
+                throw new Exception("El nombre no puede ser vacio");
+            }
+        }
+
         public override string ToString()
         {
             string respuesta = string.Empty;

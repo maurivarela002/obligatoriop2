@@ -3,7 +3,7 @@ using Dominio.Interfaces;
 using static Dominio.Sistema;
 namespace Dominio.Entidades
 {
-    public class Subasta : Publicacion, IValidable
+    public class Subasta : Publicacion
     {
         private List<Oferta> _ofertas;
         public object Articulos { get; private set; }
@@ -20,7 +20,7 @@ namespace Dominio.Entidades
         {
             _ofertas = ofertas;
         }
-        public void Validar()
+        public virtual void Validar()
         {
             validateNull();
         }

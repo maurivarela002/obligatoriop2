@@ -10,7 +10,7 @@ namespace Dominio.Entidades
         {
             Admin = true;
         }
-        public void Validar()
+        public virtual void Validar()
         {
             validateNull();
         }
