@@ -26,31 +26,3 @@
     </tbody>
 </table>
 }
-
-@if (!ViewBag.Admin)
-{
- <h1>Lista de Clientes</h1>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">Nombre</th>
-            <th scope="col">Apellido</th>
-            <th scope="col">Email</th>
-            <th scope="col">Saldo</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            @foreach (Cliente item in ViewBag.Clientes)
-            {
-            <tr>
-                <th scope="row">@item.Nombre</th>
-                <td>@item.Apellido</td>
-                <td>@item.Email</td>
-                <td>@item.Saldo</td>
-
-            </tr>
-            }
-    </tbody>
-</table>
-};

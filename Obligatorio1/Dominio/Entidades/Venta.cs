@@ -45,5 +45,10 @@ namespace Dominio.Entidades
             }
             return respuesta;
         }
+
+        public override string Tipo()
+        {
+            return "Venta";
+        }
     }
 }

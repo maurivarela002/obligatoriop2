@@ -18,12 +18,14 @@
             {
             <tr>
                 <th scope="row">@item.FchPublic.ToString("dd/MM/yyyy")</th>
-                <td>subasta o venta</td>
+                <td>@item.Tipo()</td>
                 <td>@item.Nombre</td>
                 <td>@item.Estados</td>
                 <td><button>Ver</button></td>
-                <td><button>Comprar o subastar</button></td>
-            </tr>
+                <td>
+                    <button>Comprar</button>
+                </td>
+                </tr>
             }
     </tbody>
 </table>

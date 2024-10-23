@@ -36,5 +36,11 @@ namespace Dominio.Entidades
             string respuesta = base.ToString();
             return respuesta;
         }
+
+        public override string Tipo()
+        {
+            return "Subasta";
+        }
+
     }
 }

@@ -38,6 +38,7 @@ namespace Dominio.Entidades
         }
         #endregion
 
+        public abstract string Tipo();
         public void Validar()
         {
             validateNull();
