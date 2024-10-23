@@ -4,10 +4,21 @@ namespace Dominio
 {
     public class Sistema
     {
+        private static Sistema instancia;
         private List<Articulo> _articulos = new List<Articulo>();
         private List<Usuario> _usuarios = new List<Usuario>();
         private List<Publicacion> _publicaciones = new List<Publicacion>();
         private List<Oferta> _ofertas = new List<Oferta>();
+
+        public static Sistema Instancia
+        {
+            get
+            {
+                if (instancia == null) instancia = new Sistema();
+                return instancia;
+            }
+        }
+
 
         public Sistema()
         {
@@ -107,6 +118,21 @@ namespace Dominio
             }
             return aux;
         }
+
+        public bool esSubasta() 
+        { 
+            bool subasta = false;
+
+            foreach (Publicacion publis in _publicaciones)
+            {
+                if (publis is Subasta)
+                {
+                    return true;
+                }
+            }
+            return subasta;
+        }
+
 
         public void AgregarArticulo(Articulo articulo)
         {

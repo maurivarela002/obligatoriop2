@@ -6,7 +6,7 @@ namespace WebApplication1.Controllers
 {
     public class ArticuloController : Controller
     {
-        private Sistema _sistema = new Sistema();
+        private Sistema _sistema = Sistema.Instancia;
 
         [HttpGet]
         public IActionResult Index()

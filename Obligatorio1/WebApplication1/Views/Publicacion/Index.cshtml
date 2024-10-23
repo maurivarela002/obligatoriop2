@@ -1,0 +1,29 @@
+﻿@using Dominio.Entidades
+<h1>Publicaciones</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">FchPublic</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Estados</th>
+            <th scope="col">Productos</th>
+            <th scope="col">Accion</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @foreach (Publicacion item in ViewBag.Publicaciones)
+            {
+            <tr>
+                <th scope="row">@item.FchPublic.ToString("dd/MM/yyyy")</th>
+                <td>subasta o venta</td>
+                <td>@item.Nombre</td>
+                <td>@item.Estados</td>
+                <td><button>Ver</button></td>
+                <td><button>Comprar o subastar</button></td>
+            </tr>
+            }
+    </tbody>
+</table>

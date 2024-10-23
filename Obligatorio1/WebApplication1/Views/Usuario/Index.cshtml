@@ -1,7 +1,56 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@using Dominio.Entidades
+
+
+
+@if (ViewBag.Admin){
+<h1>Lista de Administradores</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @foreach (Administrador item in ViewBag.Administradores)
+            {
+            <tr>
+                <th scope="row">@item.Nombre</th>
+                <td>@item.Apellido</td>
+                <td>@item.Email</td>
+
+            </tr>
+            }
+    </tbody>
+</table>
 }
-<h1>Hola soy un Usuario generico</h1>
-<p>Para obtener mas informacion debes ingresar a la web</p>
+
+@if (!ViewBag.Admin)
+{
+ <h1>Lista de Clientes</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Email</th>
+            <th scope="col">Saldo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @foreach (Cliente item in ViewBag.Clientes)
+            {
+            <tr>
+                <th scope="row">@item.Nombre</th>
+                <td>@item.Apellido</td>
+                <td>@item.Email</td>
+                <td>@item.Saldo</td>
+
+            </tr>
+            }
+    </tbody>
+</table>
+};
