@@ -58,6 +58,19 @@ namespace Dominio
             return aux;
         }
 
+        public bool ClienteExiste(string email)
+        {
+            Boolean usuarioValido = false;
+            foreach (Cliente unCliente in obtenerClientes())
+            {
+                if (unCliente.Email == email.ToLower())
+                {
+                    usuarioValido = true;
+                }
+            }
+            return usuarioValido;
+        }
+
         public List<Administrador> obtenerAdministradores()
         {
             List<Administrador> aux = new List<Administrador>();

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ricio\\Desktop\\ort\\p2\\obligatoriop2\\Obligatorio1\\Dominio\\Dominio.csproj",
+      "projectUniqueName": "C:\\Users\\Ricio\\Desktop\\ort\\p2\\obligatorio\\Obligatorio1\\Dominio\\Dominio.csproj",
       "projectName": "Dominio",
-      "projectPath": "C:\\Users\\Ricio\\Desktop\\ort\\p2\\obligatoriop2\\Obligatorio1\\Dominio\\Dominio.csproj",
+      "projectPath": "C:\\Users\\Ricio\\Desktop\\ort\\p2\\obligatorio\\Obligatorio1\\Dominio\\Dominio.csproj",
       "packagesPath": "C:\\Users\\Ricio\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ricio\\Desktop\\ort\\p2\\obligatoriop2\\Obligatorio1\\Dominio\\obj\\",
+      "outputPath": "C:\\Users\\Ricio\\Desktop\\ort\\p2\\obligatorio\\Obligatorio1\\Dominio\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Ricio\\AppData\\Roaming\\NuGet\\NuGet.Config",

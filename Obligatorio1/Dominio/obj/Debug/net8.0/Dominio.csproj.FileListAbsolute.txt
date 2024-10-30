@@ -34,3 +34,15 @@ C:\Users\Ricio\Desktop\ort\p2\obligatoriop2\Obligatorio1\Dominio\obj\Debug\net8.
 C:\Users\Ricio\Desktop\ort\p2\obligatoriop2\Obligatorio1\Dominio\obj\Debug\net8.0\refint\Dominio.dll
 C:\Users\Ricio\Desktop\ort\p2\obligatoriop2\Obligatorio1\Dominio\obj\Debug\net8.0\Dominio.pdb
 C:\Users\Ricio\Desktop\ort\p2\obligatoriop2\Obligatorio1\Dominio\obj\Debug\net8.0\ref\Dominio.dll
+C:\Users\Ricio\Desktop\ort\p2\obligatorio\Obligatorio1\Dominio\bin\Debug\net8.0\Dominio.deps.json
+C:\Users\Ricio\Desktop\ort\p2\obligatorio\Obligatorio1\Dominio\bin\Debug\net8.0\Dominio.dll
+C:\Users\Ricio\Desktop\ort\p2\obligatorio\Obligatorio1\Dominio\bin\Debug\net8.0\Dominio.pdb
+C:\Users\Ricio\Desktop\ort\p2\obligatorio\Obligatorio1\Dominio\obj\Debug\net8.0\Dominio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ricio\Desktop\ort\p2\obligatorio\Obligatorio1\Dominio\obj\Debug\net8.0\Dominio.AssemblyInfoInputs.cache
+C:\Users\Ricio\Desktop\ort\p2\obligatorio\Obligatorio1\Dominio\obj\Debug\net8.0\Dominio.AssemblyInfo.cs
+C:\Users\Ricio\Desktop\ort\p2\obligatorio\Obligatorio1\Dominio\obj\Debug\net8.0\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\Ricio\Desktop\ort\p2\obligatorio\Obligatorio1\Dominio\obj\Debug\net8.0\Dominio.sourcelink.json
+C:\Users\Ricio\Desktop\ort\p2\obligatorio\Obligatorio1\Dominio\obj\Debug\net8.0\Dominio.dll
+C:\Users\Ricio\Desktop\ort\p2\obligatorio\Obligatorio1\Dominio\obj\Debug\net8.0\refint\Dominio.dll
+C:\Users\Ricio\Desktop\ort\p2\obligatorio\Obligatorio1\Dominio\obj\Debug\net8.0\Dominio.pdb
+C:\Users\Ricio\Desktop\ort\p2\obligatorio\Obligatorio1\Dominio\obj\Debug\net8.0\ref\Dominio.dll
