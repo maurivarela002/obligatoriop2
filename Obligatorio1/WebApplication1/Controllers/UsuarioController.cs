@@ -5,7 +5,7 @@ namespace WebApplication1.Controllers
 {
     public class UsuarioController : Controller
     {
-        private Sistema _sistema = new Sistema();
+        private Sistema _sistema = Sistema.Instancia;
         public IActionResult Index()
         {
             return View();

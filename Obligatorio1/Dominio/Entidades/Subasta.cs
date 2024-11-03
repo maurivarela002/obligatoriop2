@@ -31,6 +31,11 @@ namespace Dominio.Entidades
                 throw new Exception("El nombre no puede ser vacio");
             }
         }
+        public override string Tipo()
+        {
+            string salida = "Subasta";
+            return salida;
+        }
         public override string ToString()
         {
             string respuesta = base.ToString();

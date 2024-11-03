@@ -27,19 +27,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ricio\\.nuget\\packages\\": {}
+    "C:\\Users\\matia\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Ricio\\Desktop\\ort\\p2\\obligatoriop2\\Obligatorio1\\AppTest\\AppTest.csproj",
+      "projectUniqueName": "C:\\Users\\matia\\OneDrive\\Desktop\\obligatoriop\\Obligatorio1\\AppTest\\AppTest.csproj",
       "projectName": "AppTest",
-      "projectPath": "C:\\Users\\Ricio\\Desktop\\ort\\p2\\obligatoriop2\\Obligatorio1\\AppTest\\AppTest.csproj",
-      "packagesPath": "C:\\Users\\Ricio\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Ricio\\Desktop\\ort\\p2\\obligatoriop2\\Obligatorio1\\AppTest\\obj\\",
+      "projectPath": "C:\\Users\\matia\\OneDrive\\Desktop\\obligatoriop\\Obligatorio1\\AppTest\\AppTest.csproj",
+      "packagesPath": "C:\\Users\\matia\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\matia\\OneDrive\\Desktop\\obligatoriop\\Obligatorio1\\AppTest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Ricio\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\matia\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -47,15 +47,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Ricio\\Desktop\\ort\\p2\\obligatoriop2\\Obligatorio1\\Dominio\\Dominio.csproj": {
-              "projectPath": "C:\\Users\\Ricio\\Desktop\\ort\\p2\\obligatoriop2\\Obligatorio1\\Dominio\\Dominio.csproj"
+            "C:\\Users\\matia\\OneDrive\\Desktop\\obligatoriop\\Obligatorio1\\Dominio\\Dominio.csproj": {
+              "projectPath": "C:\\Users\\matia\\OneDrive\\Desktop\\obligatoriop\\Obligatorio1\\Dominio\\Dominio.csproj"
             }
           }
         }

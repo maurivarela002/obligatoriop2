@@ -9,6 +9,15 @@ namespace Dominio
         private List<Publicacion> _publicaciones = new List<Publicacion>();
         private List<Oferta> _ofertas = new List<Oferta>();
 
+        private static Sistema instancia;
+        public static Sistema Instancia
+        {
+            get
+            {
+                if (instancia == null) instancia = new Sistema();
+                return instancia;
+            }
+        }
         public Sistema()
         {
             PrecargarDatos();
@@ -133,32 +142,48 @@ namespace Dominio
             }
             return aux;
         }
-        public List<Articulo> ArticulosxNombrePublicacion(string pNombre)
+
+        public string NombrePublicacionXid(int id) 
+        {
+            string salida = string.Empty;
+            foreach (var item in Publicaciones)
+            {
+                if (item.Id==id)
+                {
+                    return item.Nombre;
+                }
+            }
+
+            return salida;
+        }
+
+        public List<Articulo> ArticulosxIdPublicacion(int id)
         {
             List<Articulo> aux = new List<Articulo>();
-            switch (pNombre.ToLower())
+
+            switch (id)
             {
-                case "electro party":
+                case 0:
                     return ObtenerArtxCat("Electrónica");
-                case "sport sale":
+                case 1:
                     return ObtenerArtxCat("Deportes");
-                case "mega sale":
+                case 2:
                     return ObtenerArtxCat("Ropa");
-                case "tech expo":
+                case 3:
                     return ObtenerArtxCat("Periféricos");
-                case "gadget fest":
+                case 4:
                     return ObtenerArtxCat("Audio");
-                case "book sales":
+                case 5:
                     return ObtenerArtxCat("Libros");
-                case "work world":
+                case 6:
                     return ObtenerArtxCat("Oficina");
-                case "mayor tranquilidad":
+                case 7:
                     return ObtenerArtxCat("Seguridad");
-                case "luxury":
+                case 8:
                     return ObtenerArtxCat("Joyería");
-                case "holiday deals":
+                case 9:
                     return ObtenerArtxCat("Viaje");
-                case "black friday":
+                case 10:
                     return ObtenerArtxCat("Accesorios");
                 default:
                     return aux;

@@ -1,6 +1,14 @@
 ﻿@using Dominio.Entidades
 @model Articulo;
 
+@if (ViewBag.mensaje != null)
+{
+        <div class="alert alert-success" role="alert">
+        @ViewBag.mensaje
+        </div>
+}
+@* 
+
 <h1>Alta de Artículos</h1>
 
 <form action="/articulo/GestionArticulo">
@@ -47,4 +55,4 @@
             </tr>
             }
     </tbody>
-</table>
+</table> *@

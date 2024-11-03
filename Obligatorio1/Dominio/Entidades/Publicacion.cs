@@ -49,6 +49,7 @@ namespace Dominio.Entidades
                 throw new Exception("El nombre no puede ser vacio");
             }
         }
+        public abstract string Tipo();
 
         public override string ToString()
         {

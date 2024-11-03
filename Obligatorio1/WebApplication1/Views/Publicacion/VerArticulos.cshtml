@@ -1,0 +1,34 @@
+﻿@using Dominio.Entidades
+@model Articulo;
+
+@* @if (ViewBag.mensaje != null)
+{
+    <div class="alert alert-success" role="alert">
+        @ViewBag.mensaje
+    </div>
+}
+ *@
+
+<h1>Articulos de la Publicacion @ViewBag.publicacion</h1>
+
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col">Articulo</th>
+			<th scope="col">Categoria</th>
+			<th scope="col">Precio</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			@foreach (var item in ViewBag.articulos)
+			{
+			<tr>
+				<td>@item.NombreArt</td>
+				<td>@item.Categoria</td>
+				<td>@item.PrecioVenta</td>
+			</tr>
+			}
+	</tbody>
+</table>
