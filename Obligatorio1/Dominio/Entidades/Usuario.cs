@@ -11,6 +11,7 @@ namespace Dominio.Entidades
         public string Apellido { get; }
         public string Email { get; }
         public string Contrasenia { get; }
+        public Usuario() { }
         public Usuario(string nombre, string apellido, string email, string contrasenia)
         {
             Id = _ultimoId++;

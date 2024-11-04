@@ -8,6 +8,7 @@ namespace WebApplication1.Controllers
         private Sistema _sistema = Sistema.Instancia;
         public IActionResult Index()
         {
+
             return View();
         }
     }

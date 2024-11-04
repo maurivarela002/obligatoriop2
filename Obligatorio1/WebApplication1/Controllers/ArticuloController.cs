@@ -15,16 +15,10 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        public IActionResult verArticulos(int idPublicacion)
+        public IActionResult verArticulos(string nombrePublicacion)
         {
-            return View(_sistema.ArticulosxIdPublicacion(idPublicacion));
+            return View(_sistema.ArticulosxNombrePublicacion(nombrePublicacion));
         }
-
-
-
-
-
-
         [HttpGet]
         public IActionResult GestionArticulo()
         {

@@ -11,5 +11,11 @@ namespace WebApplication1.Controllers
             ViewBag.Clientes = _sistema.obtenerClientes();
             return View();
         }
+
+        public IActionResult cargarsaldo()
+        {
+            ViewBag.Clientes = _sistema.obtenerClientes();
+            return View();
+        }
     }
 }

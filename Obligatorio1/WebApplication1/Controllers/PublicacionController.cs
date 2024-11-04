@@ -12,11 +12,10 @@ namespace WebApplication1.Controllers
             ViewBag.Publicacion = _sistema.Publicaciones;
             return View();
         }
-        public IActionResult VerArticulos(int idPublicacion)
+        public IActionResult VerArticulos(string nombrePublicacion)
         {
-            ViewBag.publicacion = _sistema.NombrePublicacionXid(idPublicacion);
-
-			ViewBag.articulos = _sistema.ArticulosxIdPublicacion(idPublicacion);
+            ViewBag.publiName =_sistema.obtenerPublicacion(nombrePublicacion);
+			ViewBag.publicacion = _sistema.ArticulosxNombrePublicacion(nombrePublicacion);
             return View();
         }
 
