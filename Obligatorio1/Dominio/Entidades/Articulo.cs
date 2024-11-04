@@ -12,6 +12,7 @@ namespace Dominio.Entidades
         public double PrecioVenta { get; set; }
         #endregion
         #region Constructor
+        public Articulo() { }
         public Articulo(string nombre, string categoria, double precioVenta)
         {
             Id = _ultimoId++;
@@ -39,6 +40,8 @@ namespace Dominio.Entidades
                 throw new Exception("El precio debe ser mayor a Cero");
             }
         }
+
+
 
         public override string ToString()
         {

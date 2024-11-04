@@ -15,12 +15,14 @@ namespace Dominio.Entidades
                      string nombre,
                      EnumEstados estados,
                      DateTime fchPublic,
-                     List<Articulo> articulos,
+                     //List<Articulo> articulos,
                      int idUser,
                      int idPurchUser,
                      DateTime purchDate,
                      bool ofertar
-            ) : base(nombre, estados, fchPublic, articulos, idUser, idPurchUser, purchDate)
+            ) : base(nombre, estados, fchPublic, 
+                //articulos, 
+                idUser, idPurchUser, purchDate)
         {
             OfertaR = ofertar;
 
@@ -36,7 +38,19 @@ namespace Dominio.Entidades
                 throw new Exception("El nombre no puede ser vacio");
             }
         }
-        public override string ToString()
+
+        public override string Tipo()
+        {
+            string salida = "Venta";
+            return salida;
+        }
+
+        public override string BtnComprar()
+        {
+            string salida = "Comprar";
+            return salida;
+        }
+		public override string ToString()
         {
             string respuesta = base.ToString();
             if (OfertaR)

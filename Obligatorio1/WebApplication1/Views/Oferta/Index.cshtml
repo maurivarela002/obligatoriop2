@@ -1,0 +1,18 @@
+﻿@using Dominio.Entidades
+<h1>Realice su oferta</h1>
+
+<div>
+	@foreach (Oferta item in @ViewBag.Oferta)
+	{
+	<p>Nombre de la Publicacion: @item.Pnombre</p>
+	<p>Importe Actual de la subasta: @item.Monto</p>
+	<p>Fecha de Oferta: @item.FchOfer</p>
+		
+	}
+</div>
+
+<form action="/" method="post">
+<label for="Importe">Ingrese un importe</label>
+	<input type="text" name="Importe"/>
+	<input type="submit" name="pujar" value="Confirmar" />
+</form>

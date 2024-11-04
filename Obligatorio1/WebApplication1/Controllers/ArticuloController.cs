@@ -6,13 +6,18 @@ namespace WebApplication1.Controllers
 {
     public class ArticuloController : Controller
     {
-        private Sistema _sistema = new Sistema();
+        private Sistema _sistema = Sistema.Instancia;
 
         [HttpGet]
         public IActionResult Index()
         {
             ViewBag.Articulo = _sistema.Articulos;
             return View();
+        }
+
+        public IActionResult verArticulos(string nombrePublicacion)
+        {
+            return View(_sistema.ArticulosxNombrePublicacion(nombrePublicacion));
         }
         [HttpGet]
         public IActionResult GestionArticulo()

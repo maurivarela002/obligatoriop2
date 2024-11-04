@@ -5,6 +5,7 @@ namespace Dominio.Entidades
     {
         public bool Admin { get; }
 
+        
         public Administrador(string nombre, string apellido, string email, string contrasenia) :
             base(nombre, apellido, email, contrasenia)
         {

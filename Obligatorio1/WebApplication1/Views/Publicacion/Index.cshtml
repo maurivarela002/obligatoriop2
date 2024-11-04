@@ -1,0 +1,44 @@
+﻿@using Dominio.Entidades
+<h1>Lista de Publicaciones</h1>
+
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col">Fecha Publicacion</th>
+			<th scope="col">Nombre</th>
+			<th scope="col">Estado</th>
+			<th scope="col">Tipo</th>
+			<th scope="col">Precio</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			@foreach (Publicacion item in ViewBag.Publicacion)
+			{
+
+
+
+				<tr>
+					<td>@item.FchPublic.ToString("yyyy-MM-dd")</td>
+					<th scope="row">@item.Nombre</th>
+					<td>@item.Estados</td>
+					<td>@item.Tipo()</td>
+					<td>@item.PrecioPublicacion()</td>
+					<td><a href="Publicacion/VerArticulos?nombrePublicacion=@item.Nombre" class="btn btn-primary">Ver Articulos</a></td>
+						@if (item.BtnComprar() == "Ofertar")
+						{
+					<td><a href="Oferta/Index?nombrePublicacion=@item.Nombre" class="btn btn-success">@item.BtnComprar()</a></td>
+
+						}
+						else
+						{
+						<td><a href="Venta/Index?idUser=@item.IdUser" class="btn btn-success">@item.BtnComprar()</a></td>
+						}
+
+
+				</tr>
+			
+			}
+	</tbody>
+</table>

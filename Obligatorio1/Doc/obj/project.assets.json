@@ -8,7 +8,7 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Ricio\\.nuget\\packages\\": {}
+    "C:\\Users\\matia\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -20,7 +20,7 @@
       "outputPath": "C:\\Users\\Ricio\\Desktop\\ort\\p2\\obligatorio\\Obligatorio1\\Doc\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Ricio\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\matia\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -28,7 +28,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
