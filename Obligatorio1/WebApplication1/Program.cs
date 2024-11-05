@@ -18,12 +18,11 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseSession();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    //pattern: "{controller=Login}/{action=Ingresar}/{id?}");
-    pattern: "{controller=Publicacion}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Home}");
 
 app.Run();

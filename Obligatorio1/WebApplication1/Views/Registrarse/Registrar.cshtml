@@ -1,0 +1,39 @@
+﻿@using Dominio.Entidades
+
+<h2>Registro de Cliente</h2>
+
+<form action="/Registrarse/Registrar" method="post" style="width:fit-content; margin: 0 auto;">
+    <div class="form-outline mb-4">
+        <label class="form-label">Nombre</label>
+        <input type="text" name="nombre" class="form-control" required />
+    </div>
+
+    <div class="form-outline mb-4">
+        <label class="form-label">Apellido</label>
+        <input type="text" name="apellido" class="form-control" required />
+    </div>
+
+    <div class="form-outline mb-4">
+        <label class="form-label">Email</label>
+        <input type="email" name="email" class="form-control" required />
+    </div>
+
+    <div class="form-outline mb-4">
+        <label class="form-label">Contraseña</label>
+        <input type="password" name="password" class="form-control" required />
+    </div>
+
+    <div class="form-outline mb-4">
+        <label class="form-label">Saldo Inicial</label>
+        <input type="number" name="saldo" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Registrarse</button>
+</form>
+
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger">
+        @ViewBag.Error
+    </div>
+}
