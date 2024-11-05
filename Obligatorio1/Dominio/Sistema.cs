@@ -60,22 +60,6 @@ namespace Dominio
 		{
 			List<Cliente> aux = new List<Cliente>();
 
-        public bool ClienteExiste(string email)
-        {
-            Boolean usuarioValido = false;
-            foreach (Cliente unCliente in obtenerClientes())
-            {
-                if (unCliente.Email == email.ToLower())
-                {
-                    usuarioValido = true;
-                }
-            }
-            return usuarioValido;
-        }
-
-        public List<Administrador> obtenerAdministradores()
-        {
-            List<Administrador> aux = new List<Administrador>();
 			foreach (Usuario user in _usuarios)
 			{
 				if (user is Cliente)
@@ -86,21 +70,33 @@ namespace Dominio
 			}
 			return aux;
 		}
+        public bool ClienteExiste(string email, string password)
+        {
+            Boolean usuarioValido = false;
+            foreach (Cliente unCliente in obtenerClientes())
+            {
+                if (unCliente.Email == email.ToLower() && unCliente.Contrasenia == password.ToLower())
+                {
+                    usuarioValido = true;
+                }
+            }
+            return usuarioValido;
+        }
 
-		// public List<Administrador> obtenerAdministradores()
-		// {
-		// 	List<Administrador> aux = new List<Administrador>();
+        public List<Administrador> obtenerAdministradores()
+		{
+			List<Administrador> aux = new List<Administrador>();
 
-		// 	foreach (Usuario user in _usuarios)
-		// 	{
-		// 		if (user is Administrador)
-		// 		{
-		// 			Administrador admin = (Administrador)user;
-		// 			aux.Add(admin);
-		// 		}
-		// 	}
-		// 	return aux;
-		// }
+			foreach (Usuario user in _usuarios)
+			{
+				if (user is Administrador)
+				{
+					Administrador admin = (Administrador)user;
+					aux.Add(admin);
+				}
+			}
+			return aux;
+		}
 
 		public void AgregarPublicacion(Publicacion publicacion)
 		{

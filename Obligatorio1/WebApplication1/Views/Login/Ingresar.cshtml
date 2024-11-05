@@ -1,14 +1,15 @@
 @using Dominio.Entidades
+<h2>Ingresar al sistema</h2>
 
-<form method="post" action="/Login/Ingresar" style="width:fit-content; margin: 0 auto;">
+<form action="/Login/Ingresar" method="post" style="min-width:fit-content; width: 500px; margin: 0 auto;">
     <div data-mdb-input-init class="form-outline mb-4">
         <label class="form-label">Email</label>
-        <input type="email" name="email" class="form-control" />
+        <input required type="email" name="email" class="form-control" />
     </div>
 
     <div data-mdb-input-init class="form-outline mb-4">
         <label class="form-label">Contraseña</label>
-        <input type="password" name="password" class="form-control" />
+        <input required type="text" name="password" class="form-control" />
     </div>
 
     <p style="color:red;">@ViewBag.Mensaje</p>

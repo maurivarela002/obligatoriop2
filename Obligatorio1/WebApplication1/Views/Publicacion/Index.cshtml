@@ -25,7 +25,7 @@
 					<td>@item.Estados</td>
 					<td>@item.Tipo()</td>
 					<td>@item.PrecioPublicacion()</td>
-					<td><a href="Publicacion/VerArticulos?nombrePublicacion=@item.Nombre" class="btn btn-primary">Ver Articulos</a></td>
+					<td><a href="VerArticulos?nombrePublicacion=@item.Nombre" class="btn btn-primary">Ver Articulos</a></td>
 						@if (item.BtnComprar() == "Ofertar")
 						{
 					<td><a href="Oferta/Index?nombrePublicacion=@item.Nombre" class="btn btn-success">@item.BtnComprar()</a></td>

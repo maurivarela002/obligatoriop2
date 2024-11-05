@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "/WPqTRvwIasqQKM4vEXg/U89e3Y3NgrHul2ZwVN8rQo=",
+  "Hash": "6ayAd/03fOQD+K0YMJkDGOqcfJIOFJgsqmkiXbSFI6E=",
   "Source": "WebApplication1",
   "BasePath": "_content/WebApplication1",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Ricio\\Desktop\\ort\\p2\\obligatorio\\Obligatorio1\\WebApplication1\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\WebApplication1.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Ricio\\Desktop\\ort\\p2\\obligatorio\\Obligatorio1\\WebApplication1\\wwwroot\\css\\home.css",
+      "SourceId": "WebApplication1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Ricio\\Desktop\\ort\\p2\\obligatorio\\Obligatorio1\\WebApplication1\\wwwroot\\",
+      "BasePath": "_content/WebApplication1",
+      "RelativePath": "css/home.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\home.css"
     },
     {
       "Identity": "C:\\Users\\Ricio\\Desktop\\ort\\p2\\obligatorio\\Obligatorio1\\WebApplication1\\wwwroot\\css\\site.css",
