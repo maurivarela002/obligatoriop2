@@ -18,14 +18,18 @@ namespace WebApplication1.Controllers
         public IActionResult Ingresar(string email, string password)
         {
             bool existe = false;
+            bool esAdmin = false;
             if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
             {
                 existe = _sistema.ClienteExiste(email, password);
+                esAdmin = _sistema.UsuarioEsAdmin(email, password);
                 if (existe)
                 {
                     HttpContext.Session.SetString("email", email);
                     HttpContext.Session.SetString("password", password);
-                    //HttpContext.Session.SetString("admin", admin);
+                    if (esAdmin) {
+                        HttpContext.Session.SetString("admin", "true");
+                    }
                 }
                 else
                 {

@@ -19,6 +19,7 @@ namespace Dominio
 				return instancia;
 			}
 		}
+
 		public Sistema()
 		{
 			PrecargarDatos();
@@ -70,20 +71,47 @@ namespace Dominio
 			}
 			return aux;
 		}
-		public bool ClienteExiste(string email, string password)
-		{
-			Boolean usuarioValido = false;
-			foreach (Cliente unCliente in obtenerClientes())
-			{
-				if (unCliente.Email == email.ToLower() && unCliente.Contrasenia == password.ToLower())
-				{
-					usuarioValido = true;
-				}
-			}
-			return usuarioValido;
-		}
 
-		public List<Administrador> obtenerAdministradores()
+        public Cliente obtenerClienteByEmailAndPassword(string email, string password)
+        {
+            foreach (Usuario unCliente in obtenerClientes())
+            {
+                if (unCliente.Email == email.ToLower() && unCliente.Contrasenia == password.ToLower())
+                {
+                    Cliente cliente = (Cliente)unCliente;
+                    return cliente;
+                }
+			}
+            return null;
+        }
+
+        public bool ClienteExiste(string email, string password)
+        {
+            Boolean usuarioValido = false;
+            foreach (Cliente unCliente in obtenerClientes())
+            {
+                if (unCliente.Email == email.ToLower() && unCliente.Contrasenia == password.ToLower())
+                {
+                    usuarioValido = true;
+                }
+            }
+            return usuarioValido;
+        }
+
+        public bool UsuarioEsAdmin(string email, string password)
+        {
+            Boolean usuarioEsAdmin = false;
+            foreach (Administrador unAdmin in obtenerAdministradores())
+            {
+                if (unAdmin.Email == email.ToLower() && unAdmin.Contrasenia == password.ToLower())
+                {
+                    usuarioEsAdmin = unAdmin.Admin;
+                }
+            }
+            return usuarioEsAdmin;
+        }
+
+        public List<Administrador> obtenerAdministradores()
 		{
 			List<Administrador> aux = new List<Administrador>();
 
@@ -104,7 +132,6 @@ namespace Dominio
 			publicacion.Validar();
 			_publicaciones.Add(publicacion);
 		}
-
 
 		public void AgregarArticulo(Articulo articulo)
 		{
@@ -193,8 +220,6 @@ namespace Dominio
 			return aux;
 
 		}
-
-
 
 		public bool EsOfertaRelampago(string NombrePublicacion)
 		{
