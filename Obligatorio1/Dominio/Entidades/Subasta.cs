@@ -57,6 +57,7 @@ namespace Dominio.Entidades
 			return respuesta;
 		}
 
+
 		public void AgregarOferta(Oferta oferta)
 		{
 			if (oferta == null)
@@ -65,6 +66,19 @@ namespace Dominio.Entidades
 			_ofertas.Add(oferta);
 
 		}
+
+		public override double PrecioPublicacion()
+		{
+			double total = base.PrecioPublicacion();
+
+			if (_ofertas.Count()>0)
+			{
+				total = _ofertas[_ofertas.Count() -1].Monto;
+			}
+			return total;
+		}
+
+
 	}
 
 }

@@ -23,7 +23,6 @@ namespace Dominio.Entidades
 						   string nombre,
 						   EnumEstados estados,
 						   DateTime fchPublic,
-						   //List<Articulo> articulos,
 						   int idUser,
 						   int idPurchUser,
 						   DateTime purchDate
@@ -32,7 +31,7 @@ namespace Dominio.Entidades
 			Id = _ultimoId++;
 			Nombre = nombre;
 			FchPublic = fchPublic;
-			//_articulos = articulos;
+			Estados = estados;
 			IdUser = idUser;
 			IdPurchUser = idPurchUser;
 			PurchDate = purchDate;
@@ -51,7 +50,6 @@ namespace Dominio.Entidades
 			}
 		}
 		public abstract string Tipo();
-
 
 		public abstract string BtnComprar();
 
@@ -97,23 +95,22 @@ namespace Dominio.Entidades
 			return aux;
 
 		}
-
-		public double PrecioPublicacion()
+		public virtual double PrecioPublicacion()
 		{
 			double total = 0;
-			if (Tipo()== "Venta") 
-			{
+
 			foreach (Articulo item in _articulos)
 			{
 				total += item.PrecioVenta;
 			}
+
+			
 			return total;
-
-			}
-
-			return total;
-
 		}
+
+
+
+
 
 
 

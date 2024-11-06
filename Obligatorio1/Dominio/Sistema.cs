@@ -147,20 +147,6 @@ namespace Dominio
 			_ofertas.Add(oferta);
 		}
 
-		//public List<Articulo> ObtenerArtxCat(string pCategoria)
-		//{
-		//    List<Articulo> aux = new List<Articulo>();
-
-		//    foreach (Articulo unArticulo in _articulos)
-		//    {
-		//        if (unArticulo.Categoria.ToLower() == pCategoria.ToLower())
-		//        {
-		//            aux.Add(unArticulo);
-		//        }
-		//    }
-		//    return aux;
-		//}
-
 		public List<Articulo> ObtenerArticulosRandom(int cantidad)
 		{
 			List<Articulo> aux = new List<Articulo>();
@@ -175,7 +161,7 @@ namespace Dominio
 			List<int> indicesSeleccionados = new List<int>();
 
 
-			while (aux.Count <= cantidad)
+			while (aux.Count < cantidad)
 			{
 				int index = rand.Next(totalArticulos);
 				if (!indicesSeleccionados.Contains(index))
@@ -235,7 +221,20 @@ namespace Dominio
 
 		}
 
-		public void RecargarSalgoXCliente() { }
+		public bool EsOfertaRelampago(string NombrePublicacion)
+		{
+			Publicacion unP = obtenerPublicacion(NombrePublicacion);
+			if (unP != null && unP.Tipo() == "Venta")
+			{
+				Venta unV = (Venta)unP;
+				if (unV.OfertaR)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
+
 
 		public void PrecargarDatos()
 		{
@@ -323,6 +322,11 @@ namespace Dominio
 			AgregarArticulo(new Articulo("Consola de videojuegos", "Electrónica", 300));
 			//AgregarArticulo(null); //prueba de precarga nula
 			#endregion
+			#region Ofertas
+			//Precargas de Ofertas
+			AgregarOferta(new Oferta(0, 0, 150.20, new DateTime(2024, 10, 05, 00, 00, 00), "Luxury"));
+			AgregarOferta(new Oferta(2, 2, 120.10, new DateTime(2024, 10, 04, 00, 00, 00), "Black Friday"));
+			#endregion
 
 			#region Ventas
 			//************Precarga Publicaciones ****************
@@ -330,21 +334,16 @@ namespace Dominio
 			AgregarPublicacion(new Venta("Electro Party", EnumEstados.ABIERTA, new DateTime(2024, 10, 05, 00, 00, 00), 0, 0, new DateTime(2024, 10, 05, 00, 00, 00), false));
 			AgregarPublicacion(new Venta("Sport Sale", EnumEstados.ABIERTA, new DateTime(2024, 10, 05, 00, 00, 00), 0, 0, new DateTime(2024, 10, 05, 00, 00, 00), true));
 			AgregarPublicacion(new Venta("Mega Sale", EnumEstados.ABIERTA, new DateTime(2024, 10, 06, 00, 00, 00), 0, 0, new DateTime(2024, 10, 06, 00, 00, 00), false));
-			AgregarPublicacion(new Venta("Tech Expo", EnumEstados.ABIERTA, new DateTime(2024, 10, 07, 00, 00, 00), 0, 0, new DateTime(2024, 10, 07, 00, 00, 00), true));
+			AgregarPublicacion(new Venta("Tech Expo", EnumEstados.CERRADA, new DateTime(2024, 10, 07, 00, 00, 00), 0, 0, new DateTime(2024, 10, 07, 00, 00, 00), true));
 			AgregarPublicacion(new Venta("Gadget Fest", EnumEstados.ABIERTA, new DateTime(2024, 10, 08, 00, 00, 00), 0, 0, new DateTime(2024, 10, 08, 00, 00, 00), false));
-			AgregarPublicacion(new Venta("Book Sales", EnumEstados.ABIERTA, new DateTime(2024, 10, 09, 00, 00, 00), 0, 0, new DateTime(2024, 10, 09, 00, 00, 00), true));
-			AgregarPublicacion(new Venta("Work World", EnumEstados.ABIERTA, new DateTime(2024, 10, 10, 00, 00, 00), 0, 0, new DateTime(2024, 10, 10, 00, 00, 00), false));
+			AgregarPublicacion(new Venta("Book Sales", EnumEstados.CANCELADA, new DateTime(2024, 10, 09, 00, 00, 00), 0, 0, new DateTime(2024, 10, 09, 00, 00, 00), true));
+			AgregarPublicacion(new Venta("Work World", EnumEstados.CANCELADA, new DateTime(2024, 10, 10, 00, 00, 00), 0, 0, new DateTime(2024, 10, 10, 00, 00, 00), false));
 			AgregarPublicacion(new Venta("Mayor Tranquilidad", EnumEstados.ABIERTA, new DateTime(2024, 10, 11, 00, 00, 00), 0, 0, new DateTime(2024, 10, 11, 00, 00, 00), true));
 			AgregarPublicacion(new Venta("Big Sale", EnumEstados.ABIERTA, new DateTime(2024, 10, 12, 00, 00, 00), 0, 0, new DateTime(2024, 10, 12, 00, 00, 00), false));
 			AgregarPublicacion(new Venta("Dia del Hogar", EnumEstados.ABIERTA, new DateTime(2024, 10, 13, 00, 00, 00), 0, 0, new DateTime(2024, 10, 13, 00, 00, 00), true));
 			AgregarPublicacion(new Venta("PlayGround", EnumEstados.ABIERTA, new DateTime(2024, 10, 14, 00, 00, 00), 0, 0, new DateTime(2024, 10, 14, 00, 00, 00), true));
 			#endregion
 
-			#region Ofertas
-			//Precargas de Ofertas
-			AgregarOferta(new Oferta(0, 0, 150.20, new DateTime(2024, 10, 05, 00, 00, 00), "Luxury"));
-			AgregarOferta(new Oferta(2, 2, 120.10, new DateTime(2024, 10, 04, 00, 00, 00), "Black Friday"));
-			#endregion
 
 			#region Subastas
 			//Precarga 10 subastas
@@ -355,7 +354,7 @@ namespace Dominio
 			AgregarPublicacion(new Subasta("Cyber Monday", EnumEstados.ABIERTA, new DateTime(2024, 11, 27, 00, 00, 00), 0, 0, new DateTime(2024, 11, 30, 00, 00, 00)));
 			AgregarPublicacion(new Subasta("Navidad 2024", EnumEstados.ABIERTA, new DateTime(2024, 12, 20, 00, 00, 00), 0, 0, new DateTime(2024, 12, 25, 00, 00, 00)));
 			AgregarPublicacion(new Subasta("Año Nuevo 2025", EnumEstados.ABIERTA, new DateTime(2024, 12, 31, 00, 00, 00), 0, 0, new DateTime(2025, 01, 01, 00, 00, 00)));
-			AgregarPublicacion(new Subasta("Verano 2025", EnumEstados.ABIERTA, new DateTime(2025, 01, 15, 00, 00, 00), 0, 0, new DateTime(2025, 02, 15, 00, 00, 00)));
+			AgregarPublicacion(new Subasta("Verano 2025", EnumEstados.CERRADA, new DateTime(2025, 01, 15, 00, 00, 00), 0, 0, new DateTime(2025, 02, 15, 00, 00, 00)));
 			AgregarPublicacion(new Subasta("Primavera 2025", EnumEstados.ABIERTA, new DateTime(2025, 03, 20, 00, 00, 00), 0, 0, new DateTime(2025, 04, 10, 00, 00, 00)));
 			AgregarPublicacion(new Subasta("San Valentín 2025", EnumEstados.ABIERTA, new DateTime(2025, 02, 10, 00, 00, 00), 0, 0, new DateTime(2025, 02, 14, 00, 00, 00)));
 			#endregion
@@ -484,6 +483,13 @@ namespace Dominio
 			{
 				p20.AgregarArticulo(item);
 			}
+
+			Publicacion p21 = obtenerPublicacion("Navidad 2024");
+			foreach (Articulo item in ObtenerArticulosRandom(10))
+			{
+				p21.AgregarArticulo(item);
+			}
+
 		}
 
 		private void PrecargarOfertas()

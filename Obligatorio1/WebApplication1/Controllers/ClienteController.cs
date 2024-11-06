@@ -32,6 +32,7 @@ namespace WebApplication1.Controllers
                 if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
                 {
                     Cliente clienteACargar = _sistema.obtenerClienteByEmailAndPassword(email, password);
+                    ViewBag.saldoActual = clienteACargar.Saldo;
                     clienteACargar.SumarSaldo(saldo);
 
                     ViewBag.NuevoSaldo = $"Tu nuevo saldo es ${clienteACargar.Saldo}";

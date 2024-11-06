@@ -2,6 +2,8 @@
 <h1>Lista de Publicaciones</h1>
 
 
+
+
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -26,14 +28,14 @@
 					<td>@item.Tipo()</td>
 					<td>@item.PrecioPublicacion()</td>
 					<td><a href="VerArticulos?nombrePublicacion=@item.Nombre" class="btn btn-primary">Ver Articulos</a></td>
-						@if (item.BtnComprar() == "Ofertar")
+						@if (item.Estados==Dominio.Sistema.EnumEstados.ABIERTA)
 						{
 					<td><a href="Oferta/Index?nombrePublicacion=@item.Nombre" class="btn btn-success">@item.BtnComprar()</a></td>
 
 						}
 						else
 						{
-						<td><a href="Venta/Index?idUser=@item.IdUser" class="btn btn-success">@item.BtnComprar()</a></td>
+						<td></td>
 						}
 
 
