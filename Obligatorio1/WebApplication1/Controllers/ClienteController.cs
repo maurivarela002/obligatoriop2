@@ -1,5 +1,6 @@
 ﻿using Dominio;
 using Microsoft.AspNetCore.Mvc;
+using Dominio.Entidades;
 
 namespace WebApplication1.Controllers
 {
@@ -11,10 +12,35 @@ namespace WebApplication1.Controllers
             ViewBag.Clientes = _sistema.obtenerClientes();
             return View();
         }
-
-        public IActionResult cargarsaldo()
+        [HttpGet]
+        public IActionResult Cargarsaldo()
         {
-            ViewBag.Clientes = _sistema.obtenerClientes();
+            string email = HttpContext.Session.GetString("email");
+            string password = HttpContext.Session.GetString("password");
+            Cliente clienteACargar = _sistema.obtenerClienteByEmailAndPassword(email, password);
+            ViewBag.saldoActual = clienteACargar.Saldo;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Cargarsaldo(double saldo)
+        {
+            if (saldo > 0 && !double.IsNaN(saldo) && !double.IsNegative(saldo))
+            {
+                string email = HttpContext.Session.GetString("email");
+                string password = HttpContext.Session.GetString("password");
+                if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
+                {
+                    Cliente clienteACargar = _sistema.obtenerClienteByEmailAndPassword(email, password);
+                    clienteACargar.SumarSaldo(saldo);
+
+                    ViewBag.NuevoSaldo = $"Tu nuevo saldo es ${clienteACargar.Saldo}";
+                }
+            }
+            else
+            {
+                ViewBag.saldoInvalido = $"Tu saldo ingresado: {saldo} debe ser numero y mayor a 0";
+            }
             return View();
         }
     }

@@ -19,6 +19,7 @@ namespace Dominio
 				return instancia;
 			}
 		}
+
 		public Sistema()
 		{
 			PrecargarDatos();
@@ -70,6 +71,20 @@ namespace Dominio
 			}
 			return aux;
 		}
+
+        public Cliente obtenerClienteByEmailAndPassword(string email, string password)
+        {
+            foreach (Usuario unCliente in obtenerClientes())
+            {
+                if (unCliente.Email == email.ToLower() && unCliente.Contrasenia == password.ToLower())
+                {
+                    Cliente cliente = (Cliente)unCliente;
+                    return cliente;
+                }
+			}
+            return null;
+        }
+
         public bool ClienteExiste(string email, string password)
         {
             Boolean usuarioValido = false;
@@ -81,6 +96,19 @@ namespace Dominio
                 }
             }
             return usuarioValido;
+        }
+
+        public bool UsuarioEsAdmin(string email, string password)
+        {
+            Boolean usuarioEsAdmin = false;
+            foreach (Administrador unAdmin in obtenerAdministradores())
+            {
+                if (unAdmin.Email == email.ToLower() && unAdmin.Contrasenia == password.ToLower())
+                {
+                    usuarioEsAdmin = unAdmin.Admin;
+                }
+            }
+            return usuarioEsAdmin;
         }
 
         public List<Administrador> obtenerAdministradores()
@@ -105,7 +133,6 @@ namespace Dominio
 			_publicaciones.Add(publicacion);
 		}
 
-
 		public void AgregarArticulo(Articulo articulo)
 		{
 			if (articulo == null) throw new Exception("Error en la carga de Articulo!");
@@ -119,6 +146,7 @@ namespace Dominio
 			oferta.Validar();
 			_ofertas.Add(oferta);
 		}
+
 		//public List<Articulo> ObtenerArtxCat(string pCategoria)
 		//{
 		//    List<Articulo> aux = new List<Articulo>();
@@ -206,6 +234,8 @@ namespace Dominio
 			return aux;
 
 		}
+
+		public void RecargarSalgoXCliente() { }
 
 		public void PrecargarDatos()
 		{
