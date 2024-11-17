@@ -1,6 +1,8 @@
 ﻿using Dominio.Entidades;
 using System.Drawing;
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
+using System.Text;
 namespace Dominio
 {
 	public class Sistema
@@ -72,11 +74,11 @@ namespace Dominio
 			return aux;
 		}
 
-        public Cliente obtenerClienteByEmailAndPassword(string email, string password)
+		public Cliente obtenerClienteByEmailAndPassword(string email, string password)
         {
             foreach (Usuario unCliente in obtenerClientes())
             {
-                if (unCliente.Email == email.ToLower() && unCliente.Contrasenia == password.ToLower())
+                if (email != null && password != null && unCliente.Email == email.ToLower() && unCliente.Contrasenia == password.ToLower())
                 {
                     Cliente cliente = (Cliente)unCliente;
                     return cliente;
@@ -85,31 +87,26 @@ namespace Dominio
             return null;
         }
 
-        public bool ClienteExiste(string email, string password)
-        {
-            Boolean usuarioValido = false;
-            foreach (Cliente unCliente in obtenerClientes())
-            {
-                if (unCliente.Email == email.ToLower() && unCliente.Contrasenia == password.ToLower())
-                {
-                    usuarioValido = true;
-                }
-            }
-            return usuarioValido;
-        }
+		public Usuario obtenerUsuario(string email, string password) 
+		{
+			foreach (Usuario unS in _usuarios)
+			{
+				if (unS == null)
+				{
+					throw new Exception("Credenciales no validas");
+				}
+				if (unS.Email.ToLower() == email.ToLower() && unS.Contrasenia == password)
+				{
+					return unS;
 
-        public bool UsuarioEsAdmin(string email, string password)
-        {
-            Boolean usuarioEsAdmin = false;
-            foreach (Administrador unAdmin in obtenerAdministradores())
-            {
-                if (unAdmin.Email == email.ToLower() && unAdmin.Contrasenia == password.ToLower())
-                {
-                    usuarioEsAdmin = unAdmin.Admin;
-                }
-            }
-            return usuarioEsAdmin;
-        }
+				}
+			}
+			return null;
+
+		}
+
+
+
 
         public List<Administrador> obtenerAdministradores()
 		{
@@ -178,7 +175,7 @@ namespace Dominio
 		{
 			foreach (var item in _publicaciones)
 			{
-				if (item.Nombre.ToLower() != null && item.Nombre.ToLower() == NombrePublicacion.ToLower())
+				if (NombrePublicacion!=null && item.Nombre.ToLower() != null && item.Nombre.ToLower() == NombrePublicacion.ToLower())
 				{
 					return item;
 				}
@@ -186,6 +183,19 @@ namespace Dominio
 			return null;
 
 		}
+
+		public string CerrarSubasta(string nombreSubasta) 
+		{
+			Publicacion unaS = obtenerPublicacion(nombreSubasta);
+			if (unaS != null)
+			{
+				unaS.Estados = EnumEstados.CERRADA;
+				return "Subasta finalizada con exito!!";
+			}
+			return "Error al finalizar la subasta";
+		}
+
+
 
 		public List<Articulo> ArticulosxNombrePublicacion(string nombrePublicacion)
 		{

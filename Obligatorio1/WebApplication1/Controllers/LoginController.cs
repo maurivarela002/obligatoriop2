@@ -1,5 +1,6 @@
 ﻿using Dominio;
 using Dominio.Entidades;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplication1.Controllers
@@ -15,28 +16,48 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public IActionResult Ingresar(string email, string password)
-        {
-            bool existe = false;
-            bool esAdmin = false;
-            if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
-            {
-                existe = _sistema.ClienteExiste(email, password);
-                esAdmin = _sistema.UsuarioEsAdmin(email, password);
-                if (existe)
-                {
-                    HttpContext.Session.SetString("email", email);
-                    HttpContext.Session.SetString("password", password);
-                    if (esAdmin) {
-                        HttpContext.Session.SetString("admin", "true");
-                    }
-                }
-                else
-                {
-                    ViewBag.Mensaje = "El usuario que intentas ingresar no se encuentra en nuestro sistema.";
-                }
-            }
-            return existe ? Redirect("/Publicacion/Index") : View();
-        }
-    }
+
+		public IActionResult Ingresar(string email, string password)
+		{
+			try
+			{
+				Usuario unS = _sistema.obtenerUsuario(email, password);
+				if (unS == null)
+				{
+					throw new Exception("Credenciales no validas");
+				}
+
+				if (unS.rol()=="Admin")
+				{
+				HttpContext.Session.SetString("rol", unS.rol());
+				HttpContext.Session.SetString("UserName", unS.Email);
+					HttpContext.Session.SetString("password", unS.Contrasenia);
+					return Redirect("/Subasta/index");
+				}
+
+				if (unS.rol() == "Cliente")
+				{
+					HttpContext.Session.SetString("rol", unS.rol());
+					HttpContext.Session.SetString("UserName", unS.Email);
+					HttpContext.Session.SetString("password", unS.Contrasenia);
+					return Redirect("/Publicacion/index");
+				}
+
+			}
+			catch (Exception e)
+			{
+				ViewBag.mensaje = e.Message;
+			}
+			return Redirect("/Login/Ingresar");
+		}
+
+
+		public IActionResult Logout()
+		{
+			HttpContext.Session.Clear();
+			return RedirectToAction("Ingresar");
+		}
+
+
+	}
 }
