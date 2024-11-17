@@ -1,9 +1,11 @@
 ﻿using Dominio;
 using Microsoft.AspNetCore.Mvc;
 using Dominio.Entidades;
+using WebApplication1.Filtros;
 
 namespace WebApplication1.Controllers
 {
+    [Logueado]
     public class ClienteController : Controller
     {
         private Sistema _sistema = Sistema.Instancia;
@@ -15,7 +17,7 @@ namespace WebApplication1.Controllers
         [HttpGet]
         public IActionResult Cargarsaldo()
         {
-            string email = HttpContext.Session.GetString("email");
+            string email = HttpContext.Session.GetString("UserName");
             string password = HttpContext.Session.GetString("password");
             Cliente clienteACargar = _sistema.obtenerClienteByEmailAndPassword(email, password);
             ViewBag.saldoActual = clienteACargar.Saldo;
@@ -27,7 +29,7 @@ namespace WebApplication1.Controllers
         {
             if (saldo > 0 && !double.IsNaN(saldo) && !double.IsNegative(saldo))
             {
-                string email = HttpContext.Session.GetString("email");
+                string email = HttpContext.Session.GetString("UserName");
                 string password = HttpContext.Session.GetString("password");
                 if (!string.IsNullOrEmpty(email) && !string.IsNullOrEmpty(password))
                 {

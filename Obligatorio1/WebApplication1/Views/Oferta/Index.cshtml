@@ -1,18 +1,22 @@
 ﻿@using Dominio.Entidades
+@* @model Oferta *@
 <h1>Realice su oferta</h1>
 
-<div>
-	@foreach (Oferta item in @ViewBag.Oferta)
-	{
-	<p>Nombre de la Publicacion: @item.Pnombre</p>
-	<p>Importe Actual de la subasta: @item.Monto</p>
-	<p>Fecha de Oferta: @item.FchOfer</p>
-		
-	}
-</div>
 
-<form action="/" method="post">
-<label for="Importe">Ingrese un importe</label>
-	<input type="text" name="Importe"/>
-	<input type="submit" name="pujar" value="Confirmar" />
+<form action="/Oferta/puja?NombrePublicacion=@ViewBag.NombrePublicacion.Nombre" method="post">
+    <h1>Realizar una Oferta</h1>
+    <h2>Nombre de la Oferta:@ViewBag.NombrePublicacion.Nombre </h2>
+    <p>Oferta maxima:@ViewBag.NombrePublicacion.PrecioPublicacion() </p>
+    <h3>Tu saldo actual es: $ @ViewBag.saldoActual</h3>
+
+    <div data-mdb-input-init class="form-outline mb-4">
+        <label class="form-label">Monto</label>
+@*         <input required type="number" value=@Model.Monto name="saldo" class="form-control" /> *@
+    </div>
+    <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block">Ofertar</button>
+
+    <div>
+        <p style="color: forestgreen;">@ViewBag.MensajeValido</p>
+        <p style="color: red;">@ViewBag.MensajeInvalido</p>
+    </div>
 </form>

@@ -1,0 +1,33 @@
+﻿@using Dominio.Entidades
+<h1>Subastas Abiertas</h1>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col">Fecha Publicacion</th>
+			<th scope="col">Nombre</th>
+			<th scope="col">Estado</th>
+			<th scope="col">Tipo</th>
+			<th scope="col">Precio</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			@foreach (Publicacion item in ViewBag.Publicacion)
+			{
+				if (item.Tipo() == "Subasta")
+				{
+				<tr>
+					<td>@item.FchPublic.ToString("yyyy-MM-dd")</td>
+					<th scope="row">@item.Nombre</th>
+					<td>@item.Estados</td>
+					<td>@item.Tipo()</td>
+					<td>@item.PrecioPublicacion()</td>
+					<td><a href="VerArticulos?nombrePublicacion=@item.Nombre" class="btn btn-primary">Ver Articulos</a></td>
+					<td><a href="cerrarSubasta?nombreSubasta=@item.Nombre" class="btn btn-success">Cerrar</a></td>
+				</tr>
+
+				}
+			}
+	</tbody>
+</table>

@@ -24,7 +24,14 @@ namespace Dominio.Entidades
             }
         }
 
-        public override string ToString()
+
+        public override string rol() 
+        {
+            return "Admin";
+        }
+
+
+		public override string ToString()
         {
             string respuesta = base.ToString();
             if (Admin) respuesta += $"Administrador \n";

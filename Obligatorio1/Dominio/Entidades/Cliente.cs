@@ -37,7 +37,12 @@ namespace Dominio.Entidades
             Saldo += saldo;
         }
 
-        public override string ToString()
+		public override string rol()
+		{
+			return "Cliente";
+		}
+
+		public override string ToString()
         {
             string respuesta = base.ToString();
             respuesta += $"saldo: {Saldo} \n";

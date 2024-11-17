@@ -11,7 +11,7 @@ namespace Dominio.Entidades
         public string Apellido { get; }
         public string Email { get; }
         public string Contrasenia { get; }
-        public Usuario() { }
+		public Usuario() { }
         public Usuario(string nombre, string apellido, string email, string contrasenia)
         {
             Id = _ultimoId++;
@@ -31,6 +31,8 @@ namespace Dominio.Entidades
                 throw new Exception("El nombre no puede ser vacio");
             }
         }
+
+        public abstract string rol();
         public override string ToString()
         {
             string respuesta = string.Empty;

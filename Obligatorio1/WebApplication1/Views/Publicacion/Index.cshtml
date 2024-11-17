@@ -2,7 +2,7 @@
 <h1>Lista de Publicaciones</h1>
 
 
-
+<div>@ViewBag.mensaje</div>
 
 <table class="table table-striped">
 	<thead>
@@ -18,9 +18,6 @@
 		<tr>
 			@foreach (Publicacion item in ViewBag.Publicacion)
 			{
-
-
-
 				<tr>
 					<td>@item.FchPublic.ToString("yyyy-MM-dd")</td>
 					<th scope="row">@item.Nombre</th>
@@ -30,17 +27,33 @@
 					<td><a href="VerArticulos?nombrePublicacion=@item.Nombre" class="btn btn-primary">Ver Articulos</a></td>
 						@if (item.Estados==Dominio.Sistema.EnumEstados.ABIERTA)
 						{
-					<td><a href="Oferta/Index?nombrePublicacion=@item.Nombre" class="btn btn-success">@item.BtnComprar()</a></td>
+					<td><a href="compraOferta?nombrePublicacion=@item.Nombre" class="btn btn-success">@item.BtnComprar()</a></td>
 
 						}
 						else
 						{
 						<td></td>
 						}
-
-
 				</tr>
-			
 			}
 	</tbody>
 </table>
+
+
+<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+	<ul class="navbar-nav flex-grow-1">
+		<li class="nav-item">
+			Nombre de usuario
+		</li>
+		<li class="nav-item">
+			@Context.Session.GetString("UserName")
+		</li>
+		<li class="nav-item">
+			Saldo actual
+		</li>
+		<li class="nav-item">
+			@ViewBag.Saldoactual
+		</li>
+</ul>
+
+</div>
