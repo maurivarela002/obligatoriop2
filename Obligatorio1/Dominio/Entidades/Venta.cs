@@ -72,6 +72,11 @@ namespace Dominio.Entidades
 			return total;
 		}
 
+        public override string clienteOferente()
+        {
+			return null;
+        }
 
-	}
+
+    }
 }

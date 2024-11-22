@@ -1,26 +1,28 @@
 ﻿@using Dominio.Entidades
-<h1>Articulos de la publicacion @ViewBag.publiName.Nombre</h1>
+<link rel="stylesheet" href="~/css/tablas.css" />
 
-;
+<div class="publications-container">
+    <h1 class="page-title">Articulos de la publicacion @ViewBag.publiName.Nombre</h1>
 
-<table class="table table-striped">
-	<thead>
-		<tr>
-			<th scope="col">Articulo</th>
-			<th scope="col">Categoria</th>
-			<th scope="col">Precio</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			@foreach (Articulo item in @ViewBag.publiName.ListarArticulos())
-			{
-			<tr>
-				<th scope="row">@item.NombreArt</th>
-				<td>@item.Categoria</td>
-				<td>@item.PrecioVenta</td>
-
-			</tr>
-			}
-	</tbody>
-</table>
+    <div class="table-container">
+        <table class="table custom-table">
+            <thead>
+                <tr>
+                    <th scope="col">Articulo</th>
+                    <th scope="col">Categoria</th>
+                    <th scope="col">Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Articulo item in @ViewBag.publiName.ListarArticulos())
+                {
+                    <tr>
+                        <td class="nombre-columna">@item.NombreArt</td>
+                        <td>@item.Categoria</td>
+                        <td class="precio-columna">@item.PrecioVenta</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

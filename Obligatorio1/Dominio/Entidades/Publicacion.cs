@@ -109,10 +109,10 @@ namespace Dominio.Entidades
 		}
 
 
+		public abstract string clienteOferente();
 
 
 
 
-
-	}
+    }
 }

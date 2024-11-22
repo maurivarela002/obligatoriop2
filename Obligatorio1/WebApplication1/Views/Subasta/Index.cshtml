@@ -1,33 +1,60 @@
 ﻿@using Dominio.Entidades
-<h1>Subastas Abiertas</h1>
+<link rel="stylesheet" href="~/css/tablas.css" />
 
-<table class="table table-striped">
-	<thead>
-		<tr>
-			<th scope="col">Fecha Publicacion</th>
-			<th scope="col">Nombre</th>
-			<th scope="col">Estado</th>
-			<th scope="col">Tipo</th>
-			<th scope="col">Precio</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			@foreach (Publicacion item in ViewBag.Publicacion)
-			{
-				if (item.Tipo() == "Subasta")
-				{
-				<tr>
-					<td>@item.FchPublic.ToString("yyyy-MM-dd")</td>
-					<th scope="row">@item.Nombre</th>
-					<td>@item.Estados</td>
-					<td>@item.Tipo()</td>
-					<td>@item.PrecioPublicacion()</td>
-					<td><a href="VerArticulos?nombrePublicacion=@item.Nombre" class="btn btn-primary">Ver Articulos</a></td>
-					<td><a href="cerrarSubasta?nombreSubasta=@item.Nombre" class="btn btn-success">Cerrar</a></td>
-				</tr>
+<div class="publications-container">
+    <h1 class="page-title">Subastas Abiertas</h1>
 
-				}
-			}
-	</tbody>
-</table>
+    <div class="table-container">
+        <table class="table custom-table">
+            <thead>
+                <tr>
+                    <th scope="col">Fecha Publicación</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Oferente</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Publicacion item in ViewBag.Publicacion)
+                {
+                    if (item.Tipo() == "Subasta")
+                    {
+                        <tr>
+                            <td>@item.FchPublic.ToString("dd/MM/yyyy")</td>
+                            <td class="nombre-columna">@item.Nombre</td>
+                            <td>
+                                <span class="status-badge @(item.Estados == Dominio.Sistema.EnumEstados.ABIERTA ? "status-abierta" : 
+                                                      item.Estados == Dominio.Sistema.EnumEstados.CERRADA ? "status-cerrada" : "status-cancelada")">
+                                    @item.Estados
+                                </span>
+                            </td>
+                            <td>@item.Tipo()</td>
+                            <td class="precio-columna">$@item.PrecioPublicacion().ToString("N2")</td>
+                            <td class="nombre-columna" style="@((item.clienteOferente() != null) ? "font-weight: bolder;" : "color: #e29609;")">
+                                @(item.clienteOferente() ?? "No hay ofertas")
+                            </td>
+
+                            <td>
+                                <div class="d-flex gap-2">
+                                    <a href="VerArticulos?nombrePublicacion=@item.Nombre" 
+                                       class="btn-action btn-ver">
+                                        <i class="fas fa-eye"></i>
+                                        <span>Ver Artículos</span>
+                                    </a>
+                                    <a href="cerrarSubasta?nombreSubasta=@item.Nombre" 
+                                       class="btn-action btn-comprar">
+                                        <i class="fas fa-gavel"></i>
+                                        <span>Cerrar</span>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

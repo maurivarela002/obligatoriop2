@@ -36,7 +36,7 @@ namespace WebApplication1.Controllers
                     Cliente clienteACargar = _sistema.obtenerClienteByEmailAndPassword(email, password);
                     ViewBag.saldoActual = clienteACargar.Saldo;
                     clienteACargar.SumarSaldo(saldo);
-
+                    HttpContext.Session.SetString("saldo", clienteACargar.Saldo.ToString("N2"));
                     ViewBag.NuevoSaldo = $"Tu nuevo saldo es ${clienteACargar.Saldo}";
                 }
             }

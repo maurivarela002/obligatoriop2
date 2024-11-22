@@ -1,22 +1,88 @@
 ﻿@using Dominio.Entidades
-@* @model Oferta *@
-<h1>Realice su oferta</h1>
+@model Oferta
 
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0">Realizar una Oferta</h2>
+                </div>
+                <div class="card-body">
+                    <form action="/Oferta/puja" method="post">
+                        <input type="hidden" name="NombrePublicacion" value="@ViewBag.NombrePublicacion.Nombre" />
+                        
+                        <div class="mb-4">
+                            <h4>Publicación: @ViewBag.NombrePublicacion.Nombre</h4>
+                            <p class="text-muted">Oferta máxima actual: $ @ViewBag.OfertaMaxima.Monto</p>
+                            <div class="alert alert-info">
+                                Tu saldo disponible: $ @ViewBag.saldoActual
+                            </div>
+                        </div>
 
-<form action="/Oferta/puja?NombrePublicacion=@ViewBag.NombrePublicacion.Nombre" method="post">
-    <h1>Realizar una Oferta</h1>
-    <h2>Nombre de la Oferta:@ViewBag.NombrePublicacion.Nombre </h2>
-    <p>Oferta maxima:@ViewBag.NombrePublicacion.PrecioPublicacion() </p>
-    <h3>Tu saldo actual es: $ @ViewBag.saldoActual</h3>
+                        <div class="form-group mb-4">
+                            <label class="form-label">Monto a ofertar</label>
+                            <input required type="number" step="0.01" name="Monto" class="form-control" />
+                        </div>
 
-    <div data-mdb-input-init class="form-outline mb-4">
-        <label class="form-label">Monto</label>
-@*         <input required type="number" value=@Model.Monto name="saldo" class="form-control" /> *@
+                        <button type="submit" class="btn btn-primary btn-lg w-100">
+                            <i class="fas fa-gavel me-2"></i>Realizar Oferta
+                        </button>
+
+                        @if (!string.IsNullOrEmpty(ViewBag.MensajeValido))
+                        {
+                            <div class="alert alert-success mt-3">
+                                @ViewBag.MensajeValido
+                            </div>
+                        }
+
+                        @if (!string.IsNullOrEmpty(ViewBag.MensajeInvalido))
+                        {
+                            <div class="alert alert-danger mt-3">
+                                @ViewBag.MensajeInvalido
+                            </div>
+                        }
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="mb-0">Historial de Ofertas</h2>
+                </div>
+                <div class="card-body">
+                    @if (ViewBag.Ofertas != null && ViewBag.Ofertas.Count > 0)
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Monto</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (Oferta oferta in ViewBag.Ofertas)
+                                    {
+                                        <tr class="@(oferta.Monto == ViewBag.OfertaMaxima.Monto ? "table-warning" : "")">
+                                            <td>@oferta.FchOfer</td>
+                                            <td>$ @oferta.Monto</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info">
+                            No hay ofertas registradas para esta publicación.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
     </div>
-    <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block">Ofertar</button>
-
-    <div>
-        <p style="color: forestgreen;">@ViewBag.MensajeValido</p>
-        <p style="color: red;">@ViewBag.MensajeInvalido</p>
-    </div>
-</form>
+</div>

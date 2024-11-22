@@ -12,7 +12,7 @@ namespace WebApplication1.Controllers
         {
 			ViewBag.mensaje = mensaje;
 			ViewBag.Publicacion = _sistema.Publicaciones;
-			return View();
+            return View();
         }
 
         public IActionResult VerArticulos(string nombrePublicacion) 
@@ -26,9 +26,10 @@ namespace WebApplication1.Controllers
             string mensaje = _sistema.CerrarSubasta(nombreSubasta);
 			ViewBag.publiName = _sistema.obtenerPublicacion(nombreSubasta);
 			ViewBag.publicacion = _sistema.ArticulosxNombrePublicacion(nombreSubasta);
+            //ViewBag.oferente = _sistema.obteneroferente(_sistema.obtenerPublicacion(nombreSubasta));
+
 			return RedirectToAction("index", new { mensaje });
 		}
-
 
 
 

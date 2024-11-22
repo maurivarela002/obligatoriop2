@@ -1,5 +1,8 @@
-html {
+html, body {
   font-size: 14px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 @media (min-width: 768px) {
@@ -25,4 +28,94 @@ form {
     min-width: fit-content;
     width: 500px;
     margin: 0 auto;
+}
+
+.user-info-nav {
+  padding: 8px 15px;
+  background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+  border-radius: 8px;
+  margin-left: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.user-info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  color: #2c3e50;
+}
+
+.user-info-label {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.user-info-value {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.navbar {
+  padding: 1rem;
+}
+
+.nav-link {
+  position: relative;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #1a237e !important;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: #1a237e;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+  left: 0;
+}
+.user-info-nav {
+  padding: 8px 15px;
+  background: linear-gradient(45deg, #f8f9fa, #e9ecef);
+  border-radius: 8px;
+  margin-left: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.user-info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  color: #2c3e50;
+}
+
+.user-info-label {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.user-info-value {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.admin-badge {
+  background-color: #4a5568;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
 }

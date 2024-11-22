@@ -54,7 +54,5 @@ namespace WebApplication1.Controllers
 			return Redirect($"/oferta/Index?nombrePublicacion={unaP.Nombre}");
 		}
 
-
-
 	}
 }

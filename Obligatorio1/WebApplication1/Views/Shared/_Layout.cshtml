@@ -10,49 +10,75 @@
 </head>
 <body>
 	<header>
-		<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+		<nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow">
 			<div class="container-fluid">
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-						aria-expanded="false" aria-label="Toggle navigation">
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-
-					<ul class="navbar-nav flex-grow-1">
-						@if (Context.Session.GetString("rol") == "Cliente")
-						{
-
+					@if (Context.Session.GetString("rol") == "Cliente")
+					{
+						<ul class="navbar-nav flex-grow-1">
 							<li class="nav-item">
-								<a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Ingresar">Inicio</a>
+								<a class="nav-link" asp-controller="Publicacion" asp-action="Index">
+									<i class="fas fa-shopping-bag me-1"></i>Publicaciones
+								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link text-dark" asp-area="" asp-controller="Publicacion" asp-action="Index">Publicaciones</a>
+								<a class="nav-link" asp-controller="Cliente" asp-action="cargarsaldo">
+									<i class="fas fa-wallet me-1"></i>Cargar Saldo
+								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link text-dark" asp-area="" asp-controller="Cliente" asp-action="cargarsaldo">Cargar Saldo</a>
+								<a class="nav-link" asp-controller="Login" asp-action="Logout">
+									<i class="fas fa-sign-out-alt me-1"></i>Salir
+								</a>
+							</li>
+						</ul>
+
+						<div class="user-info-nav d-flex gap-4">
+							<div class="user-info-item">
+								<i class="fas fa-user"></i>
+								<span class="user-info-label">Usuario:</span>
+								<span class="user-info-value">@Context.Session.GetString("UserName")</span>
+							</div>
+							<div class="user-info-item">
+								<i class="fas fa-coins"></i>
+								<span class="user-info-label">Saldo:</span>
+								<span class="user-info-value">$@(string.IsNullOrEmpty(Context.Session.GetString("saldo")) ? ViewBag.Saldoactual?.ToString("N2") : Context.Session.GetString("saldo"))</span>
+							</div>
+						</div>
+					}
+
+					@if (Context.Session.GetString("rol") == "Admin")
+					{
+						<ul class="navbar-nav flex-grow-1">
+							<li class="nav-item">
+								<a class="nav-link" asp-controller="Subasta" asp-action="index">
+									<i class="fas fa-gavel me-1"></i>Subastas Pendientes
+								</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Logout">Log out</a>
+								<a class="nav-link" asp-controller="Login" asp-action="Logout">
+									<i class="fas fa-sign-out-alt me-1"></i>Salir
+								</a>
 							</li>
-						}
+						</ul>
 
-						@if (Context.Session.GetString("rol") == "Admin")
-						{
-
-
-							<li class="nav-item">
-								<a class="nav-link text-dark" asp-area="" asp-controller="Articulo" asp-action="GestionArticulo">Alta de Artículo</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link text-dark" asp-area="" asp-controller="Subasta" asp-action="index">Subastas Pendientes</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Logout">Salir</a>
-							</li>
-
-						}
-					</ul>
-
+						<div class="user-info-nav d-flex gap-4">
+							<div class="user-info-item">
+								<i class="fas fa-user-shield"></i>
+								<span class="user-info-label">Usuario:</span>
+								<span class="user-info-value">@Context.Session.GetString("UserName")</span>
+							</div>
+							<div class="user-info-item">
+								<i class="fas fa-user-cog"></i>
+								<span class="admin-badge">
+									<i class="fas fa-crown me-1"></i>Administrador
+								</span>
+							</div>
+						</div>
+					}
 				</div>
 			</div>
 		</nav>

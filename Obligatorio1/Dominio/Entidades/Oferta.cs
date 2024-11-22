@@ -4,16 +4,16 @@ namespace Dominio.Entidades
     public class Oferta : IValidable
     {
         public int Id { get; set; }
-        public int IdUser { get; set; }
+        public Usuario User { get; set; }
         public double Monto { get; set; }
         public DateTime FchOfer { get; set; }
         public string Pnombre { get; set; }
         private static int _ultimoId;
         public Oferta() { }
-        public Oferta(int id, int idUser, double monto, DateTime fchOfer, string pnombre)
+        public Oferta(int id, Usuario user, double monto, DateTime fchOfer, string pnombre)
         {
             Id = _ultimoId++;
-            IdUser = idUser;
+            User = user;
             Monto = monto;
             FchOfer = fchOfer;
             Pnombre = pnombre;
@@ -34,7 +34,7 @@ namespace Dominio.Entidades
 		{
 			string respuesta = string.Empty;
 			respuesta += $"Nombre de Publicacion: {Pnombre} \n";
-			respuesta += $"Id User: {IdUser} \n";
+			respuesta += $"Nombre : {User.Nombre} \n";
 			respuesta += $"Importe: {Monto} \n";
 			respuesta += $"Fecha de Oferta: {FchOfer} \n";
 			return respuesta;

@@ -1,17 +1,31 @@
 ﻿@using Dominio.Entidades;
 
-<form action="/Cliente/cargarsaldo" method="post">
-    <h1>Cargar saldo</h1>
-    <h3>Tu saldo actual es: $ @ViewBag.saldoActual</h3>
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form action="/Cliente/cargarsaldo" method="post" id="formSaldo">
+                <h1 class="text-center mb-4">Cargar saldo</h1>
+                
+                @if (ViewBag.NuevoSaldo == null)
+                {
+                    <div class="saldo-actual mb-4" id="saldoActualDiv">
+                        <h3 class="text-muted">Tu saldo actual es: <span class="text-primary">$ @ViewBag.saldoActual</span></h3>
+                    </div>
+                }
 
-    <div data-mdb-input-init class="form-outline mb-4">
-        <label class="form-label">Monto</label>
-        <input required type="number" name="saldo" class="form-control" />
-    </div>
-    <button data-mdb-ripple-init type="submit" class="btn btn-primary btn-block">Recargar</button>
+                <div class="form-outline mb-4">
+                    <label class="form-label">Monto a recargar</label>
+                    <input required type="number" name="saldo" class="form-control form-control-lg" />
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg w-100 mb-3">
+                    <i class="fas fa-wallet me-2"></i>Recargar
+                </button>
 
-    <div>
-        <p style="color: forestgreen;">@ViewBag.NuevoSaldo</p>
-        <p style="color: red;">@ViewBag.saldoInvalido</p>
+                <div class="mensajes">
+                    <p class="text-success text-center">@ViewBag.NuevoSaldo</p>
+                    <p class="text-danger text-center">@ViewBag.saldoInvalido</p>
+                </div>
+            </form>
+        </div>
     </div>
-</form>
+</div>

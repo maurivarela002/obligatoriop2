@@ -3,32 +3,62 @@
 <section class="vh-100">
     <div class="container-fluid h-100">
         <div class="row h-100">
-            <div class="col-sm-6 text-black">
-                <div class="logo-section">
-                    <span class="h1 fw-bold">Logo</span>
-                </div>
+            <div class="col-sm-6 text-black d-flex flex-column justify-content-center position-relative">
+                <div class="content-wrapper text-center">
+                    <div class="welcome-container">
+                        <h1 class="display-4 fw-bold mb-3">
+                            Tienda m&m
+                        </h1>
+                        <p class="lead text-muted mb-4">
+                            Descubre las mejores ofertas y participa en emocionantes subastas
+                            <span class="d-block mt-2">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                            </span>
+                        </p>
+                    </div>
 
-                <div class="content-wrapper">
                     <div class="button-container">
-                        <h3 class="welcome-title">Bienvenido</h3>
-                        
-                        <form asp-controller="Home" method="post">
-                            <button asp-action="IrALogin" class="btn btn-primary">
+                        <form asp-controller="Home" method="post" class="d-grid gap-3">
+                            <button asp-action="IrALogin" class="btn btn-primary btn-lg shadow-sm">
+                                <i class="fas fa-sign-in-alt me-2"></i>
                                 Iniciar Sesión
                             </button>
 
-                            <button asp-action="IrARegistro" class="btn btn-outline-primary">
+                            <button asp-action="IrARegistro" class="btn btn-outline-primary btn-lg">
+                                <i class="fas fa-user-plus me-2"></i>
                                 Registrarse
                             </button>
                         </form>
 
+                        <!-- Badges informativos -->
+                        <div class="mt-4 d-flex justify-content-center gap-3 flex-wrap">
+                            <span class="badge bg-light text-dark d-flex align-items-center">
+                                <i class="fas fa-shield-alt me-2"></i>
+                                <span>Compras Seguras</span>
+                            </span>
+                            <span class="badge bg-light text-dark d-flex align-items-center">
+                                <i class="fas fa-truck me-2"></i>
+                                <span>Envíos Rápidos</span>
+                            </span>
+                            <span class="badge bg-light text-dark d-flex align-items-center">
+                                <i class="fas fa-headset me-2"></i>
+                                <span>Las mejores ofertas</span>
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="col-sm-6 px-0 d-none d-sm-block image-container">
-                <img src="https://media.istockphoto.com/id/1429456277/es/foto/compras-en-l%C3%ADnea-con-cr%C3%A9dito-para-autom%C3%B3viles-o-dinero-en-efectivo.jpg?s=612x612&w=0&k=20&c=FIS2_qPVLVT1y5Z1-RZYyLT-kKU4GQtIs8TWNtiLeyY="
-                    alt="Login image">
+                <div class="h-100 position-relative overlay-container">
+                    <img src="https://i.pinimg.com/736x/ba/c5/69/bac569e7155c021f846e1def9d3793ce.jpg"
+                         alt="Login image" 
+                         class="w-100 h-100 object-fit-cover"
+                         loading="lazy">
+                    <div class="overlay"></div>
+                </div>
             </div>
         </div>
     </div>

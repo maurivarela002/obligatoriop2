@@ -1,6 +1,5 @@
 ﻿using Dominio;
 using Dominio.Entidades;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplication1.Controllers
@@ -8,56 +7,79 @@ namespace WebApplication1.Controllers
     public class LoginController : Controller
     {
         private Sistema _sistema = Sistema.Instancia;
+        private int maximo_intentos = 3;
 
         [HttpGet]
         public IActionResult Ingresar()
         {
+            if (HttpContext.Session.GetInt32("intentosFallidos") == null)
+            {
+                HttpContext.Session.SetInt32("intentosFallidos", 0);
+            }
             return View();
         }
 
         [HttpPost]
+        public IActionResult Ingresar(string email, string password)
+        {
+            try
+            {
+                int intentosFallidos = HttpContext.Session.GetInt32("intentosFallidos") ?? 0;
 
-		public IActionResult Ingresar(string email, string password)
-		{
-			try
-			{
-				Usuario unS = _sistema.obtenerUsuario(email, password);
-				if (unS == null)
-				{
-					throw new Exception("Credenciales no validas");
-				}
+                if (intentosFallidos >= maximo_intentos)
+                {
+                    ViewBag.Mensaje = "Has superado el límite de intentos permitidos. Por favor, intenta más tarde.";
+                    ViewBag.BloquearFormulario = true;
+                    return View();
+                }
 
-				if (unS.rol()=="Admin")
-				{
-				HttpContext.Session.SetString("rol", unS.rol());
-				HttpContext.Session.SetString("UserName", unS.Email);
-					HttpContext.Session.SetString("password", unS.Contrasenia);
-					return Redirect("/Subasta/index");
-				}
+                Usuario unS = _sistema.obtenerUsuario(email, password);
+                if (unS == null)
+                {
+                    intentosFallidos++;
+                    HttpContext.Session.SetInt32("intentosFallidos", intentosFallidos);
 
-				if (unS.rol() == "Cliente")
-				{
-					HttpContext.Session.SetString("rol", unS.rol());
-					HttpContext.Session.SetString("UserName", unS.Email);
-					HttpContext.Session.SetString("password", unS.Contrasenia);
-					return Redirect("/Publicacion/index");
-				}
+                    if (intentosFallidos >= maximo_intentos)
+                    {
+                        ViewBag.Mensaje = "Has superado el límite de intentos permitidos. Por favor, intenta más tarde.";
+                        ViewBag.BloquearFormulario = true;
+                    }
+                    else
+                    {
+                        ViewBag.Mensaje = $"Credenciales no válidas. Te quedan {maximo_intentos - intentosFallidos} intentos.";
+                    }
+                    return View();
+                }
 
-			}
-			catch (Exception e)
-			{
-				ViewBag.mensaje = e.Message;
-			}
-			return Redirect("/Login/Ingresar");
-		}
+                HttpContext.Session.SetInt32("intentosFallidos", 0);
 
+                if (unS.rol() == "Admin")
+                {
+                    HttpContext.Session.SetString("rol", unS.rol());
+                    HttpContext.Session.SetString("UserName", unS.Email);
+                    HttpContext.Session.SetString("password", unS.Contrasenia);
+                    return Redirect("/Subasta/index");
+                }
 
-		public IActionResult Logout()
-		{
-			HttpContext.Session.Clear();
-			return RedirectToAction("Ingresar");
-		}
+                if (unS.rol() == "Cliente")
+                {
+                    HttpContext.Session.SetString("rol", unS.rol());
+                    HttpContext.Session.SetString("UserName", unS.Email);
+                    HttpContext.Session.SetString("password", unS.Contrasenia);
+                    return Redirect("/Publicacion/index");
+                }
+            }
+            catch (Exception e)
+            {
+                ViewBag.Mensaje = e.Message;
+            }
+            return View();
+        }
 
-
-	}
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Ingresar");
+        }
+    }
 }

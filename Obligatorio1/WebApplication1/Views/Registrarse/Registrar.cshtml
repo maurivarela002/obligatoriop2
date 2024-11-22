@@ -1,39 +1,74 @@
 ﻿@using Dominio.Entidades
 
-<form action="/Registrarse/Registrar" method="post">
-    <h2>Registro de Cliente</h2>
+<link rel="stylesheet" href="~/css/login.css" />
 
-    <div class="form-outline mb-4">
-        <label class="form-label">Nombre</label>
-        <input type="text" name="nombre" class="form-control" required />
+<section class="login-section">
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-content">
+                <h2 class="login-title">REGISTRO DE CLIENTE</h2>
+                <p class="login-subtitle">Complete sus datos para crear una cuenta</p>
+
+                <form action="/Registrarse/Registrar" method="post">
+                    <div class="form-group">
+                        <input type="text" 
+                               name="nombre" 
+                               class="login-input"
+                               required 
+                               placeholder="Nombre"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" 
+                               name="apellido" 
+                               class="login-input"
+                               required 
+                               placeholder="Apellido"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" 
+                               name="email" 
+                               class="login-input"
+                               required 
+                               placeholder="Email"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" 
+                               name="password" 
+                               class="login-input"
+                               required 
+                               placeholder="Contraseña"/>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="number" 
+                               name="saldo" 
+                               class="login-input"
+                               required 
+                               placeholder="Saldo Inicial"/>
+                    </div>
+
+                    @if (ViewBag.Error != null)
+                    {
+                        <div class="login-alert">
+                            <div class="alert-icon">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </div>
+                            <div class="alert-message">@ViewBag.Error</div>
+                        </div>
+                    }
+
+                    <button class="login-button" type="submit">
+                        Registrarse
+                    </button>
+
+                    <a asp-controller="Home" asp-action="Home" class="login-link">
+                        Volver al inicio
+                    </a>
+                </form>
+            </div>
+        </div>
     </div>
-
-    <div class="form-outline mb-4">
-        <label class="form-label">Apellido</label>
-        <input type="text" name="apellido" class="form-control" required />
-    </div>
-
-    <div class="form-outline mb-4">
-        <label class="form-label">Email</label>
-        <input type="email" name="email" class="form-control" required />
-    </div>
-
-    <div class="form-outline mb-4">
-        <label class="form-label">Contraseña</label>
-        <input type="password" name="password" class="form-control" required />
-    </div>
-
-    <div class="form-outline mb-4">
-        <label class="form-label">Saldo Inicial</label>
-        <input type="number" name="saldo" class="form-control" required />
-    </div>
-
-    <button type="submit" class="btn btn-primary">Registrarse</button>
-</form>
-
-@if (ViewBag.Error != null)
-{
-    <div class="alert alert-danger">
-        @ViewBag.Error
-    </div>
-}
+</section>
