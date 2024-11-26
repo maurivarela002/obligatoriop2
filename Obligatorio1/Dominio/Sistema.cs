@@ -34,18 +34,10 @@ namespace Dominio
         {
             get { return _articulos; }
         }
-        //public IEnumerable<Usuario> Usuarios
-        //{
-        //    get { return _usuarios; }
-        //}
         public IEnumerable<Publicacion> Publicaciones
         {
             get { return _publicaciones; }
         }
-        //public IEnumerable<Oferta> Ofertas
-        //{
-        //    get { return _ofertas; }
-        //}
         public void AgregarUsuario(Usuario usuario)
         {
             if (usuario == null) throw new Exception("Error en la carga de Usuario!");
@@ -222,24 +214,6 @@ namespace Dominio
             }
             return aux;
         }
-
-        //public Oferta obteneroferente(string nombrePublicacion)
-        //{
-
-        //    List<Oferta> ofertas = (List<Oferta>)OfertasxNombrePublicacion(nombrePublicacion);
-        //    double montoMayor = 0;
-        //    Oferta ofertante;
-
-        //    foreach (Oferta of in ofertas)
-        //    {
-        //        if (of.Monto > montoMayor)
-        //        {
-        //            montoMayor = of.Monto;
-        //        }
-
-        //    }
-        //    return ofertante;
-        //}
 
         public void PrecargarDatos()
         {

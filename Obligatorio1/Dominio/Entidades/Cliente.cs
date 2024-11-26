@@ -1,8 +1,7 @@
-﻿
-
+﻿using Dominio.Interfaces;
 namespace Dominio.Entidades
 {
-    public class Cliente : Usuario
+    public class Cliente : Usuario, IValidable
     {
         public double Saldo { get; set; }
         public Cliente() { }
@@ -41,7 +40,6 @@ namespace Dominio.Entidades
 		{
 			return "Cliente";
 		}
-
 		public override string ToString()
         {
             string respuesta = base.ToString();

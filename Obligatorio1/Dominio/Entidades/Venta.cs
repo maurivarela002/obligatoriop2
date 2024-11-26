@@ -1,13 +1,9 @@
-﻿
-
-
-using Dominio.Interfaces;
-using System.Reflection.Metadata.Ecma335;
+﻿using Dominio.Interfaces;
 using static Dominio.Sistema;
 
 namespace Dominio.Entidades
 {
-	public class Venta : Publicacion
+	public class Venta : Publicacion, IValidable
 	{
 		public bool OfertaR { get; set; }
 		public object Articulos { get; private set; }
@@ -16,13 +12,11 @@ namespace Dominio.Entidades
 					 string nombre,
 					 EnumEstados estados,
 					 DateTime fchPublic,
-					 //List<Articulo> articulos,
 					 int idUser,
 					 int idPurchUser,
 					 DateTime purchDate,
 					 bool ofertar
-			) : base(nombre, estados, fchPublic,
-				//articulos, 
+			) : base(nombre, estados, fchPublic, 
 				idUser, idPurchUser, purchDate)
 		{
 			OfertaR = ofertar;
@@ -76,7 +70,5 @@ namespace Dominio.Entidades
         {
 			return null;
         }
-
-
     }
 }

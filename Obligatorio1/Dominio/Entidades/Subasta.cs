@@ -1,9 +1,8 @@
-﻿
-using Dominio.Interfaces;
+﻿using Dominio.Interfaces;
 using static Dominio.Sistema;
 namespace Dominio.Entidades
 {
-    public class Subasta : Publicacion
+    public class Subasta : Publicacion, IValidable
     {
         private List<Oferta> _ofertas = new List<Oferta>();
         public List<Oferta> Ofertas
@@ -18,11 +17,9 @@ namespace Dominio.Entidades
                        int idUser,
                        int idPurchUser,
                        DateTime purchDate
-                     //,List<Oferta> ofertas
                      ) : base(nombre, estados, fchPublic,
                          idUser, idPurchUser, purchDate)
         {
-            //_ofertas = ofertas;
         }
         public virtual void Validar()
         {

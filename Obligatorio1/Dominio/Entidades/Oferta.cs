@@ -39,8 +39,5 @@ namespace Dominio.Entidades
 			respuesta += $"Fecha de Oferta: {FchOfer} \n";
 			return respuesta;
 		}
-
-
-
 	}
 }

@@ -1,10 +1,9 @@
-﻿
+﻿using Dominio.Interfaces;
 namespace Dominio.Entidades
 {
-    public class Administrador : Usuario
+    public class Administrador : Usuario, IValidable
     {
         public bool Admin { get; }
-
         
         public Administrador(string nombre, string apellido, string email, string contrasenia) :
             base(nombre, apellido, email, contrasenia)
@@ -24,12 +23,10 @@ namespace Dominio.Entidades
             }
         }
 
-
         public override string rol() 
         {
             return "Admin";
         }
-
 
 		public override string ToString()
         {
@@ -37,6 +34,5 @@ namespace Dominio.Entidades
             if (Admin) respuesta += $"Administrador \n";
             return respuesta;
         }
-
     }
 }

@@ -40,9 +40,6 @@ namespace Dominio.Entidades
                 throw new Exception("El precio debe ser mayor a Cero");
             }
         }
-
-
-
         public override string ToString()
         {
             string respuesta = string.Empty;

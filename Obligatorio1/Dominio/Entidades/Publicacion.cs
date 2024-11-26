@@ -103,16 +103,10 @@ namespace Dominio.Entidades
 			{
 				total += item.PrecioVenta;
 			}
-
-			
+						
 			return total;
 		}
 
-
 		public abstract string clienteOferente();
-
-
-
-
     }
 }
