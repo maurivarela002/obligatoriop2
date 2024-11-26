@@ -23,6 +23,7 @@ namespace Dominio.Entidades
         {
             validateNull();
             validarAlfaNumerico();
+            validarSaldoNuevo();
         }
         private void validateNull()
         {
@@ -72,6 +73,7 @@ namespace Dominio.Entidades
                 throw new Exception("La contraseña debe ser alfanumerica.");
             }
         }
+        public abstract void validarSaldoNuevo();
 
         public abstract string rol();
         public override string ToString()

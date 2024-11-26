@@ -23,7 +23,7 @@ namespace Dominio.Entidades
             }
         }
 
-        private void validarSaldoNuevo()
+        public override void validarSaldoNuevo()
         {
             if(Saldo < 0) {
                 throw new Exception("El saldo debe ser mayor a 0");

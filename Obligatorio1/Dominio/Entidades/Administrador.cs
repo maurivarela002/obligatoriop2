@@ -13,6 +13,7 @@ namespace Dominio.Entidades
         public virtual void Validar()
         {
             validateNull();
+            validarSaldoNuevo();
         }
 
         private void validateNull()
@@ -27,8 +28,8 @@ namespace Dominio.Entidades
         {
             return "Admin";
         }
-
-		public override string ToString()
+        public override void validarSaldoNuevo() {}
+        public override string ToString()
         {
             string respuesta = base.ToString();
             if (Admin) respuesta += $"Administrador \n";

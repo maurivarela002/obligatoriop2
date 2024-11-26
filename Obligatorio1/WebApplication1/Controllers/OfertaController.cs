@@ -1,13 +1,17 @@
 ﻿using Dominio;
 using Dominio.Entidades;
+using Microsoft.AspNetCore.Http.Timeouts;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 namespace WebApplication1.Controllers
 {
     public class OfertaController : Controller
     {
         private Sistema _sistema = Sistema.Instancia;
-        public IActionResult Index(string nombrePublicacion)
+        public IActionResult Index(string nombrePublicacion, string mensaje, int tipo)
         {
+            ViewBag.mensajeSalida = mensaje;
+            ViewBag.tipo = tipo;
 			ViewBag.NombrePublicacion = _sistema.obtenerPublicacion(nombrePublicacion);
 			var ofertas = _sistema.OfertasxNombrePublicacion(nombrePublicacion)
                              .OrderByDescending(o => o.Monto)
@@ -31,6 +35,7 @@ namespace WebApplication1.Controllers
         public IActionResult puja(Oferta oferta, string NombrePublicacion)
         {
             Publicacion unaP = _sistema.obtenerPublicacion(NombrePublicacion);
+            int tipo;
 
             if (oferta.Monto > 0 && !double.IsNaN(oferta.Monto) && !double.IsNegative(oferta.Monto) && unaP.PrecioPublicacion() < oferta.Monto)
             {
@@ -41,12 +46,13 @@ namespace WebApplication1.Controllers
                                                 new DateTime(today.Year, today.Month, today.Day, 00, 0, 0),
                                                 NombrePublicacion));
 
-                ViewBag.MensajeValido = "¡Oferta realizada con éxito!";
-                return RedirectToAction("Index", new { nombrePublicacion = NombrePublicacion });
+                string Mensaje1 = "¡Oferta realizada con éxito!";
+                tipo = 1;
+                return RedirectToAction("Index", new { nombrePublicacion = NombrePublicacion, mensaje = Mensaje1, tipo = 1});
             }
-
-            ViewBag.MensajeInvalido = "Oferta no realizada, por favor verifique el importe.";
-            return RedirectToAction("Index", new { nombrePublicacion = NombrePublicacion });
+            tipo = 2;
+            string Mensaje2 = "Oferta no realizada, por favor verifique el importe.";
+            return RedirectToAction("Index", new { nombrePublicacion = NombrePublicacion, mensaje = Mensaje2 , tipo=2});
         }
     }
 }
